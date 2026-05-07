@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TickLists: Your Lists &amp; Routines, always focussed on now</title>
+<meta name="description" content="Shopping lists synced, share with anyone. Tick when needed, untick when bought - no re-typing, sorted by aisle for any store. Household &amp; team routines, bulk upload, spreadsheet editing, any device.">
+<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" />
+<!-- Google Consent Mode: set defaults BEFORE GA loads -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSGT4Y2TLM"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-BSGT4Y2TLM');
+</script>
+
+<!-- HLS.js (loaded once here so all videos on the page can use it) -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<!-- Silktide Cookie Banner -->
+<link rel="stylesheet" href="/silktide-consent-manager-v2.css">
+<style>
+  #silktide-banner {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #silktide-banner.bottomLeft,
+  #silktide-banner.bottomCenter,
+  #silktide-banner.bottomRight {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+  }
+  /* Thumbs-up cookie icon — small, brand colours */
+  #silktide-cookie-icon {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: #015677 !important;
+    bottom: 14px !important;
+    left: 14px !important;
+  }
+  #silktide-cookie-icon svg {
+    display: none !important;
+  }
+  #silktide-cookie-icon::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-color: #F2FF00;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z'/%3E%3C/svg%3E");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+</style>
+<script src="/silktide-consent-manager-v2.js"></script>
+<script>
+silktideCookieBannerManager.updateCookieBannerConfig({
+  background: { showBackground: true },
+  cookieIcon: { position: "bottomLeft" },
+  cookieTypes: [
+    {
+      id: "necessary",
+      name: "Necessary",
+      description: "<p>These cookies are necessary for the website to function properly and cannot be switched off.</p>",
+      required: true,
+      onAccept: function() {}
+    },
+    {
+      id: "analytics",
+      name: "Analytics",
+      description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
+      defaultValue: true,
+      onAccept: function() {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        dataLayer.push({ event: 'consent_accepted_analytics' });
+      },
+      onReject: function() {
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+      }
+    },
+    {
+      id: "advertising",
+      name: "Advertising",
+      description: "<p>These cookies provide personalisation and may be set by us or by partners whose services we use.</p>",
+      onAccept: function() {
+        gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+        dataLayer.push({ event: 'consent_accepted_advertising' });
+      },
+      onReject: function() {
+        gtag('consent', 'update', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+      }
+    }
+  ],
+  text: {
+    banner: {
+      description: "<p>We use cookies to enhance your experience and analyse our traffic. <a href=\"https://ticklists.com/cookie-policy/\" target=\"_blank\">Cookie Policy.</a></p>",
+      acceptAllButtonText: "Accept all",
+      rejectNonEssentialButtonText: "Reject non-essential",
+      preferencesButtonText: "Preferences"
+    },
+    preferences: {
+      title: "Customise your cookie preferences",
+      description: "<p>You can choose not to allow some types of cookies. Your preferences will apply across our website.</p>",
+      creditLinkText: "Get this banner for free"
+    }
+  }
+});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:wght@400;600;700&family=Open+Sans+Condensed:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #015677;
+    --light-grey: #F5F0EC;
+    --text: #1d1d1d;
+    --border: #e5e5e5;
+    --bg: #F5F0EC;
+    --white: #ffffff;
+  }
+  body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .page { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+  body { padding-top: 0; }
+
+  /* ── STICKY NAV ── */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--teal);
+    border-bottom: none;
+    padding: 0;
+  }
+  .nav-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 62px;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    padding-bottom: 10px;
+  }
+  /* Logo */
+  .nav-logo-full {
+    display: block;
+    flex-shrink: 0;
+    line-height: 0;
+    text-decoration: none;
+  }
+  .nav-logo-full svg { display: block; height: 38px; width: auto; }
+  /* Tab text links */
+  .tab-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+  }
+  .tab-btn {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 4px 0;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: color 0.18s ease;
+    letter-spacing: 0.02em;
+  }
+  .tab-btn:hover { color: #ffffff; }
+  .tab-btn.active {
+    color: #ffffff;
+    font-weight: 700;
+  }
+  /* CTA button — lime accent with teal text */
+  .nav-cta {
+    flex-shrink: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: none;
+    background: #F2FF00;
+    color: #015677;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 8px rgba(242,255,0,0.35);
+  }
+  .nav-cta:hover { background: #e6f200; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(242,255,0,0.45); }
+  .tab-content { display: none; }
+  .tab-content.visible { display: block; }
+
+  /* ── HERO ── */
+  .hero { padding: 1rem 0 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+  .section-label { font-size: 0.72rem; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 10px; }
+  .hero-text h1 { font-family: 'Lora', serif; font-size: 2.6rem; line-height: 1.12; font-weight: 600; margin-bottom: 1rem; }
+  .hero-text h1 span { color: var(--teal); }
+  .hero-text p { font-size: 1.05rem; line-height: 1.7; color: var(--text); margin-bottom: 1.75rem; }
+  .cta-group { display: flex; flex-direction: column; gap: 10px; }
+  .btn-primary { background: var(--teal); color: #fff; border: none; padding: 15px 28px; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: 'Open Sans', sans-serif; text-align: center; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: #013d57; }
+  .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid var(--border); padding: 13px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: 'Open Sans', sans-serif; text-align: center; text-decoration: none; display: inline-block; }
+  .btn-secondary:hover { border-color: #bbb; }
+  .microcopy { font-size: 0.78rem; color: #1d1d1d; margin-top: 6px; white-space: nowrap; background: transparent; }
+
+  /* ── PHONE MOCKUP ── */
+  .phone-wrap { display: flex; justify-content: center; }
+  .phone { width: 175px; height: 340px; background: var(--white); border-radius: 30px; border: 2px solid var(--border); overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+  .phone-notch { height: 20px; background: #f5f5f3; display: flex; align-items: center; justify-content: center; }
+  .phone-notch-pill { width: 44px; height: 5px; background: #ddd; border-radius: 3px; }
+  .screen { padding: 10px 9px; }
+  .store-pill { display: inline-flex; align-items: center; gap: 4px; background: #e8f0f3; color: var(--teal); font-size: 9px; font-weight: 600; padding: 3px 9px; border-radius: 20px; margin-bottom: 8px; border: 1px solid rgba(1,86,119,0.2); }
+  .day-pill { display: inline-flex; align-items: center; gap: 4px; background: #e8f0f3; color: var(--teal); font-size: 9px; font-weight: 600; padding: 3px 9px; border-radius: 20px; margin-bottom: 6px; }
+  .dept-label { font-size: 7.5px; font-weight: 600; color: #999; margin: 7px 0 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .list-item { display: flex; flex-direction: column; padding: 5px 0; border-bottom: 0.5px solid #f0f0f0; }
+  .item-row { display: flex; align-items: center; gap: 6px; }
+  .item-name { font-size: 9.5px; color: var(--text); }
+  .item-name.unticked { color: #bbb; }
+  .tick-box { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid #c8d5de; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 8px; }
+  .tick-box.done { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .tick-box.done-green { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .activity { font-size: 7px; color: #aaa; margin-top: 2px; padding-left: 19px; }
+  .day-filter-row { display: flex; gap: 3px; margin-bottom: 8px; flex-wrap: wrap; }
+  .day-chip { font-size: 7px; padding: 2px 5px; border-radius: 4px; border: 1px solid #e0e0e0; color: #aaa; }
+  .day-chip.active { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 600; }
+
+  /* ── CONCEPT BOX ── */
+  .concept-box { background: #f5f5f3; border-left: 3px solid var(--teal); border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1.75rem 0; font-size: 0.9rem; line-height: 1.7; color: var(--text); }
+  .concept-box strong { color: var(--text); font-weight: 700; }
+
+  /* ── TICK-ONCE VISUAL ── */
+  .tick-once-block { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem 1.5rem; margin: 1.75rem 0; }
+  .tick-once-block h4 { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .tick-once-block p { font-size: 0.88rem; color: var(--text); line-height: 1.65; margin-bottom: 0.9rem; }
+  .store-rows { display: flex; flex-direction: column; gap: 7px; }
+  .store-row { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; }
+  .store-row .pill { background: #e8f0f3; color: var(--teal); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; border: 1px solid rgba(1,86,119,0.2); }
+  .store-row .check { color: var(--teal); font-weight: 700; font-size: 0.9rem; }
+  .store-row .aisle-note { color: #1d1d1d; font-size: 0.78rem; }
+  .tick-once-trigger { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .tick-once-trigger .item-chip { background: #f0f0ee; border-radius: 8px; padding: 5px 12px; font-size: 0.85rem; font-weight: 600; }
+  .tick-once-trigger .arrow { color: #bbb; font-size: 1.1rem; }
+
+  /* ── LIFESTYLE IMAGE ── */
+  .lifestyle { position: relative; border-radius: 16px; overflow: hidden; margin: 2rem 0; }
+  .lifestyle img { width: 100%; display: block; object-fit: cover; max-height: 320px; }
+  .lifestyle-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); padding: 2rem 1.5rem 1.25rem; }
+  .lifestyle-caption p { color: #ffffff; font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
+  .lifestyle-caption span { color: #F2FF00; }
+
+  /* ── GIF / VIDEO BLOCK ── */
+  .gif-block { background: #f5f5f3; border-radius: 16px; border: 1.5px dashed #ddd; padding: 2.5rem 1.5rem; text-align: center; margin: 1.5rem 0; }
+  .gif-label { font-size: 0.72rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .gif-desc { font-size: 0.9rem; color: var(--text); opacity: 0.65; }
+  .play-icon { width: 48px; height: 48px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; cursor: pointer; }
+  .play-icon-green { width: 48px; height: 48px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; cursor: pointer; }
+
+  /* ── FEATURES ── */
+  .features { display: flex; flex-direction: column; gap: 3rem; margin: 2.5rem 0; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+  .feature.flip { direction: rtl; }
+  .feature.flip > * { direction: ltr; }
+  .feature-text h3 { font-family: 'Lora', serif; font-size: 1.45rem; font-weight: 600; line-height: 1.25; margin-bottom: 0.65rem; }
+  .feature-text p { font-size: 0.9rem; line-height: 1.7; color: var(--text); }
+  .feature-img { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+  .feature-img img { width: 100%; display: block; }
+
+  /* ── FLOOR PLAN ── */
+  .floorplan-wrap { border-radius: 16px; overflow: hidden; background: #f5f5f3; padding: 1rem; }
+
+  /* ── SCREENSHOT PLACEHOLDER ── */
+  .screenshot-placeholder { background: #f0f0ee; border-radius: 16px; border: 1.5px dashed #ccc; aspect-ratio: 9/16; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 1rem; text-align: center; }
+  .screenshot-placeholder p { font-size: 0.78rem; color: #999; }
+
+  /* ── HOW IT WORKS ── */
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .step { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem; cursor: pointer; transition: border-color 0.15s; }
+  .step:hover { border-color: #ccc; }
+  .step.active-coral { border: 1.5px solid var(--teal); }
+  .step.active-green { border: 1.5px solid var(--teal); }
+  .step-num { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+  .step-num-coral { color: var(--teal); }
+  .step-num-green { color: var(--teal); }
+  .step h4 { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; margin-bottom: 5px; }
+  .step p { font-size: 0.82rem; color: var(--text); line-height: 1.55; }
+
+  /* ── SOCIAL PROOF ── */
+  .proof { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin: 2rem 0; }
+  .proof p { font-size: 1rem; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 0.75rem; }
+  .proof-attr { font-size: 0.8rem; font-weight: 600; color: var(--text); opacity: 0.5; }
+
+  /* ── FINAL CTA ── */
+  .final-cta { background: var(--teal); border-radius: 0; padding: 3.5rem 2rem; text-align: center; margin-top: 3rem; border: none; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw; }
+  .final-cta.green-cta { background: var(--teal); }
+  .final-cta h2 { font-family: 'Lora', serif; font-size: 1.9rem; font-weight: 600; margin-bottom: 0.75rem; color: #ffffff; }
+  .final-cta p { color: rgba(255,255,255,0.85); margin-bottom: 1.75rem; font-size: 0.95rem; }
+  .final-cta .btn-primary { background: #F2FF00; color: var(--teal); border-radius: 50px; }
+  .final-cta .btn-primary-green { background: #F2FF00; color: var(--teal); border-radius: 50px; }
+  .final-cta .btn-primary-green:hover { background: #e6f200; }
+  .final-cta .btn-primary:hover { background: #e6f200; }
+  .final-cta .btn-secondary { border-color: rgba(255,255,255,0.5); color: #ffffff; }
+  .final-cta .btn-secondary:hover { border-color: rgba(255,255,255,0.8); }
+  .final-cta .microcopy { color: rgba(255,255,255,0.7); }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary-green { background: var(--teal); color: #fff; border: none; padding: 15px 28px; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: 'Open Sans', sans-serif; text-align: center; text-decoration: none; display: inline-block; }
+  .btn-primary-green:hover { background: #013d57; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 3rem 0; }
+  h2.section-heading { font-family: 'Lora', serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: 1fr; }
+    .phone-wrap { order: -1; }
+    .feature, .feature.flip { grid-template-columns: 1fr; direction: ltr; }
+    .steps { grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 2rem; }
+    .screenshot-placeholder { aspect-ratio: 3/4; }
+    .tab-btn { font-size: 0.85rem; padding: 10px 18px; }
+  }
+
+  /* ── SHOPPING HERO BACKGROUND ── */
+  .shopping-hero-wrap {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    background-color: #e8eff2;
+    background-image: url('/img/supermarket-aisle.png');
+    background-size: cover;
+    background-position: center center;
+  }
+  .shopping-hero-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Cream gradient: opaque left (text side) → semi-transparent right (phone side) */
+    background: linear-gradient(
+      105deg,
+      rgba(246,243,238,0.97) 0%,
+      rgba(246,243,238,0.93) 38%,
+      rgba(246,243,238,0.55) 62%,
+      rgba(246,243,238,0.18) 100%
+    );
+    z-index: 1;
+  }
+  .shopping-hero-wrap .hero {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+
+  /* ── ROUTINES HERO BACKGROUND (identical layout to shopping) ── */
+  .routines-hero-wrap {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    background-color: #1a3a3f;
+    background-image: url('/img/Routines landing page hero 2.png');
+    background-size: cover;
+    background-position: center 75%;
+  }
+  .routines-hero-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      rgba(246,243,238,0.97) 0%,
+      rgba(246,243,238,0.93) 38%,
+      rgba(246,243,238,0.55) 62%,
+      rgba(246,243,238,0.18) 100%
+    );
+    z-index: 1;
+  }
+  .routines-hero-wrap .hero {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+
+  /* ── PRICING TAB ── */
+  .pricing-wrap {
+    padding: 3rem 0 4rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  /* Toggle */
+  .pricing-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 2.5rem;
+  }
+  .toggle-label {
+    font-size: 0.9rem;
+    color: #555;
+    transition: color 0.2s, font-weight 0.2s;
+  }
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+  }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    left: 3px; top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  .toggle-switch input:checked + .toggle-slider { background: var(--teal); }
+  .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+  .save-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: #e8f8e8;
+    color: #1a7a1a;
+    padding: 3px 9px;
+    border-radius: 20px;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .save-badge--active { opacity: 1; }
+  /* Cards */
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .pricing-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    border: 2px solid var(--border);
+  }
+  .pricing-card--pro {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+  .card-plan {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.75rem;
+    color: #888;
+  }
+  .pricing-card--pro .card-plan { color: rgba(255,255,255,0.7); }
+  .card-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    margin-bottom: 0.25rem;
+  }
+  .card-price {
+    font-family: 'Lora', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .card-price-period {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  .pricing-card--pro .card-price-period { color: rgba(255,255,255,0.65); }
+  .card-price-note {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.25rem;
+  }
+  .card-tagline {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 1.4rem;
+  }
+  .pricing-card--pro .card-tagline { color: rgba(255,255,255,0.75); }
+  /* CTA buttons */
+  .btn-pricing {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 11px 0;
+    border-radius: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 1.6rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-pricing:hover { transform: translateY(-1px); }
+  .btn-pricing--free {
+    background: var(--teal);
+    color: white;
+    box-shadow: 0 2px 8px rgba(1,86,119,0.2);
+  }
+  .btn-pricing--free:hover { box-shadow: 0 4px 14px rgba(1,86,119,0.3); }
+  .btn-pricing--pro {
+    background: #F2FF00;
+    color: var(--teal);
+    box-shadow: 0 2px 8px rgba(242,255,0,0.3);
+  }
+  .btn-pricing--pro:hover { box-shadow: 0 4px 14px rgba(242,255,0,0.45); }
+  /* Feature list */
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .pricing-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  .feat-check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #e8f0f4;
+    color: var(--teal);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .feat-check--pro {
+    background: rgba(242,255,0,0.25);
+    color: #F2FF00;
+  }
+  .pricing-footer-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #888;
+  }
+  @media (max-width: 560px) {
+    .pricing-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <!-- Full logo: all paths from brand file, viewBox crops to mark+wordmark only -->
+    <a href="https://ticklists.app" class="nav-logo-full">
+      <svg viewBox="8 0 308 208" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28.5355 185.634H64.0161V199.524H11.3236V94.5921H28.5355V185.634ZM147.826 200.883C141.284 200.883 135.395 199.725 130.161 197.41C125.028 194.995 120.951 191.774 117.932 187.748C114.912 183.621 113.302 179.041 113.1 174.008H130.916C131.218 177.531 132.879 180.501 135.899 182.916C139.019 185.231 142.894 186.389 147.524 186.389C152.356 186.389 156.08 185.483 158.697 183.671C161.414 181.759 162.773 179.343 162.773 176.424C162.773 173.304 161.263 170.989 158.244 169.479C155.325 167.969 150.644 166.308 144.203 164.496C137.962 162.785 132.879 161.125 128.953 159.514C125.028 157.904 121.606 155.438 118.687 152.116C115.868 148.794 114.459 144.416 114.459 138.981C114.459 134.552 115.768 130.526 118.385 126.902C121.002 123.178 124.726 120.259 129.557 118.145C134.489 116.031 140.126 114.975 146.467 114.975C155.929 114.975 163.528 117.39 169.265 122.222C175.103 126.952 178.224 133.445 178.626 141.698H161.414C161.112 137.974 159.603 135.005 156.885 132.79C154.167 130.576 150.493 129.469 145.863 129.469C141.334 129.469 137.861 130.324 135.446 132.036C133.03 133.747 131.822 136.011 131.822 138.83C131.822 141.044 132.627 142.906 134.238 144.416C135.848 145.926 137.811 147.134 140.126 148.04C142.441 148.845 145.863 149.902 150.393 151.21C156.432 152.821 161.364 154.481 165.189 156.193C169.114 157.803 172.486 160.219 175.305 163.44C178.123 166.661 179.582 170.938 179.683 176.273C179.683 181.004 178.375 185.231 175.758 188.955C173.141 192.68 169.416 195.599 164.585 197.712C159.854 199.826 154.268 200.883 147.826 200.883ZM218.361 130.375V176.424C218.361 179.544 219.066 181.809 220.475 183.218C221.985 184.527 224.501 185.181 228.024 185.181H238.593V199.524H225.005C217.254 199.524 211.316 197.712 207.189 194.089C203.062 190.465 200.999 184.577 200.999 176.424V130.375H191.185V116.333H200.999V95.649H218.361V116.333H238.593V130.375H218.361Z" fill="white"/>
+<path d="M283.622 200.961C277.079 200.961 271.191 199.803 265.957 197.488C260.824 195.073 256.747 191.852 253.728 187.825C250.708 183.699 249.098 179.119 248.896 174.086H266.712C267.014 177.609 268.675 180.578 271.694 182.994C274.815 185.309 278.69 186.467 283.32 186.467C288.151 186.467 291.876 185.561 294.493 183.749C297.21 181.837 298.569 179.421 298.569 176.502C298.569 173.382 297.059 171.067 294.04 169.557C291.121 168.047 286.44 166.386 279.998 164.574C273.758 162.863 268.675 161.202 264.749 159.592C260.824 157.981 257.401 155.515 254.483 152.194C251.664 148.872 250.255 144.494 250.255 139.058C250.255 134.63 251.564 130.604 254.181 126.98C256.798 123.256 260.522 120.337 265.353 118.223C270.285 116.109 275.922 115.052 282.263 115.052C291.725 115.052 299.324 117.468 305.061 122.3C310.899 127.03 314.019 133.522 314.422 141.776H297.21C296.908 138.052 295.398 135.083 292.681 132.868C289.963 130.654 286.289 129.547 281.659 129.547C277.13 129.547 273.657 130.402 271.241 132.113C268.826 133.824 267.618 136.089 267.618 138.907C267.618 141.122 268.423 142.984 270.034 144.494C271.644 146.004 273.607 147.211 275.922 148.117C278.237 148.923 281.659 149.979 286.189 151.288C292.228 152.898 297.16 154.559 300.985 156.27C304.91 157.881 308.282 160.297 311.101 163.517C313.919 166.738 315.378 171.016 315.479 176.351C315.479 181.082 314.17 185.309 311.553 189.033C308.936 192.758 305.212 195.676 300.381 197.79C295.65 199.904 290.064 200.961 283.622 200.961Z" fill="#F2FF00"/>
+<path d="M243.047 237.185C242.366 237.185 241.795 236.954 241.333 236.493C240.872 236.031 240.641 235.46 240.641 234.779C240.641 234.097 240.872 233.526 241.333 233.064C241.795 232.603 242.366 232.372 243.047 232.372C243.707 232.372 244.267 232.603 244.729 233.064C245.19 233.526 245.421 234.097 245.421 234.779C245.421 235.46 245.19 236.031 244.729 236.493C244.267 236.954 243.707 237.185 243.047 237.185ZM248.23 227.79C248.23 225.966 248.604 224.35 249.351 222.944C250.12 221.537 251.153 220.45 252.45 219.68C253.768 218.889 255.219 218.494 256.801 218.494C258.23 218.494 259.471 218.779 260.526 219.351C261.603 219.9 262.46 220.592 263.097 221.428V218.79H266.888V236.954H263.097V234.251C262.46 235.108 261.592 235.822 260.493 236.394C259.394 236.965 258.142 237.251 256.735 237.251C255.175 237.251 253.746 236.855 252.45 236.064C251.153 235.251 250.12 234.13 249.351 232.702C248.604 231.251 248.23 229.614 248.23 227.79ZM263.097 227.856C263.097 226.603 262.834 225.515 262.306 224.592C261.801 223.669 261.13 222.966 260.295 222.482C259.46 221.999 258.559 221.757 257.592 221.757C256.625 221.757 255.724 221.999 254.889 222.482C254.054 222.944 253.373 223.636 252.845 224.559C252.34 225.46 252.087 226.537 252.087 227.79C252.087 229.043 252.34 230.141 252.845 231.086C253.373 232.031 254.054 232.757 254.889 233.262C255.746 233.746 256.647 233.987 257.592 233.987C258.559 233.987 259.46 233.746 260.295 233.262C261.13 232.779 261.801 232.075 262.306 231.152C262.834 230.207 263.097 229.108 263.097 227.856ZM275.583 221.46C276.22 220.625 277.088 219.922 278.187 219.351C279.286 218.779 280.527 218.494 281.912 218.494C283.494 218.494 284.934 218.889 286.231 219.68C287.549 220.45 288.582 221.537 289.329 222.944C290.076 224.35 290.45 225.966 290.45 227.79C290.45 229.614 290.076 231.251 289.329 232.702C288.582 234.13 287.549 235.251 286.231 236.064C284.934 236.855 283.494 237.251 281.912 237.251C280.527 237.251 279.297 236.976 278.22 236.427C277.143 235.855 276.264 235.152 275.583 234.317V245.591H271.825V218.79H275.583V221.46ZM286.626 227.79C286.626 226.537 286.362 225.46 285.835 224.559C285.329 223.636 284.648 222.944 283.791 222.482C282.956 221.999 282.055 221.757 281.088 221.757C280.143 221.757 279.242 221.999 278.385 222.482C277.55 222.966 276.868 223.669 276.341 224.592C275.835 225.515 275.583 226.603 275.583 227.856C275.583 229.108 275.835 230.207 276.341 231.152C276.868 232.075 277.55 232.779 278.385 233.262C279.242 233.746 280.143 233.987 281.088 233.987C282.055 233.987 282.956 233.746 283.791 233.262C284.648 232.757 285.329 232.031 285.835 231.086C286.362 230.141 286.626 229.043 286.626 227.79ZM297.925 221.46C298.562 220.625 299.43 219.922 300.529 219.351C301.628 218.779 302.869 218.494 304.254 218.494C305.836 218.494 307.276 218.889 308.572 219.68C309.891 220.45 310.924 221.537 311.671 222.944C312.418 224.35 312.792 225.966 312.792 227.79C312.792 229.614 312.418 231.251 311.671 232.702C310.924 234.13 309.891 235.251 308.572 236.064C307.276 236.855 305.836 237.251 304.254 237.251C302.869 237.251 301.639 236.976 300.562 236.427C299.485 235.855 298.606 235.152 297.925 234.317V245.591H294.166V218.79H297.925V221.46ZM308.968 227.79C308.968 226.537 308.704 225.46 308.177 224.559C307.671 223.636 306.99 222.944 306.133 222.482C305.298 221.999 304.397 221.757 303.43 221.757C302.485 221.757 301.584 221.999 300.727 222.482C299.891 222.966 299.21 223.669 298.683 224.592C298.177 225.515 297.925 226.603 297.925 227.856C297.925 229.108 298.177 230.207 298.683 231.152C299.21 232.075 299.891 232.779 300.727 233.262C301.584 233.746 302.485 233.987 303.43 233.987C304.397 233.987 305.298 233.746 306.133 233.262C306.99 232.757 307.671 232.031 308.177 231.086C308.704 230.141 308.968 229.043 308.968 227.79Z" fill="#F2FF00"/>
+<rect x="77.2993" y="128.939" width="14.1963" height="68.6153" fill="#F2FF01"/>
+<path d="M72.7306 80.8472L67.7828 77.8323L61.7529 87.728L66.7007 90.7429L69.7157 85.7951L72.7306 80.8472ZM84.38 99.9272L84.38 105.721L87.6993 105.721L89.3782 102.858L84.38 99.9272ZM124.979 68.5871C127.766 67.0139 128.749 63.4796 127.176 60.6931C125.603 57.9066 122.068 56.9231 119.282 58.4964L122.13 63.5417L124.979 68.5871ZM84.2552 99.9272L79.4778 103.205L81.2041 105.721L84.2552 105.721L84.2552 99.9272ZM84.38 99.9272C89.3782 102.858 89.3775 102.859 89.3768 102.86C89.3767 102.86 89.376 102.862 89.3757 102.862C89.3751 102.863 89.3746 102.864 89.3744 102.864C89.3739 102.865 89.3742 102.865 89.3753 102.863C89.3775 102.859 89.3829 102.85 89.3914 102.836C89.4085 102.807 89.4382 102.758 89.4804 102.689C89.5649 102.55 89.6997 102.332 89.8841 102.042C90.2531 101.462 90.8204 100.595 91.5819 99.5019C93.1066 97.3129 95.4015 94.2274 98.4346 90.7209C104.523 83.6816 113.463 75.0893 124.979 68.5871L122.13 63.5417L119.282 58.4964C106.257 65.8501 96.3214 75.4506 89.6703 83.14C86.3333 86.9978 83.792 90.4107 82.0729 92.879C81.2127 94.1142 80.5562 95.1158 80.1069 95.822C79.8822 96.1752 79.7092 96.4547 79.5882 96.653C79.5277 96.7521 79.4802 96.831 79.4458 96.8885C79.4286 96.9173 79.4146 96.9408 79.404 96.9588C79.3986 96.9679 79.3941 96.9755 79.3904 96.9818C79.3885 96.985 79.3869 96.9878 79.3854 96.9902C79.3847 96.9914 79.3838 96.993 79.3834 96.9936C79.3826 96.9951 79.3817 96.9965 84.38 99.9272ZM69.7157 85.7951L66.7007 90.7429C70.1762 92.8606 73.3755 95.9303 75.7886 98.6266C76.9718 99.9487 77.9162 101.125 78.5577 101.96C78.8776 102.377 79.1197 102.706 79.2762 102.922C79.3543 103.03 79.4109 103.11 79.4449 103.159C79.4619 103.183 79.4732 103.199 79.4787 103.207C79.4815 103.211 79.4828 103.213 79.4826 103.213C79.4826 103.212 79.4821 103.212 79.4813 103.211C79.4809 103.21 79.4804 103.209 79.4798 103.208C79.4795 103.208 79.479 103.207 79.4789 103.207C79.4783 103.206 79.4778 103.205 84.2552 99.9272C89.0327 96.6489 89.0321 96.648 89.0314 96.6471C89.0312 96.6468 89.0305 96.6458 89.03 96.6451C89.0291 96.6437 89.028 96.6421 89.0268 96.6405C89.0245 96.6371 89.0218 96.6331 89.0187 96.6287C89.0125 96.6197 89.0048 96.6085 88.9955 96.5952C88.977 96.5685 88.9524 96.5333 88.9218 96.4898C88.8606 96.4029 88.7755 96.283 88.6674 96.1335C88.4513 95.8346 88.1427 95.416 87.7496 94.904C86.9653 93.8822 85.835 92.4758 84.4236 90.8987C81.6474 87.7967 77.5769 83.8003 72.7306 80.8472L69.7157 85.7951ZM84.2552 99.9272L84.2552 105.721L84.38 105.721L84.38 99.9272L84.38 94.1331L84.2552 94.1331L84.2552 99.9272Z" fill="#F2FF00"/>
+<ellipse opacity="0.05" cx="98.851" cy="81.0993" rx="74.4247" ry="74.2975" fill="#F2FF00"/>
+<path d="M22.8161 80.1614C21.8346 38.1907 55.0628 3.37089 97.0336 2.3893C139.004 1.40771 173.824 34.636 174.806 76.6068C175.056 87.2891 173.089 97.5082 169.327 106.824" stroke="#F2FF00" stroke-width="4.7362" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('shopping', this)">Shopping Lists</button>
+      <button class="tab-btn" onclick="switchTab('routines', this)">Daily Routines</button>
+      <button class="tab-btn" onclick="switchTab('pricing', this)">Pricing</button>
+    </div>
+    <a href="https://ticklists.app" class="nav-cta">Try TickLists free →</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- ══════════════════════════════════════════════
+       TAB 1: SHOPPING LISTS
+  ══════════════════════════════════════════════ -->
+  <div id="tab-shopping" class="tab-content visible">
+
+    <!-- ── HERO ── -->
+    <!-- 📸 Replace supermarket-aisle.jpg with a Firefly-generated photo: long supermarket aisle, focal point at far end -->
+    <div class="shopping-hero-wrap">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Your shopping list, always in the <span>right order</span> for any store</h1>
+        <p>One master list, synced on everyone's device.<br>Need something? Tick it. Bought it? Untick it.</p>
+        <p>Every store remembers its own section order — no backtracking in the aisles.</p>
+        <div class="cta-group">
+          <a href="https://ticklists.app" class="btn-primary">Try TickLists free</a>
+          <button class="btn-secondary" onclick="document.getElementById('shopping-who').scrollIntoView({behavior:'smooth'})">See how it works ↓</button>
+          <p class="microcopy">Free to use · No credit card · Works on any device</p>
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <div style="width:76%;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+          <video id="shopping-hero-video" autoplay loop muted playsinline style="width:100%;height:auto;display:block;"></video>
+        </div>
+        <script>
+          (function() {
+            var video = document.getElementById('shopping-hero-video');
+            var src = 'https://vz-b91d07c1-def.b-cdn.net/62572680-9750-4895-9924-bdb4a198028c/playlist.m3u8';
+            if (Hls.isSupported()) {
+              var hls = new Hls({ autoStartLoad: true, startLevel: -1 });
+              hls.loadSource(src);
+              hls.attachMedia(video);
+              hls.on(Hls.Events.MANIFEST_PARSED, function() { video.play(); });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+              video.src = src;
+              video.play();
+            }
+          })();
+        </script>
+      </div>
+    </div>
+    </div><!-- /shopping-hero-wrap -->
+
+    <!-- ── WHO IT'S FOR ── -->
+    <p id="shopping-who" class="section-label" style="margin-top:2.5rem;">Who it's for</p>
+    <h2 class="section-heading">Built for real life</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:1.75rem 0 0.5rem;">
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/adhd_supermarket.png" alt="A woman walking into a supermarket holding her phone" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">ADHD &amp; forgetfulness</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Everything already there, sorted to your store's layout — before you even walk in.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/elderly final image.png" alt="Elderly couple sharing a TickLists shopping list, with daughter delivering shopping" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Carers &amp; elderly parents</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Share your list with elderly parents — they tick &amp; tag what they need, you can filter by the tag, and bag it all together at checkout.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/keto_kitchen.png" alt="Man in a bright kitchen with a cookbook and healthy ingredients" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Special diets &amp; meal prep</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Keto, gluten-free, batch-cook. Tag your plan items optionally with a colour code too, so you can see which foods to prioritise whilst shopping. Filter to just those foods too if you prefer.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/savvy_shopper.png" alt="A woman in a lounge reading a supermarket offers magazine" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Savvy shoppers</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Tag items by which store has the offer this week. Shop across multiple stores without losing track.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/hardware_couple.png" alt="A couple walking into a hardware store" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Tradespeople &amp; renovators</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Long hardware lists with notes, sorted to each trade counter's layout. Never backtrack through a builder's merchant again.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/workplace_ipad.png" alt="A person ticking a list on an iPad in a modern office kitchen" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Shared workplaces</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">One live list for the work kitchen. Everyone can tick whenever something runs out.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="divider"></div>
+
+    <!-- ── CONCEPT BOX: permanent list ── -->
+    <div class="concept-box"><strong>Other apps waste your time</strong> as you type in items, then delete them once bought or done.<br><br>Ticklists is different — keep one master list, tick when you need something, untick when it's bought. The list is always ready for the next shop.</div>
+
+    <!-- ── TICK ONCE VISUAL ── -->
+    <div class="tick-once-block">
+      <h4>Tick a <span style="color:var(--teal);">Food item</span> once. Appears in every <span style="color:var(--teal);">Food store</span>.</h4>
+      <p>Tick "Apples" and it immediately shows as needed at every store you shop — each one already sorted to that store's own section order. No re-ticking per store. One tick does all of them.</p>
+      <div class="tick-once-trigger">
+        <span class="item-chip">🍎 Apples</span>
+        <span class="arrow">→ ticked once</span>
+      </div>
+      <div class="store-rows">
+        <div class="store-row"><span class="pill">Aldi Dalston</span><span class="check">✓ Needed</span><span class="aisle-note">aisle 3 — Fruit &amp; Veg</span></div>
+        <div class="store-row"><span class="pill">Aldi Bethnal Green</span><span class="check">✓ Needed</span><span class="aisle-note">aisle 1 — Fruit &amp; Veg</span></div>
+        <div class="store-row"><span class="pill">Tesco Brixton</span><span class="check">✓ Needed</span><span class="aisle-note">aisle 5 — Fruit &amp; Veg</span></div>
+      </div>
+    </div>
+
+    <!-- ── LIFESTYLE IMAGE ── -->
+    <div class="lifestyle">
+      <img src="/img/persona/adhd_supermarket.png" alt="Shopper following the most efficient route through a supermarket, guided by TickLists">
+      <div class="lifestyle-caption">
+        <p>The right items. The right aisle. <span>Every time.</span></p>
+      </div>
+    </div>
+
+    <!-- ── HERO GIF — store switching ── -->
+    <!-- ★ REPLACE with animated GIF once created: same list switching between Aldi Dalston and Aldi Bethnal Green, items reordering -->
+    <div class="gif-block">
+      <div class="play-icon"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M2 1L13 8L2 15V1Z" fill="white"/></svg></div>
+      <div class="gif-label">Demo coming — store switching</div>
+      <div class="gif-desc">Watch the same list reorder for Aldi Dalston, then Aldi Bethnal Green — same chain, totally different aisle layout, sorted correctly every time</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── FEATURES ── -->
+    <div id="shopping-features">
+      <p class="section-label">Why it's different</p>
+      <h2 class="section-heading">Built for how families actually shop</h2>
+    </div>
+
+    <div class="features">
+
+      <!-- Feature 1: tick / untick -->
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Tick what you need. Untick when it's bought.</h3>
+          <p>Your items don't get deleted — they stay on your master list unless you edit them.</p>
+          <p>Running low on something? Tick it. In the store, click &#8216;Ticked only&#8217; to focus ONLY on what you need to buy.</p>
+          <p>Once items are bought, bulk untick to reset the list and start over.</p>
+        </div>
+        <!-- ★ REDO: retake with demo account using Aldi Dalston / Tesco Brixton store names -->
+        <div class="feature-img">
+          <img src="/img/demo/Screenshot_20260503-095751.png" alt="Beverages section showing items ticked by Mike and Rachael with timestamps — live sync in action">
+        </div>
+      </div>
+
+      <!-- Feature 2: store ordering → 3-store screenshot comparison -->
+      <div class="feature flip">
+        <div class="feature-text">
+          <h3>Every store in its own order</h3>
+          <p>Your Aldi on the high street is laid out differently from the one close to your work — and both are different from your Tesco. TickLists maps each location individually. Set the section order once per store, and your list sorts itself correctly for wherever you're shopping today.</p>
+        </div>
+        <div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;align-items:start;">
+            <div style="text-align:center;">
+              <img src="/img/demo/Screenshot_20260503-095035.png" alt="Food list at Aldi Dalston — Beverages first in this store's section order" style="width:100%;border-radius:10px;">
+              <p style="font-size:0.72rem;color:#666;margin-top:0.35rem;font-weight:600;">Aldi Dalston</p>
+            </div>
+            <div style="text-align:center;">
+              <img src="/img/demo/Screenshot_20260503-095045.png" alt="Same Food list at Aldi Bethnal Green — Fruit &amp; Veg first in this store's layout" style="width:100%;border-radius:10px;">
+              <p style="font-size:0.72rem;color:#666;margin-top:0.35rem;font-weight:600;">Aldi Bethnal Green</p>
+            </div>
+            <div style="text-align:center;">
+              <img src="/img/demo/Screenshot_20260503-095100.png" alt="Same Food list at Tesco Brixton — Snacks &amp; Sweets first in Tesco's layout" style="width:100%;border-radius:10px;">
+              <p style="font-size:0.72rem;color:#666;margin-top:0.35rem;font-weight:600;">Tesco Brixton</p>
+            </div>
+          </div>
+          <p style="font-size:0.75rem;color:#888;margin-top:0.5rem;text-align:center;">Same list — three stores — each in its own section order</p>
+        </div>
+      </div>
+
+      <!-- Feature 3: separate lists -->
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Keep food separate from hardware</h3>
+          <p>Ticking "Screws" in your Hardware list won't clutter your Food shop — and vice versa. Keep a list for Food (Aldi Dalston, Aldi Bethnal Green, Tesco Brixton) and a separate one for Hardware (B&amp;Q Brixton, Wickes Camden). Each list knows its own stores.</p>
+        </div>
+        <!-- Placeholder for a two-list screenshot -->
+        <div class="screenshot-placeholder">
+          <img src="/img/jitter/Screenshot_20260429-074855.png" alt="My Lists screen showing Daily Routine, Deskwork, Van Packing List and Food shopping list" style="width:100%;border-radius:12px;">
+        </div>
+      </div>
+
+      <!-- Feature 3b: bulk upload -->
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Get set up in minutes, not hours</h3>
+          <p>With bulk upload, just paste a list — one item per line. Add <strong>*Section names*</strong> at the top of each group and sections are created automatically. Your whole list, set up in seconds.</p>
+        </div>
+        <div class="feature-img" style="display:flex;gap:1rem;align-items:flex-start;justify-content:center;">
+          <img src="/img/Screenshot_20260504-083428.png" alt="Bulk upload — paste your list" style="width:48%;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,0.12);">
+          <img src="/img/Screenshot_20260504-083436.png" alt="Bulk upload — items added" style="width:48%;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,0.12);">
+        </div>
+      </div>
+
+      <!-- Feature 4: sharing -->
+      <div class="feature flip">
+        <div class="feature-text">
+          <h3>One list. Share and sync with everyone.</h3>
+          <p>Mike at home uses up the last orange juice, ticks it on the list. Rachael leaves work, calls in to the supermarket on her way home — and arrives with orange juice and the rest of the shop.</p>
+          <p style="margin-top:0.75rem;">Anyone can tick or untick. Every change shows the person's name and timestamp, so there's no doubling up, ever.</p>
+        </div>
+        <div class="feature-img">
+          <!-- 📸 Screenshot needed: sharing/account screen showing active sharing + email invitation dialog -->
+          <img src="/img/demo/Screenshot_20260503-095751.png" alt="Beverages section showing items ticked by Mike and Rachael with names and timestamps" style="width:100%;border-radius:12px;">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <p class="section-label">How it works</p>
+    <h2 class="section-heading">Four steps and you're shopping efficiently every time</h2>
+
+    <div class="steps">
+      <div class="step active-coral" onclick="document.querySelectorAll('#tab-shopping .step').forEach(s=>{s.classList.remove('active-coral')});this.classList.add('active-coral')">
+        <div class="step-num step-num-coral">Step 1</div>
+        <h4>Build your master list</h4>
+        <p>Add everything you ever buy — once. Paste in from a note or spreadsheet if you like — one bulk upload, not hours of typing and clicking save.</p>
+      </div>
+      <div class="step" onclick="document.querySelectorAll('#tab-shopping .step').forEach(s=>{s.classList.remove('active-coral')});this.classList.add('active-coral')">
+        <div class="step-num step-num-coral">Step 2</div>
+        <h4>In seconds, map each store once —</h4>
+        <p>Drag departments into the right order for any store you shop at. Every location saved permanently — even two Aldis with different layouts.</p>
+      </div>
+      <div class="step" onclick="document.querySelectorAll('#tab-shopping .step').forEach(s=>{s.classList.remove('active-coral')});this.classList.add('active-coral')">
+        <div class="step-num step-num-coral">Step 3</div>
+        <h4>Tick what you need</h4>
+        <p>Running low on something? Tick it. It shows as needed on everyone's phones — at every store — instantly.</p>
+      </div>
+      <div class="step" onclick="document.querySelectorAll('#tab-shopping .step').forEach(s=>{s.classList.remove('active-coral')});this.classList.add('active-coral')">
+        <div class="step-num step-num-coral">Step 4</div>
+        <h4>Shop, untick, tick, repeat</h4>
+        <p>Brought the shopping home? Click 'Untick all' to clear the whole list and start again. It clears for everyone, with your name and time stamped on it.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── SOCIAL PROOF ── -->
+    <p class="section-label">Early feedback</p>
+    <div class="proof">
+      <p>"I tick what we're out of, and it's sorted in walking order, and live on my husband's phone within seconds. I didn't know I needed this."</p>
+      <div class="proof-attr">— Early tester</div>
+    </div>
+
+
+
+
+    <!-- ── FINAL CTA ── -->
+    <div class="final-cta">
+      <h2>The last shopping list you will ever need.</h2>
+      <p>Always ready, shared and in sync. Free to use.</p>
+      <div class="cta-row">
+        <a href="https://ticklists.app" class="btn-primary">Try TickLists free</a>
+        <button class="btn-secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
+      </div>
+      <p class="microcopy" style="margin-top:16px">Free to use · No credit card · Works on any device</p>
+    </div>
+
+    <!-- ── CROSS-TAB PROMO ── -->
+    <div style="text-align:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border);">
+      <p style="font-size:0.78rem; font-weight:600; color:var(--teal); text-transform:uppercase; letter-spacing:1.2px; margin-bottom:0.5rem;">Also in TickLists</p>
+      <p style="font-family:'Lora', serif; font-size:1.25rem; font-weight:600; margin-bottom:0.5rem;">Use TickLists for your Daily Routines too</p>
+      <p style="font-size:0.9rem; color:#1d1d1d; margin-bottom:1rem;">Repeating task lists with day-by-day filters, shared in real time. One tap to reset.</p>
+      <button class="btn-secondary" style="background:var(--teal);color:#F2FF00;border-color:var(--teal);" onclick="switchTab('routines', document.querySelectorAll('.tab-btn')[1])">See Daily Routines →</button>
+    </div>
+
+  </div><!-- /tab-shopping -->
+
+
+  <!-- ══════════════════════════════════════════════
+       TAB 2: DAILY ROUTINES
+  ══════════════════════════════════════════════ -->
+  <div id="tab-routines" class="tab-content">
+
+    <!-- ── HERO ── -->
+    <div class="routines-hero-wrap">
+    <div class="hero">
+      <div class="hero-text">
+        <h1 style="color:var(--text);">Your repeating tasks…<br>focussed to <span style="color:var(--teal);">NOW</span></h1>
+        <p>Create & share repeating task lists for work or home.</p>
+        <p>Filter to see only what you need to, tick as you go, and one tap resets it, ready to go again.</p>
+        <p>— works for days of the week, repeating shifts &amp; flexible to any use.</p>
+        <div class="cta-group">
+          <a href="https://ticklists.app" class="btn-primary-green">Try TickLists free</a>
+          <button class="btn-secondary" onclick="document.getElementById('routines-who').scrollIntoView({behavior:'smooth'})">See how it works ↓</button>
+          <p class="microcopy">Free to use · No credit card · Works on any device</p>
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <img src="/img/Screenshot_20260504-083612.png" alt="TickLists daily routine screen" style="max-height:420px;width:auto;display:block;border-radius:28px;box-shadow:0 8px 40px rgba(0,0,0,0.18);">
+      </div>
+    </div>
+    </div><!-- /routines-hero-wrap -->
+
+    <!-- ── WHO IT'S FOR (Routines) ── -->
+    <p id="routines-who" class="section-label" style="margin-top:2.5rem;">Who it's for</p>
+    <h2 class="section-heading">Built for anything that needs to be done repeatedly</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:1.75rem 0 0.5rem;">
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/yoga.png" alt="Woman in a yoga class" style="width:100%;height:220px;object-fit:cover;object-position:center top;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Habit builders</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Tuesday yoga, Thursday physio — day tags mean only today's tasks show up.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/school_morning.png" alt="A child getting ready for school in the morning" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Families</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Share the school-morning routine between parents or nanny helpers. Make lunches, pack bag, do hair — see who's done what, every day.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/property_garden.png" alt="A person tending to a large garden or property" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Large households &amp; properties</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Water plants Thursdays, feed animals twice daily, clear gutters monthly — all in one shared place.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/persona/business_shift.png" alt="A barista or café worker doing their opening checklist" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Business shift checklists</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Opening procedure, shift handover, weekly Airbnb cleaning — same steps every time, easy to repeat and monitor.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <img src="/img/Housemates.png" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">Delegation &amp; Responsibilities</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">Easily delegate tasks on a list, or whole lists to staff, family members or flatmates.</p>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <!-- 📸 Screenshot needed: professional/office worker with a checklist on phone or tablet -->
+        <img src="/img/ADHD home work.png" style="width:100%;height:220px;object-fit:cover;">
+        <div style="padding:1rem 1.1rem 1.2rem;">
+          <p style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.35rem;">ADHD & Executive Function</p>
+          <p style="font-size:0.88rem;line-height:1.6;color:#1d1d1d;margin:0;">No more forgetting steps. Build your routine once, and the list shows you exactly what's next — every time.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="divider"></div>
+
+    <!-- ── CONCEPT BOX: routines ── -->
+    <div class="concept-box"><strong>Not a to-do app.</strong> TickLists Routines are repeating task lists — the same steps that happen every day, every week, or every shift. A morning routine, a pre-print checklist, a weekly clean-down. Write it once and it's always there, ready to tick through.</div>
+    
+
+    <!-- ── GIF placeholder ── -->
+    <!-- ★ REPLACE with GIF showing day filter switching Mon → Wed → Sat with different tasks visible -->
+    <div class="gif-block">
+      <div class="play-icon-green"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M2 1L13 8L2 15V1Z" fill="white"/></svg></div>
+      <div class="gif-label">Demo coming — day filter</div>
+      <div class="gif-desc">Watch the routine switch from Monday's tasks to Wednesday's — only what's relevant today, nothing else</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── FEATURES ── -->
+    <div id="routines-features">
+      <p class="section-label">Why it works</p>
+      <h2 class="section-heading">Reliable routines</h2>
+    </div>
+
+    <div class="features">
+
+      <!-- Feature 1: day filter -->
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Only today's tasks, nothing else</h3>
+          <p>Every task is tagged to the days it belongs to. On Wednesday you see Wednesday's list — Monday's gym session and Saturday's housework don't clutter your view. One tap on the day and you're focused.</p>
+        </div>
+        <!-- ★ REDO screenshot: retake with demo account showing a generic routine (Morning, Afternoon tasks) -->
+        <div class="feature-img" style="box-shadow:none;border-radius:0;overflow:visible;">
+          <img src="/img/jitter/Screenshot_20260429-074809.png" alt="Daily routine filtered to Wednesday showing Morning and Mid-Morning sections with day tags" style="width:60%;display:block;margin:0 auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);">
+        </div>
+      </div>
+
+      <!-- Feature 2: daily reset -->
+      <div class="feature flip">
+        <div class="feature-text">
+          <h3>Done. Reset. Ready again.</h3>
+          <p>Tick off each task as you go. When you're finished, tap <strong>Reset Routine</strong> and it's clean and ready for next time — whether that's tomorrow morning, next Monday, or the next shift. Works for any schedule, not just Monday to Sunday, maybe you have a 10-day repeating shift pattern, it works for that too. Tap <strong>'To do'</strong> to see only what's outstanding.</p>
+        </div>
+        <div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <img src="/img/jitter/Screenshot_20260429-075814.png" alt="Routine before ticking — item unticked" style="width:100%;border-radius:10px;">
+            <img src="/img/jitter/Screenshot_20260429-075828.png" alt="Routine after ticking — item ticked off with timestamp" style="width:100%;border-radius:10px;">
+          </div>
+          <p style="font-size:0.75rem;color:#888;margin-top:0.5rem;text-align:center;">Before and after ticking — then tap Reset and it's ready again</p>
+        </div>
+      </div>
+
+      <!-- Feature 3: shared routines -->
+      <div class="feature">
+        <div class="feature-text">
+          <h3>Shared with your whole team</h3>
+          <p>Everyone sees the same routine. When Mike ticks "Walk dog", Rachael can see it instantly — with his name and timestamp. No confusion about who's done what.</p>
+        </div>
+        <div style="width:58%;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.15);">
+          <video id="sharing-video" autoplay loop muted playsinline style="width:100%;height:auto;display:block;"></video>
+        </div>
+        <script>
+          (function() {
+            var video = document.getElementById('sharing-video');
+            var src = 'https://vz-b91d07c1-def.b-cdn.net/a3de85fa-2108-4940-a4fd-9cbb7dda43d4/playlist.m3u8';
+            if (Hls.isSupported()) {
+              var hls = new Hls({ autoStartLoad: true, startLevel: -1 });
+              hls.loadSource(src);
+              hls.attachMedia(video);
+              hls.on(Hls.Events.MANIFEST_PARSED, function() { video.play(); });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+              video.src = src;
+              video.play();
+            }
+          })();
+        </script>
+      </div>
+
+      <!-- Feature 4: colour-coded days -->
+      <div class="feature flip">
+        <div class="feature-text">
+          <h3>Colour-coded by tag</h3>
+          <p>Each tag can have its own colour, so at a glance you can visually separate. If you choose to use days of the week for example, you can see which tasks are Mondays-only, which are every weekday, and which are weekend jobs.</p>
+        </div>
+        <div style="box-shadow:none;border-radius:0;overflow:visible;">
+          <img src="/img/Colour code.png" style="width:60%;display:block;margin:0 auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <p class="section-label">How it works</p>
+    <h2 class="section-heading">Set up once, use every day</h2>
+
+    <div class="steps">
+      <div class="step active-green" onclick="document.querySelectorAll('#tab-routines .step').forEach(s=>{s.classList.remove('active-green')});this.classList.add('active-green')">
+        <div class="step-num step-num-green">Step 1</div>
+        <h4>Create your routine</h4>
+        <p>Name it and add sections — Morning, Mid-morning, Lunchtime, Afternoon, Evening, whatever fits. One routine can cover your whole day. Collapse the sections to focus just on what's to be done now</p>
+      </div>
+      <div class="step" onclick="document.querySelectorAll('#tab-routines .step').forEach(s=>{s.classList.remove('active-green')});this.classList.add('active-green')">
+        <div class="step-num step-num-green">Step 2</div>
+        <h4>Use tags to organise, separate and filter</h4>
+        <p>Add each task and tag it to the day or shift it applies — Each gets a colour. Tasks that don't apply can be hidden, so you only ever see what's relevant right now.</p>
+      </div>
+      <div class="step" onclick="document.querySelectorAll('#tab-routines .step').forEach(s=>{s.classList.remove('active-green')});this.classList.add('active-green')">
+        <div class="step-num step-num-green">Step 3</div>
+        <h4>Filter by tag, tick as you go</h4>
+        <p>Tap the tag you want to filter the list. Work through your tasks and tick each one. Everyone on the list sees every tick in real time.</p>
+      </div>
+      <div class="step" onclick="document.querySelectorAll('#tab-routines .step').forEach(s=>{s.classList.remove('active-green')});this.classList.add('active-green')">
+        <div class="step-num step-num-green">Step 4</div>
+        <h4>Reset when you're done</h4>
+        <p>Tap Reset Routine and it's clean and ready for next time — no leftover ticks, no clearing up. Works to any schedule.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── SOCIAL PROOF ── -->
+    <p class="section-label">Early feedback</p>
+    <div class="proof">
+      <p>"I set up our Saturday morning cleaning routine once, and now we both just work through it. When we're done, one tap resets it for next time. That's it."</p>
+      <div class="proof-attr">— Early tester</div>
+    </div>
+
+
+
+
+    <!-- ── FINAL CTA ── -->
+    <div class="final-cta green-cta">
+      <h2>The routine your household or team can use easily</h2>
+      <p>Always ready. Shared in real time. Free to start.</p>
+      <div class="cta-row">
+        <a href="https://ticklists.app" class="btn-primary-green">Try TickLists free</a>
+        <button class="btn-secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
+      </div>
+      <p class="microcopy" style="margin-top:16px">Free to use · No credit card · Works on any device</p>
+    </div>
+
+    <!-- ── CROSS-TAB PROMO ── -->
+    <div style="text-align:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border);">
+      <p style="font-size:0.78rem; font-weight:600; color:var(--teal); text-transform:uppercase; letter-spacing:1.2px; margin-bottom:0.5rem;">Also in TickLists</p>
+      <p style="font-family:'Lora', serif; font-size:1.25rem; font-weight:600; margin-bottom:0.5rem;">Use TickLists for your Shopping Lists too</p>
+      <p style="font-size:0.9rem; color:#1d1d1d; margin-bottom:1rem;">One permanent list, sorted to the exact section order of every store — shared live with anyone on your list.</p>
+      <button class="btn-secondary" style="background:var(--teal);color:#F2FF00;border-color:var(--teal);" onclick="switchTab('shopping', document.querySelectorAll('.tab-btn')[0])">See Shopping Lists →</button>
+    </div>
+
+  </div><!-- /tab-routines -->
+
+  <!-- ══════════════════════════════════════════════
+       TAB 3: PRICING
+  ══════════════════════════════════════════════ -->
+  <div id="tab-pricing" class="tab-content">
+
+    <div class="pricing-wrap">
+
+      <div class="pricing-header">
+        <h1 style="font-family:'Lora',serif; font-size:2rem; font-weight:700; margin-bottom:0.5rem;">Simple, honest pricing</h1>
+        <p style="color:#555; font-size:1rem;">Start free. Upgrade when you're ready.</p>
+      </div>
+
+      <!-- Toggle -->
+      <div class="pricing-toggle-wrap">
+        <span class="toggle-label" id="label-monthly" style="font-weight:700; color:var(--teal);">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billing-toggle" onchange="switchBilling(this.checked)">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label" id="label-yearly">Yearly</span>
+        <span class="save-badge" id="save-badge">Save 17%</span>
+      </div>
+
+      <!-- Cards -->
+      <div class="pricing-cards">
+
+        <!-- Free card -->
+        <div class="pricing-card pricing-card--free">
+          <div class="card-plan">Free</div>
+          <div class="card-price-wrap">
+            <span class="card-price">€0</span>
+            <span class="card-price-period">/ forever</span>
+          </div>
+          <p class="card-price-note" style="visibility:hidden;">placeholder</p>
+          <p class="card-tagline">Perfect for getting started</p>
+          <a href="https://ticklists.app" class="btn-pricing btn-pricing--free">Get started free</a>
+          <ul class="pricing-features">
+            <li><span class="feat-check">✓</span><span>1 shopping list</span></li>
+            <li><span class="feat-check">✓</span><span>Up to 300 items per shopping list</span></li>
+            <li><span class="feat-check">✓</span><span>1 routine</span></li>
+            <li><span class="feat-check">✓</span><span>Up to 100 items per routine</span></li>
+            <li><span class="feat-check">✓</span><span>5 tags per shopping list</span></li>
+            <li><span class="feat-check">✓</span><span>7 tags per routine</span></li>
+            <li><span class="feat-check">✓</span><span>Unlimited list sharing</span></li>
+          </ul>
+        </div>
+
+        <!-- Pro card -->
+        <div class="pricing-card pricing-card--pro">
+          <div class="card-plan">Pro</div>
+          <div class="card-price-wrap">
+            <span class="card-price" id="pro-price">€5</span>
+            <span class="card-price-period" id="pro-period">/ month</span>
+          </div>
+          <p class="card-price-note" id="pro-note">Billed as €5 / month</p>
+          <p class="card-tagline">For power users and households</p>
+          <a href="https://ticklists.app?upgrade=true" class="btn-pricing btn-pricing--pro">Upgrade to Pro</a>
+          <ul class="pricing-features">
+            <li><span class="feat-check feat-check--pro">✓</span><span>10 shopping lists</span></li>
+            <li><span class="feat-check feat-check--pro">✓</span><span>Up to 500 items per shopping list</span></li>
+            <li><span class="feat-check feat-check--pro">✓</span><span>10 routines</span></li>
+            <li><span class="feat-check feat-check--pro">✓</span><span>Up to 300 items per routine</span></li>
+            <li><span class="feat-check feat-check--pro">✓</span><span>20 tags per shopping list</span></li>
+            <li><span class="feat-check feat-check--pro">✓</span><span>20 tags per routine</span></li>
+            <li><span class="feat-check feat-check--pro">✓</span><span>Unlimited list sharing</span></li>
+          </ul>
+        </div>
+
+      </div><!-- /pricing-cards -->
+
+      <p class="pricing-footer-note">No credit card required to start · Billed with Stripe · Cancel any time · Works on mobile & desktop.</p>
+
+    </div><!-- /pricing-wrap -->
+
+  </div><!-- /tab-pricing -->
+
+</div><!-- /page -->
+
+<script>
+  function switchBilling(isYearly) {
+    var price = document.getElementById('pro-price');
+    var period = document.getElementById('pro-period');
+    var note = document.getElementById('pro-note');
+    var labelM = document.getElementById('label-monthly');
+    var labelY = document.getElementById('label-yearly');
+    var badge = document.getElementById('save-badge');
+    if (isYearly) {
+      price.textContent = '€50';
+      period.textContent = '/ year';
+      note.textContent = 'Billed as €50 / year';
+      labelM.style.fontWeight = '400';
+      labelM.style.color = '#555';
+      labelY.style.fontWeight = '700';
+      labelY.style.color = 'var(--teal)';
+      badge.classList.add('save-badge--active');
+    } else {
+      price.textContent = '€5';
+      period.textContent = '/ month';
+      note.textContent = 'Billed as €5 / month';
+      labelM.style.fontWeight = '700';
+      labelM.style.color = 'var(--teal)';
+      labelY.style.fontWeight = '400';
+      labelY.style.color = '#555';
+      badge.classList.remove('save-badge--active');
+    }
+  }
+
+  function switchTab(name, btn) {
+    // Update button states
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Show/hide content
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('visible'));
+    document.getElementById('tab-' + name).classList.add('visible');
+    // Scroll to top of content
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<footer style="background:#015677;width:100%;padding:1.25rem 1.5rem;text-align:center;margin-top:3rem;">
+  <p style="margin:0;color:#ffffff;font-size:0.82rem;font-family:'Open Sans',sans-serif;">
+    &copy; Artfuly 2026 &nbsp;|&nbsp;
+    <a href="/impressum.html" style="color:#ffffff;text-decoration:underline;font-weight:600;">Impressum</a>
+    &nbsp;|&nbsp;
+    <a href="/privacy.html" style="color:#ffffff;text-decoration:underline;font-weight:600;">Privacy Policy</a>
+  </p>
+</footer>
+
+</body>
+</html>
