@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🚐 Van Trips</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,900;1,300&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: #f8f5ec;
+  color: #1d1d1d;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(150deg, #0d2a1a 0%, #1a4a2a 50%, #0d3a5a 100%);
+  color: white;
+  padding: 48px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50px;
+  background: #f8f5ec;
+  clip-path: ellipse(52% 100% at 50% 100%);
+}
+header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(38px, 8vw, 62px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  position: relative; z-index: 2;
+}
+header p {
+  font-size: 15px;
+  opacity: .6;
+  margin-top: 10px;
+  font-style: italic;
+  position: relative; z-index: 2;
+}
+
+.list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px 18px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trip-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: #1d1d1d;
+  box-shadow: 0 2px 14px rgba(29,43,35,.08);
+  border-left: 4px solid var(--accent, #2d4a35);
+  transition: transform .15s ease, box-shadow .15s ease;
+  min-height: 72px;
+}
+.trip-link:active {
+  transform: scale(.98);
+  box-shadow: 0 1px 6px rgba(29,43,35,.12);
+}
+
+.trip-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+.trip-text { flex: 1 }
+.trip-title {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1d1d1d;
+}
+.trip-sub {
+  font-size: 12px;
+  color: #6b5e44;
+  margin-top: 3px;
+  line-height: 1.35;
+}
+.trip-arrow {
+  color: #b0a090;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9a8a6a;
+  font-weight: 700;
+  padding: 8px 4px 4px;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: #b0a080;
+  border-top: 1px solid #ede7d3;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚐 Van Trips</h1>
+  <p>Rachael · Brunow · Orla 🐕 · 2026</p>
+</header>
+
+<div class="list">
+
+  <div class="section-label">Trip Plans</div>
+
+  <a class="trip-link" href="Pentecost_Karlshorst_Muggelsce_2026.html" style="--accent:#2d4a35">
+    <span class="trip-icon">🛍️</span>
+    <div class="trip-text">
+      <div class="trip-title">Pentecost · Karlshorst + Müggelsee</div>
+      <div class="trip-sub">Giant flea market + lake days · May 23–25, 2026</div>
+    </div>
+    <span class="trip-arrow">›</span>
+  </a>
+
+  <a class="trip-link" href="usedom-may-2026.html" style="--accent:#1a5a8c">
+    <span class="trip-icon">🌊</span>
+    <div class="trip-text">
+      <div class="trip-title">Usedom · May 2026</div>
+      <div class="trip-sub">Baltic coast · beaches · cycling</div>
+    </div>
+    <span class="trip-arrow">›</span>
+  </a>
+
+  <a class="trip-link" href="Easter_2026_Usedom_Updated.html" style="--accent:#1a5a8c">
+    <span class="trip-icon">🐣</span>
+    <div class="trip-text">
+      <div class="trip-title">Easter · Usedom (Updated)</div>
+      <div class="trip-sub">Easter 2026 · island getaway</div>
+    </div>
+    <span class="trip-arrow">›</span>
+  </a>
+
+  <a class="trip-link" href="Easter_2026_Home.html" style="--accent:#c47a2a">
+    <span class="trip-icon">🏡</span>
+    <div class="trip-text">
+      <div class="trip-title">Easter · Stay Home Plan</div>
+      <div class="trip-sub">Easter 2026 · local days out</div>
+    </div>
+    <span class="trip-arrow">›</span>
+  </a>
+
+  <a class="trip-link" href="Weekend_Water.html" style="--accent:#1a7a7a">
+    <span class="trip-icon">🏄</span>
+    <div class="trip-text">
+      <div class="trip-title">Weekend Water</div>
+      <div class="trip-sub">Scharmützelsee · Müggelsee · two plans</div>
+    </div>
+    <span class="trip-arrow">›</span>
+  </a>
+
+  <div class="section-label" style="margin-top:6px">Quick Reference</div>
+
+  <a class="trip-link" href="Sunday_Lake_Options_Spandau.html" style="--accent:#2aacac">
+    <span class="trip-icon">🗺️</span>
+    <div class="trip-text">
+      <div class="trip-title">Sunday Lakes · From Spandau</div>
+      <div class="trip-sub">4 options · dog-friendly · van parking · 31 May 2026</div>
+    </div>
+    <span class="trip-arrow">›</span>
+  </a>
+
+</div>
+
+<footer>Updated May 2026 · All plans include GPS, parking &amp; dog info</footer>
+
+</body>
+</html>

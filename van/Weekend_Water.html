@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekend Water · Two Plans</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root {
+  --forest:  #2d4a35;
+  --water:   #1a5a8c;
+  --water-l: #3a82b8;
+  --water-pale: #e0f0fb;
+  --teal:    #1a7a7a;
+  --teal-l:  #2aacac;
+  --sand:    #ede7d3;
+  --sand-d:  #d5cbaf;
+  --cream:   #f8f5ec;
+  --amber:   #c47a2a;
+  --rust:    #9c4a28;
+  --text:    #1e1a12;
+  --text-l:  #6b5e44;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.7}
+
+/* PLAN TABS */
+.plan-tabs{display:flex;background:#1a2a3a;position:sticky;top:0;z-index:1000}
+.plan-tab{flex:1;padding:16px 20px;text-align:center;cursor:pointer;color:rgba(255,255,255,.5);font-weight:700;font-size:14px;letter-spacing:.5px;border-bottom:3px solid transparent;transition:all .2s}
+.plan-tab.active{color:white;border-bottom-color:white}
+.plan-tab:first-child.active{border-bottom-color:#3a82b8}
+.plan-tab:last-child.active{border-bottom-color:#2aacac}
+.plan-section{display:none}
+.plan-section.active{display:block}
+
+/* COVER */
+.cover{min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 32px;position:relative;overflow:hidden;color:white}
+.cover-a{background:linear-gradient(150deg,#0d2a3a 0%,#1a4060 35%,#1a5a8c 70%,#0d3a5a 100%)}
+.cover-b{background:linear-gradient(150deg,#0d3a3a 0%,#0d5050 35%,#1a7a7a 70%,#0d4040 100%)}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:90px;background:var(--cream);clip-path:ellipse(52% 100% at 50% 100%)}
+.cover-sup{font-size:12px;letter-spacing:4px;text-transform:uppercase;opacity:.55;margin-bottom:20px;position:relative;z-index:2}
+.cover h1{font-family:'Fraunces',serif;font-size:clamp(44px,8vw,88px);font-weight:900;line-height:.95;letter-spacing:-2px;position:relative;z-index:2;margin-bottom:6px}
+.cover h1 em{display:block;font-style:italic;font-weight:300;font-size:.42em;letter-spacing:1px;opacity:.75;margin-top:8px}
+.cover-sub{font-family:'Libre Baskerville',serif;font-style:italic;font-size:18px;opacity:.65;margin:18px 0 32px;position:relative;z-index:2}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;position:relative;z-index:2}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:white;padding:6px 15px;border-radius:99px;font-size:13px;font-weight:300}
+
+/* STRIP */
+.strip{color:white;padding:0}
+.strip-a{background:var(--water)}
+.strip-b{background:var(--teal)}
+.strip-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.sv{padding:24px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.sv:last-child{border-right:none}
+.sv-icon{font-size:22px;margin-bottom:5px}
+.sv-lbl{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;opacity:.45;margin-bottom:3px;font-weight:700}
+.sv-val{font-family:'Fraunces',serif;font-size:16px;font-weight:600}
+.sv-sub{font-size:11px;opacity:.5;margin-top:2px}
+
+/* LAYOUT */
+.wrap{max-width:880px;margin:0 auto;padding:52px 28px}
+.lbl-a{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--water-l);font-weight:700;margin-bottom:10px}
+.lbl-b{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-l);font-weight:700;margin-bottom:10px}
+h2{font-family:'Fraunces',serif;font-size:36px;color:var(--forest);margin-bottom:20px;line-height:1.15;font-weight:900}
+p.intro{color:var(--text-l);font-size:15px;margin-bottom:24px;line-height:1.7}
+
+/* ALERTS */
+.alert{border-radius:14px;padding:18px 22px;margin-bottom:20px;font-size:14px;line-height:1.6}
+.alert.amber{background:#fffbee;border:1px solid #e8d590;border-left:4px solid var(--amber)}
+.alert.green{background:#edf7ef;border:1px solid #b0d8b8;border-left:4px solid var(--forest)}
+.alert.blue{background:var(--water-pale);border:1px solid rgba(26,90,140,.25);border-left:4px solid var(--water)}
+.alert strong{color:var(--forest)}
+.alert.amber strong{color:var(--amber)}
+.alert.blue strong{color:var(--water)}
+
+/* STELLPLATZ CARD */
+.sp-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 3px 22px rgba(29,43,35,.09);margin-bottom:28px}
+.sp-head-a{background:linear-gradient(130deg,#0d2a3a,#1a5a8c);color:white;padding:22px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.sp-head-b{background:linear-gradient(130deg,#0d3a3a,#1a7a7a);color:white;padding:22px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.sp-head h3{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:4px}
+.sp-head p{font-size:13px;opacity:.7;line-height:1.4}
+.sp-price{font-family:'Fraunces',serif;font-size:28px;font-weight:900;text-align:right;flex-shrink:0}
+.sp-price small{display:block;font-family:'Source Sans 3',sans-serif;font-size:11px;opacity:.6;font-weight:400}
+.sp-body{padding:20px 26px}
+.sp-row{display:flex;gap:8px;font-size:13px;color:var(--text-l);margin-bottom:7px;align-items:flex-start}
+.sp-row .ic{flex-shrink:0;font-size:15px}
+.sp-row strong{color:var(--text)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-top:6px;margin-right:4px}
+.tag.g{background:#edf7ef;color:var(--forest)}
+.tag.a{background:#fff5e0;color:#8a5a10}
+.tag.b{background:var(--water-pale);color:var(--water)}
+
+/* DAY TIMELINE */
+.days-wrap{background:var(--sand);padding:8px 0}
+.day{display:grid;grid-template-columns:96px 1fr;gap:0;margin-bottom:4px}
+@media(max-width:560px){.day{grid-template-columns:68px 1fr}}
+.dl{display:flex;flex-direction:column;align-items:center;padding-top:30px}
+.dlbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-l);font-weight:700;text-align:center;margin-bottom:9px;line-height:1.4}
+.ddot{width:15px;height:15px;border-radius:50%;flex-shrink:0;z-index:2}
+.ddot.w{background:var(--water);box-shadow:0 0 0 3px var(--water)}
+.ddot.t{background:var(--teal);box-shadow:0 0 0 3px var(--teal)}
+.ddot.a{background:var(--amber);box-shadow:0 0 0 3px var(--amber)}
+.ddot.f{background:var(--forest);box-shadow:0 0 0 3px var(--forest)}
+.dline{width:2px;flex:1;background:linear-gradient(180deg,var(--water),rgba(26,90,140,.1));margin-top:7px;min-height:40px}
+.dline-t{width:2px;flex:1;background:linear-gradient(180deg,var(--teal),rgba(26,122,122,.1));margin-top:7px;min-height:40px}
+.dcard{background:white;border-radius:16px;padding:24px 28px;margin:12px 0 12px 12px;box-shadow:0 2px 16px rgba(29,43,35,.07)}
+.dcard.w{border-left:4px solid var(--water)}
+.dcard.t{border-left:4px solid var(--teal)}
+.dcard.a{border-left:4px solid var(--amber)}
+.dcard.f{border-left:4px solid var(--forest)}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:13px;gap:8px;flex-wrap:wrap}
+.dt{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--forest);line-height:1.2}
+.de{font-size:26px;flex-shrink:0}
+.tl{display:flex;flex-direction:column;gap:10px}
+.tr{display:grid;grid-template-columns:72px 1fr;gap:9px;align-items:baseline}
+.tt{font-size:12px;font-weight:700;color:var(--water-l);letter-spacing:.4px}
+.tt-t{font-size:12px;font-weight:700;color:var(--teal-l);letter-spacing:.4px}
+.tx{font-size:14px;color:var(--text);line-height:1.55}
+.tx strong{color:var(--forest)}
+.tx .ni{display:block;font-size:12px;color:var(--text-l);font-style:italic;margin-top:2px}
+.who{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.who.r{background:#fde8e4;color:#9c2a2a}
+.who.both{background:#edf7ef;color:var(--forest)}
+.who.b{background:var(--water-pale);color:var(--water)}
+
+/* MAP */
+.map-box{background:white;border-radius:18px;box-shadow:0 3px 22px rgba(29,43,35,.09);margin-bottom:24px}
+.map-head-a{background:linear-gradient(120deg,var(--water),var(--water-l));color:white;padding:16px 24px;display:flex;align-items:center;gap:12px;border-radius:18px 18px 0 0}
+.map-head-b{background:linear-gradient(120deg,var(--teal),var(--teal-l));color:white;padding:16px 24px;display:flex;align-items:center;gap:12px;border-radius:18px 18px 0 0}
+.map-head h4{font-family:'Fraunces',serif;font-size:17px;font-weight:700}
+.map-head p{font-size:12px;opacity:.7;margin-top:2px}
+
+/* CAFÉ CARDS */
+.area-head{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--forest);margin-bottom:14px;padding-top:8px;border-bottom:2px solid var(--sand-d);padding-bottom:8px}
+.cafe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:28px}
+.cafe{background:white;border-radius:14px;padding:18px 20px;box-shadow:0 2px 14px rgba(29,43,35,.07)}
+.cafe h4{font-family:'Fraunces',serif;font-size:15px;color:var(--forest);margin-bottom:5px}
+.cafe .addr{font-size:12px;color:var(--text-l);margin-bottom:8px}
+.cafe p{font-size:13px;color:var(--text-l);line-height:1.55}
+.star{color:var(--amber)}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;margin-right:4px;margin-top:6px}
+.badge.dog{background:#edf7ef;color:var(--forest)}
+.badge.water{background:var(--water-pale);color:var(--water)}
+.badge.eve{background:#f5e8f5;color:#5a2a7c}
+.badge.veg{background:#f0ffe0;color:#3a6a10}
+
+/* BUDGET */
+table.bt{width:100%;border-collapse:collapse;font-size:15px;margin-top:16px}
+table.bt thead tr{color:white}
+table.bt thead.a tr{background:var(--water)}
+table.bt thead.b tr{background:var(--teal)}
+table.bt thead th{padding:12px 18px;text-align:left;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+table.bt thead th:last-child{text-align:right}
+table.bt tbody tr{border-bottom:1px solid #ede5d0}
+table.bt tbody td{padding:12px 18px;color:var(--text)}
+table.bt tbody td:last-child{text-align:right;font-weight:700;color:var(--forest);font-family:'Fraunces',serif;font-size:16px}
+table.bt tfoot td{padding:14px 18px;background:var(--sand-d);border-top:2px solid var(--forest);font-weight:700}
+table.bt tfoot td:last-child{text-align:right;font-family:'Fraunces',serif;font-size:20px;font-weight:900;color:var(--forest)}
+
+.footer{color:rgba(255,255,255,.5);text-align:center;padding:36px 28px;font-size:13px}
+.footer-a{background:var(--water)}
+.footer-b{background:var(--teal)}
+.footer strong{color:rgba(255,255,255,.85)}
+
+/* stop legend */
+.stop-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:32px}
+.stop-item{background:white;border-radius:12px;padding:13px 15px;box-shadow:0 2px 12px rgba(29,43,35,.07);display:flex;gap:10px;align-items:flex-start}
+.stop-num{border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;margin-top:1px;color:white}
+</style>
+</head>
+<body>
+
+<div class="plan-tabs">
+  <div class="plan-tab active" data-plan="a">🌊 Plan A — Scharmützelsee</div>
+  <div class="plan-tab" data-plan="b">⛵ Plan B — Müggelsee (Sail + Surf)</div>
+</div>
+
+<!-- ═══════════════════ PLAN A — SCHARMÜTZELSEE ═══════════════════ -->
+<div id="plan-a" class="plan-section active">
+
+<div class="cover cover-a">
+  <p class="cover-sup">🌊 Weekend Water · Plan A</p>
+  <h1>Scharmützelsee
+    <em>"Wake up with a lake view"</em>
+  </h1>
+  <p class="cover-sub">Friday 6pm → Sunday lunch · Rachael + Brunow + Orla 🐕</p>
+  <div class="pills">
+    <span class="pill">🚐 Van by the water Fri night</span>
+    <span class="pill">🏊 Swimming in the lake</span>
+    <span class="pill">🚲 Cycle + doggy cart Sat</span>
+    <span class="pill">🌲 Rauener Berge (optional)</span>
+    <span class="pill">🐕 Dog beach for Orla</span>
+    <span class="pill">~30km from home</span>
+  </div>
+</div>
+
+<div class="strip strip-a">
+  <div class="strip-inner">
+    <div class="sv"><div class="sv-icon">🛣️</div><div class="sv-lbl">Drive</div><div class="sv-val">~30km</div><div class="sv-sub">~30 min from Falkenberg</div></div>
+    <div class="sv"><div class="sv-icon">💤</div><div class="sv-lbl">Sleep</div><div class="sv-val">Lakeside</div><div class="sv-sub">Friedrich-Engels-Damm 98</div></div>
+    <div class="sv"><div class="sv-icon">🏊</div><div class="sv-lbl">Swimming</div><div class="sv-val">5 min walk</div><div class="sv-sub">Dog beach on site</div></div>
+    <div class="sv"><div class="sv-icon">🚲</div><div class="sv-lbl">Sat cycling</div><div class="sv-val">As far as feels good</div><div class="sv-sub">Flat lakeside paths</div></div>
+    <div class="sv"><div class="sv-icon">🌲</div><div class="sv-lbl">Optional</div><div class="sv-val">Rauener Berge</div><div class="sv-sub">15km walk if wanted</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="lbl-a">Where You'll Sleep</p>
+  <h2>Friday Night Stellplatz</h2>
+
+  <div class="sp-card">
+    <div class="sp-head sp-head-a">
+      <div>
+        <h3>Friedrich-Engels-Damm 96/98, Bad Saarow</h3>
+        <p>📍 15526 Bad Saarow · Park4Night #193137 · ~30km from Falkenberg (GPS: 52.3822°N 14.2369°E)</p>
+      </div>
+      <div class="sp-price">Free<small>tolerated overnight</small></div>
+    </div>
+    <div class="sp-body">
+      <div class="sp-row"><span class="ic">🌊</span><span><strong>Water view from the van.</strong> Large wooded car park 1 minute's walk from the Scharmützelsee shore. Through the trees to the right you see the lake. Wake up, open the van doors, brew your tea — lake immediately visible. It's exactly what you want.</span></div>
+      <div class="sp-row"><span class="ic">🏊</span><span>5-minute walk to the main beach and dedicated <strong>Hundestrand (dog beach)</strong> where Orla can swim freely. Big open meadow with two permanent toilet huts on the beach in summer.</span></div>
+      <div class="sp-row"><span class="ic">🚐</span><span>Overnight parking tolerated by the Ordnungsamt — confirmed by multiple Park4Night reviewers. <strong>Rule: no outdoor chairs, no cooking outside, no signs of camping</strong>. Sleep in the van, use your own bathroom, and you'll be left alone. Arrive after 6pm, leave before 10am.</span></div>
+      <div class="sp-row"><span class="ic">🐕</span><span>Dogs welcome. Leash in the car park, off-leash on the Hundestrand.</span></div>
+      <div class="sp-row"><span class="ic">📍</span><span>GPS: <strong>52.2544°N, 14.0472°E</strong> · On Friedrich-Engels-Damm, Bad Saarow. Enter from the north end off L412.</span></div>
+      <span class="tag g">Free · no facilities</span>
+      <span class="tag a">No outdoor furniture</span>
+      <span class="tag b">🐕 Dogs welcome</span>
+    </div>
+  </div>
+
+  <div class="alert amber">
+    <strong>Alternative if the car park is full:</strong> Parkplatz Silberstraße / Ecke Heidestraße — a second free car park in Bad Saarow, 10 min walk to the lake. Less idyllic but workable.
+  </div>
+</div>
+
+<!-- PLAN A MAP -->
+<div class="wrap" style="padding-top:0">
+  <p class="lbl-a">Overview</p>
+  <h2>The Weekend at a Glance</h2>
+  <div class="map-box">
+    <div class="map-head-a map-head">
+      <div>
+        <h4>🌊 Falkenberg → Scharmützelsee · 30km</h4>
+        <p>Overnight spot · Saturday cycling · Sunday morning swim · home by 1pm</p>
+      </div>
+    </div>
+    <div id="map-a" style="height:380px;width:100%"></div>
+  </div>
+  <div class="stop-legend">
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--forest)">H</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Home · Falkenberg</div><div style="font-size:12px;color:var(--text-l)">GPS 52.3822°N 14.2369°E · Leave Fri ~18:00</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--water)">💤</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Stellplatz · Friedrich-Engels-Damm</div><div style="font-size:12px;color:var(--text-l)">GPS 52.2544°N 14.0472°E · Free · lake 1 min walk</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--water)">🐕</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Hundestrand Bad Saarow</div><div style="font-size:12px;color:var(--text-l)">Dog beach + swim · 5 min walk from stellplatz</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--amber)">☕</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Freilich am See · Sat lunch</div><div style="font-size:12px;color:var(--text-l)">Lakeside terrace · 4.2★ · 1km cycle from stellplatz</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--amber)">🍽️</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Das Dorsch · Sat evening option</div><div style="font-size:12px;color:var(--text-l)">Deck restaurant on the lake · 4.7★ · sunset views</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--forest)">🌲</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Rauener Berge (optional)</div><div style="font-size:12px;color:var(--text-l)">Bahnhof Bad Saarow-Pieskow · 15.5km certified walk</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAN A ITINERARY -->
+<div class="days-wrap">
+<div class="wrap">
+  <p class="lbl-a">Day by Day</p>
+  <h2>The Itinerary</h2>
+  <div style="display:flex;flex-direction:column">
+
+    <!-- FRIDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Fri<br>Eve</div><div class="ddot w"></div><div class="dline"></div></div>
+      <div class="dcard w">
+        <div class="dh"><div class="dt">Drive to the Lake 🌊 <span class="who both">both</span></div><div class="de">🚐🌅</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">18:00</div><div class="tx"><strong>Leave Falkenberg</strong> (GPS: 52.3822°N, 14.2369°E). Route: B246 west → L412 south → Bad Saarow. About 30 minutes.</div></div>
+          <div class="tr"><div class="tt">~18:30</div><div class="tx"><strong>Pull into Friedrich-Engels-Damm 98.</strong> Find a spot with trees to one side and the lake glimpsed through them. This is home for the night. No setting up outside — just park, breathe, look at the water through the windscreen.</div></div>
+          <div class="tr"><div class="tt">~19:00</div><div class="tx"><strong>Evening walk with Orla</strong> — 5 minutes down to the Hundestrand. Lake is enormous in the evening light. Orla goes straight in. Brunow sketches the far shore. First swim of the weekend if the mood takes you.</div></div>
+          <div class="tr"><div class="tt">Evening</div><div class="tx"><strong>Van dinner by the water.</strong> Cook inside, eat inside. Quiet evening, windows open to the lake air. Early night — Saturday has no schedule but that's the point.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Sat</div><div class="ddot a"></div><div class="dline"></div></div>
+      <div class="dcard a">
+        <div class="dh"><div class="dt">Lake Day · No Driving 🚲🏊 <span class="who both">both</span></div><div class="de">🚲🐕💦</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">Morning</div><div class="tx"><strong>Tea and coffee with a lake view</strong> — the whole point of Friday's drive. No alarm. Orla gets a morning run on the Hundestrand. Let the day reveal itself.</div></div>
+          <div class="tr"><div class="tt">~10:00</div><div class="tx"><strong>Get the bikes out.</strong> The Scharmützelsee has a well-signed cycle path around much of its perimeter — flat, beautiful, through pine forest with constant lake glimpses. Orla in the doggy cart. Cycle as far as feels good: the south shore via Wendisch Rietz (~15km loop) is the classic route. Stop wherever looks inviting.
+          <span class="ni">The lake is 12km long — you can do a short loop of 10km or a longer one of 20–25km. Your call on the day.</span></div></div>
+          <div class="tr"><div class="tt">~12:30</div><div class="tx"><strong>Freilich am See</strong> — lakeside lunch stop, 1km from the stellplatz. Big terrace directly on the water, outside fireplace, children's play area (good for Orla to snoop around). Fish, salads, solid German mains. Their lake perch is the thing to order.
+          <span class="ni">📍 Karl-Marx-Damm 47a, Bad Saarow · Open from 12:00 · +49 33631 594805</span></div></div>
+          <div class="tr"><div class="tt">Afternoon</div><div class="tx"><strong>Option A — more lake.</strong> Cycle onwards around the south shore, or find a quiet spot on the beach and swim. The Scharmützelsee water quality is consistently rated excellent. Orla paddles. Brunow paints. You do whatever you like.
+          <br><strong>Option B — Rauener Berge walk.</strong> Lock the bikes at the Bahnhof Bad Saarow-Pieskow and do part of the certified Rundweg — you don't have to do all 15.5km. Even 6–8km gets you to the Markgrafensteine (the billion-year-old boulders) and back. Orla off-leash in the forest.</div></div>
+          <div class="tr"><div class="tt">~16:30</div><div class="tx"><strong>Back to the van.</strong> Swim or shower. The SaarowTherme is 10 minutes' walk if you want a proper spa warm-up — thermal pools, sauna, lake views from the roof terrace. €15–20pp, dogs wait in the van.</div></div>
+          <div class="tr"><div class="tt">Evening — Option A</div><div class="tx"><strong>Van cooking by the lake.</strong> Simple, good, free. Watch the last light go off the Scharmützelsee through the windscreen. The best kind of Saturday evening.
+          </div></div>
+          <div class="tr"><div class="tt">Evening — Option B</div><div class="tx"><strong>Das Dorsch</strong> — a proper dinner out. Elevated lakeside restaurant on a deck above the water, sunset views, excellent fish and regional dishes. One of the best restaurants on the Scharmützelsee. 4.7★, 1,361 reviews. Closed Mon/Tue — Sat is ideal.
+          <span class="ni">📍 Humboldtstraße 16, 15526 Bad Saarow · Open from 12:00 Sat · +49 33631 2404 · Book ahead</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Sun</div><div class="ddot f"></div></div>
+      <div class="dcard f">
+        <div class="dh"><div class="dt">Last Swim · Then Home <span class="who both">both</span></div><div class="de">🏊🏡</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">Morning</div><div class="tx"><strong>Slow morning.</strong> One last tea with the lake view. Orla's morning swim. The Scharmützelsee in the morning light, almost nobody around.</div></div>
+          <div class="tr"><div class="tt">~09:30</div><div class="tx"><strong>SeaSide Restaurant &amp; Café</strong> for breakfast if you want to go out — 07:00–11:00 on Sundays, right by the Kurpark on the lake. 4.4★. Good coffee. Or just brew in the van and eat well before you pack.
+          <span class="ni">📍 Am Kurpark 3, 15526 Bad Saarow</span></div></div>
+          <div class="tr"><div class="tt">~11:00</div><div class="tx"><strong>Last swim if the mood takes you.</strong> Cold lake, clear water. Orla already in.</div></div>
+          <div class="tr"><div class="tt">~11:30</div><div class="tx"><strong>Pack up.</strong> Keep it tidy — this free spot survives because people treat it well.</div></div>
+          <div class="tr"><div class="tt">~12:00</div><div class="tx"><strong>Drive home.</strong> B246 → Falkenberg. 30 minutes. Home by 12:30. ✓</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PLAN A CAFES -->
+<div style="background:var(--sand);padding:8px 0">
+<div class="wrap">
+  <p class="lbl-a">Eat &amp; Drink</p>
+  <h2>Cafés &amp; Restaurants</h2>
+
+  <div class="area-head">🍽️ By the Water — Bad Saarow</div>
+  <div class="cafe-grid">
+    <div class="cafe">
+      <h4>Freilich am See ⭐⭐</h4>
+      <div class="addr">Karl-Marx-Damm 47a · Open from 12:00 · Closed Wed · +49 33631 594805</div>
+      <p>Bavarian beer garden atmosphere right on the lakefront. Big terrace, open fire, children's play area, direct lake access. Reviewers love it for cycling lunch stops. Fish and meat focus — ask for the lake perch. Keto-friendly: grilled fish, salads, skip the Knödel.</p>
+      <span class="badge dog">🐕 Terrace</span><span class="badge water">🌊 Lake view</span>
+    </div>
+    <div class="cafe">
+      <h4>Das Dorsch ⭐⭐⭐</h4>
+      <div class="addr">Humboldtstraße 16 · Open from 12:00 Sat/Sun · Closed Mon/Tue · +49 33631 2404</div>
+      <p>The best restaurant on the Scharmützelsee — a deck extending over the water, spectacular sunset views and genuinely excellent food. 4.7★ from 1,361 reviews. Fish dishes and regional cuisine. Slightly upscale — book ahead for Saturday evening. Worth the splurge.</p>
+      <span class="badge water">🌊 On the lake</span><span class="badge eve">🍽️ Dinner</span>
+    </div>
+    <div class="cafe">
+      <h4>SeaSide Restaurant &amp; Café ⭐⭐</h4>
+      <div class="addr">Am Kurpark 3 · Sun 08:00–12:00 · +49 33631 86616</div>
+      <p>Sunday breakfast spot right by the Kurpark on the lake. Good coffee, interesting concept with food served in jars, generous portions. 4.4★. Open from 08:00 on Sundays — perfect for a last breakfast before the drive home.</p>
+      <span class="badge water">🌊 Near lake</span>
+    </div>
+  </div>
+
+  <div class="area-head">🐴 Horse Riding — From Your Spreadsheet</div>
+  <div class="cafe-grid">
+    <div class="cafe">
+      <h4>Serenity Ranch ⭐⭐⭐</h4>
+      <div class="addr">Kirchhofen 20, 15528 Spreenhagen · ~8km from stellplatz · +49 176 43271863 · Sat 09:00–12:00</div>
+      <p>4.8★ from your own spreadsheet — "Try horseriding here." Reviewers describe "wonderful sandy trails and lovely watering holes, perfect for swimming with the horses." As an experienced rider, tell them your level and ask for an independent trail hack. Beautiful location. Open Saturdays 09:00–12:00 — fits perfectly before the lake day.</p>
+      <span class="badge dog">🐕 Brunow + Orla wait</span><span class="badge">🐴 Experienced riders</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PLAN A BUDGET -->
+<div class="wrap">
+  <p class="lbl-a">What It Costs</p>
+  <h2>Budget</h2>
+  <table class="bt">
+    <thead class="a"><tr><th>Item</th><th>Detail</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>⛽ Fuel</td><td>Falkenberg → Bad Saarow → home · ~60km round trip</td><td>~€8</td></tr>
+      <tr><td>💤 Stellplatz</td><td>Friedrich-Engels-Damm · free overnight</td><td>€0</td></tr>
+      <tr><td>🍽️ Freilich am See</td><td>Lunch Sat · 2 people</td><td>~€30–40</td></tr>
+      <tr><td>🍽️ Das Dorsch (optional)</td><td>Dinner Sat · 2 people · book ahead</td><td>~€50–70</td></tr>
+      <tr><td>🏊 SaarowTherme (optional)</td><td>Sat afternoon · per person ~€17</td><td>~€34</td></tr>
+      <tr><td>🛒 Van food</td><td>Fri dinner + Sun breakfast in van</td><td>~€20</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2"><strong>TOTAL (van dinner eve + lunch out)</strong></td><td>~€58–68</td></tr>
+    </tfoot>
+  </table>
+  <p style="font-size:13px;color:var(--text-l);margin-top:12px;font-style:italic">💡 Add Das Dorsch dinner for ~€50–70 extra. Add SaarowTherme for ~€34. Both optional — the lake is free.</p>
+</div>
+
+<div class="footer footer-a">
+  <p>🌊 Plan A · Scharmützelsee · Bad Saarow</p>
+  <p style="margin-top:8px">
+    <strong>Stellplatz GPS:</strong> 52.2544°N, 14.0472°E ·
+    <strong>Freilich am See:</strong> +49 33631 594805 ·
+    <strong>Das Dorsch:</strong> +49 33631 2404 (book ahead) ·
+    <strong>Serenity Ranch:</strong> +49 176 43271863
+  </p>
+</div>
+
+</div><!-- end plan-a -->
+
+<!-- ═══════════════════ PLAN B — MÜGGELSEE ═══════════════════ -->
+<div id="plan-b" class="plan-section">
+
+<div class="cover cover-b">
+  <p class="cover-sup">⛵ Weekend Water · Plan B</p>
+  <h1>Müggelsee
+    <em>"Brunow sails. Rachael surfs."</em>
+  </h1>
+  <p class="cover-sub">Friday 6pm → Sunday lunch · Rachael + Brunow + Orla 🐕</p>
+  <div class="pills">
+    <span class="pill">🚐 Van by the Kleiner Müggelsee Fri night</span>
+    <span class="pill">⛵ Brunow — sailing course Sat</span>
+    <span class="pill">🏄 Rachael — windsurfing course Sat</span>
+    <span class="pill">🐕 Orla — beach day Sat</span>
+    <span class="pill">~36km from home</span>
+  </div>
+</div>
+
+<div class="strip strip-b">
+  <div class="strip-inner">
+    <div class="sv"><div class="sv-icon">🛣️</div><div class="sv-lbl">Drive</div><div class="sv-val">~36km</div><div class="sv-sub">~40 min from Falkenberg</div></div>
+    <div class="sv"><div class="sv-icon">⛵</div><div class="sv-lbl">Brunow</div><div class="sv-val">Sailing</div><div class="sv-sub">Alle-an-Deck · Müggelsee</div></div>
+    <div class="sv"><div class="sv-icon">🏄</div><div class="sv-lbl">Rachael</div><div class="sv-val">Windsurfing</div><div class="sv-sub">Same school · same location</div></div>
+    <div class="sv"><div class="sv-icon">🐕</div><div class="sv-lbl">Orla</div><div class="sv-val">Beach + walk</div><div class="sv-sub">Kleiner Müggelsee shore</div></div>
+    <div class="sv"><div class="sv-icon">🚣</div><div class="sv-lbl">Bonus</div><div class="sv-val">Boat hire</div><div class="sv-sub">MüggelBay · Sun morning</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="lbl-b">Where You'll Sleep</p>
+  <h2>Friday Night Stellplatz</h2>
+
+  <div class="sp-card">
+    <div class="sp-head sp-head-b">
+      <div>
+        <h3>Badestelle Kleiner Müggelsee — from your spreadsheet</h3>
+        <p>📍 Neuhelgoländer Weg area, 12589 Berlin-Rahnsdorf · ~36km from Falkenberg</p>
+      </div>
+      <div class="sp-price">Free<small>wild / tolerated</small></div>
+    </div>
+    <div class="sp-body">
+      <div class="sp-row"><span class="ic">🌊</span><span><strong>The Kleiner Müggelsee is your front garden for the night.</strong> You marked this as a favourite — the swimming spot on the smaller, quieter lake next to the Müggelsee proper. Pull up, open the van, water right there.</span></div>
+      <div class="sp-row"><span class="ic">🏄</span><span>The Surf- und Segelschule Müggelsee is <strong>5 minutes by bike</strong> along the Fürstenwalder Damm — Fürstenwalder Damm 850, 12589 Berlin. You wake up, cycle to the school, spend the day on the water, cycle back to the van.</span></div>
+      <div class="sp-row"><span class="ic">🐕</span><span>Orla has the Kleiner Müggelsee shore to herself on Saturday while you're both at the school. She needs someone with her — one of you could drop the other at the school and return, or ask the school about dogs waiting nearby.</span></div>
+      <div class="sp-row"><span class="ic">🔍</span><span><strong>Verify on Park4Night before going</strong> — search "Kleiner Müggelsee" or "Neuhelgoländer Weg" for current overnight reports. Berlin lakes can be patchy for overnight parking — check current reviews. The Fürstenwalder Damm 854 car park (free, confirmed) is a fallback right next to the Großer Müggelsee.</span></div>
+      <div class="sp-row"><span class="ic">💰</span><span><strong>Paid alternative with water view:</strong> Historisches Fährhaus / Wohnmobil-Yachthafen, Müggelbergallee 1, Berlin-Wendenschloss. <strong>Direct water view from the van</strong>, confirmed. ~€29/night + €3 dog. Boat hire and sauna on site. Seasonal (April–October). Worth it for this trip — the guarantee of a water view.</span></div>
+      <span class="tag g">Free option available</span>
+      <span class="tag b">Paid option: Fährhaus ~€32/night</span>
+      <span class="tag a">🐕 Dogs welcome both options</span>
+    </div>
+  </div>
+
+  <div class="alert blue">
+    <strong>Orla logistics on Saturday:</strong> Both of you will be at the surf/sail school all day. Options: (1) Take turns — one sails in the morning, one surfs in the afternoon, always one with Orla on the beach. (2) Ask the school whether dogs can wait nearby — the beach at the school is large. (3) Do your courses on different weekends. Worth calling the school to discuss: <strong>030 648 15 80 / <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f1f6fef7d8f9f4f4fdb5f9f6b5fcfdfbf3b6fcfd">[email&#160;protected]</a></strong>
+  </div>
+</div>
+
+<!-- PLAN B MAP -->
+<div class="wrap" style="padding-top:0">
+  <p class="lbl-b">Overview</p>
+  <h2>The Weekend at a Glance</h2>
+  <div class="map-box">
+    <div class="map-head-b map-head">
+      <div>
+        <h4>⛵ Falkenberg → Müggelsee · 36km</h4>
+        <p>Overnight spot · Saturday courses at the school · Sunday boat hire · home by 1pm</p>
+      </div>
+    </div>
+    <div id="map-b" style="height:380px;width:100%"></div>
+  </div>
+  <div class="stop-legend">
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--forest)">H</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Home · Falkenberg</div><div style="font-size:12px;color:var(--text-l)">GPS 52.3822°N 14.2369°E · Leave Fri ~18:00</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--teal)">💤</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Kleiner Müggelsee / Fährhaus</div><div style="font-size:12px;color:var(--text-l)">Wild spot or paid Fährhaus (~€32) · water view guaranteed at Fährhaus</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--teal)">⛵🏄</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Surf- &amp; Segelschule Müggelsee</div><div style="font-size:12px;color:var(--text-l)">GPS 52.442639°N 13.684472°E · Drive van here Sat 09:15</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--amber)">☕</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Fisch-Borke · evening option</div><div style="font-size:12px;color:var(--text-l)">On the lake · 4.4★ · fish + biergarten · Borkenstrand beach</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--amber)">🚣</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">MüggelBay Boat Hire · Sun morning</div><div style="font-size:12px;color:var(--text-l)">Kleiner Müggelsee · 4.5★ · kayaks, motorboats, SUP · from 10:00</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--amber)">🥐</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Café Hörnchen · Fri/Sun morning</div><div style="font-size:12px;color:var(--text-l)">Bölschestraße 54, Friedrichshagen · 4.8★ · open 07:00 · dog-friendly</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAN B ITINERARY -->
+<div class="days-wrap">
+<div class="wrap">
+  <p class="lbl-b">Day by Day</p>
+  <h2>The Itinerary</h2>
+  <div style="display:flex;flex-direction:column">
+
+    <!-- FRIDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Fri<br>Eve</div><div class="ddot t"></div><div class="dline-t"></div></div>
+      <div class="dcard t">
+        <div class="dh"><div class="dt">Drive to Kleiner Müggelsee 🌊 <span class="who both">both</span></div><div class="de">🚐🌅</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt-t">18:00</div><div class="tx"><strong>Leave Falkenberg.</strong> Route: B246 → B1/B5 west → Friedrichshagen → Neuhelgoländer Weg area. About 40 minutes — allow 50 in Friday traffic.</div></div>
+          <div class="tr"><div class="tt-t">~19:00</div><div class="tx"><strong>Park at the Kleiner Müggelsee.</strong> This is your Friday night spot only — waterside, quiet, Orla swims. Verify the exact spot on Park4Night before leaving (search "Kleiner Müggelsee Rahnsdorf"). You're waking up with lake water in front of you, then driving to the school Saturday morning.
+          <span class="ni">The Badestelle Kleiner Müggelsee is in your spreadsheet as a favourite — trust your instincts on the exact pull-in.</span></div></div>
+          <div class="tr"><div class="tt-t">Evening</div><div class="tx"><strong>Van dinner by the water.</strong> Early night — Saturday is a full day on the lake. Café Hörnchen (Bölschestraße 54) closes at 18:00 on weekdays — if you arrive in time, worth stopping for coffee and cake first.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Sat</div><div class="ddot a"></div><div class="dline"></div></div>
+      <div class="dcard a">
+        <div class="dh"><div class="dt">Sail + Surf Day ⛵🏄 <span class="who r">Rachael + Brunow</span></div><div class="de">⛵🏄🌊</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">~08:00</div><div class="tx"><strong>Café Hörnchen for breakfast</strong> — Bölschestraße 54, Friedrichshagen, open 07:00 Sat. 4.8★. Short drive from the Kleiner Müggelsee spot. Dog-friendly courtyard, excellent coffee, grilled veg.
+          <span class="ni">Book or arrive early — fills up fast on Saturdays.</span></div></div>
+          <div class="tr"><div class="tt">~09:15</div><div class="tx"><strong>Drive the van to the school.</strong> GPS: <strong>52.442639°N, 13.684472°E</strong> · Fürstenwalder Damm 850, 12589 Berlin. About 10 minutes from Friedrichshagen. Park at the school site.</div></div>
+          <div class="tr"><div class="tt">~09:30</div><div class="tx"><strong>Check in at Surf- und Segelschule Müggelsee.</strong> Brunow → sailing. Rachael → windsurfing. Same site, same beach — you can see each other from the water. The school has operated since 1987, 8,000+ courses completed.
+          <span class="ni">Season 1 May–end September. Book ahead: 030 648 15 80 · info@alle-an-deck.de</span></div></div>
+          <div class="tr"><div class="tt">All day</div><div class="tx"><strong>On the Müggelsee.</strong> Berlin's largest lake — 7.4km of open water, reliable wind, great conditions for both sailing and windsurfing. The Borkenstrand beach is right next to the school — Fisch-Borke is there for lunch if needed (from 11:00).</div></div>
+          <div class="tr"><div class="tt">~17:00</div><div class="tx"><strong>Courses done.</strong> Wind-burnt, happy. Load the van. Now drive to your <strong>Saturday night stellplatz</strong> — choose from the 7 water-view options in the section below. Eat at Fisch-Borke before you go (still open at 17:30), or cook at wherever you land.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Sun</div><div class="ddot t"></div></div>
+      <div class="dcard t">
+        <div class="dh"><div class="dt">Morning Swim · Then Home 🚣🏡 <span class="who both">both</span></div><div class="de">🚣☕🏡</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt-t">Morning</div><div class="tx"><strong>Slow morning wherever you stayed.</strong> Every option in the 7 below has water right there. Tea or coffee with a view. Orla's morning swim. The weekend has delivered.</div></div>
+          <div class="tr"><div class="tt-t">~10:00</div><div class="tx"><strong>If you stayed at the Kleiner Müggelsee:</strong> MüggelBay boat hire (Neuhelgoländer Weg 7) — kayaks/motorboats from €10–15/hour, dogs welcome, opens 10:00. 4.5★. A perfect Sunday morning cap. +49 30 4749715257
+          <span class="ni">If you stayed elsewhere, check the Sunday morning options near your chosen spot in the 7 options section.</span></div></div>
+          <div class="tr"><div class="tt-t">~11:30</div><div class="tx"><strong>Pack up.</strong> Müggelseefischerei (Dorfstraße 13, Rahnsdorf, 4.5★) does excellent smoked fish rolls — worth a detour on the way home if you're passing.</div></div>
+          <div class="tr"><div class="tt-t">~12:00</div><div class="tx"><strong>Drive home.</strong> Route depends on Saturday night location — all options are within 45 minutes of Falkenberg. Home by 12:45 at the latest. ✓</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PLAN B SAT NIGHT OPTIONS -->
+<div style="background:var(--water-pale);padding:8px 0">
+<div class="wrap">
+  <p class="lbl-b">Saturday Night — Pick Your Spot</p>
+  <h2>7 Water-View Stellplatz Options</h2>
+  <p class="intro">After the courses finish (~17:00), you drive to wherever you want to wake up Sunday morning. All 7 are within ~45 minutes of the school and ~45 minutes of Falkenberg. All have water. All work for Orla.</p>
+
+  <div class="alert blue">
+    <strong>Before you go:</strong> Always verify current status on Park4Night — wild and tolerated spots can change. Search by GPS or name. Paid spots should be booked ahead for summer weekends.
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px">
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">1</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Historisches Fährhaus / Yachthafen — Wendenschloss <span style="font-size:13px;font-weight:400;color:var(--amber)">PAID · best water view</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Müggelbergallee 1, Berlin-Wendenschloss · GPS: 52.4271°N, 13.6124°E · ~10 min from school · ~40 min to home · ~€32/night + €3 dog</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">The only confirmed water-view-from-the-van stellplatz in this area. Directly on the Dahme/Spree, idyllic yacht marina setting in a historic villa district. Wooden terraces with table and chairs, sauna on site, boat hire. Clean facilities, friendly harbour master. VisitBerlin confirmed: "direct view of the water from your camper van." Seasonal April–October — book ahead for summer weekends.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--water-pale);color:var(--water);margin-top:4px">🌊 Guaranteed water view</span>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#edf7ef;color:var(--forest);margin-top:4px">🐕 Dogs welcome (+€3)</span>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">2</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Kleiner Müggelsee — Neuhelgoländer Weg <span style="font-size:13px;font-weight:400;color:var(--forest)">FREE · your spreadsheet favourite</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Neuhelgoländer Weg area, 12589 Berlin-Rahnsdorf · GPS: ~52.4291°N, 13.6810°E · 5 min from school · MüggelBay boat hire next morning</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">Your own favourite from the spreadsheet — the swimming spot at the Kleiner Müggelsee. You started the weekend here Friday night, and could end it here Saturday night too. Smaller, quieter lake than the Müggelsee proper. MüggelBay boat hire is 5 minutes' walk for Sunday morning. Verify on Park4Night before going — this is a tolerated wild spot.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#fff5e0;color:#8a5a10;margin-top:4px">⚠️ Verify on Park4Night first</span>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">3</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Marina Wendenschloss — Dahme river <span style="font-size:13px;font-weight:400;color:var(--amber)">PAID</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Wendenschlossstraße 350-354, Berlin-Köpenick · GPS: 52.4197°N, 13.5842°E · ~15 min from school · ~45 min to home · from €30/night</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">Directly on the Dahme riverbank in a working yacht marina — boats bob past the van all evening. REWE supermarket 50m away. Köpenick old town 3km by foot. VisitBerlin listed. Seasonal April–October. Mixed reviews on facilities but the water location is exceptional and the setting is genuinely lovely.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--water-pale);color:var(--water);margin-top:4px">🌊 Riverfront</span>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">4</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Campingplatz Krossinsee — Schmöckwitz peninsula <span style="font-size:13px;font-weight:400;color:var(--amber)">PAID · most scenic</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Schmöckwitz, Berlin-Köpenick · GPS: ~52.3810°N, 13.6670°E · ~25 min from school · ~40 min to home · campsite pricing</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">On a wooded peninsula between the Krossinsee, Zeuthener See and Seddinsee — three lakes surrounding you on almost all sides. A maritime, village feel with yacht clubs and fish smokehouses nearby in Schmöckwitz. Large site, motorhomes accepted. Own beach and boat dock. One of the most beautiful natural settings of all 7 options. Sunday morning: swim in the lake from the campsite beach.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--water-pale);color:var(--water);margin-top:4px">🌊 Three lakes · peninsula</span>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#edf7ef;color:var(--forest);margin-top:4px">🐕 Dogs welcome</span>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">5</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Weißer Strand Flakensee — Erkner <span style="font-size:13px;font-weight:400;color:var(--forest)">FREE/tolerated · halfway home</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Flakensee, 15537 Erkner · GPS: ~52.4240°N, 13.7540°E · ~20 min from school · ~20 min to home · from your spreadsheet</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">In your spreadsheet as "see if this is a nice place" — Erkner is exactly the right halfway stop between the Müggelsee and home. The Flakensee is a quiet local lake east of Berlin, good swimming. The Schleusenbrauerei beer garden (also in your spreadsheet) is right next to the Erkner Schleuse — a deck-chair beer garden by the water, 4.4★. Verify overnight parking on Park4Night. Sunday: 20 minutes home.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#fff5e0;color:#8a5a10;margin-top:4px">⚠️ Verify on Park4Night first</span>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#edf7ef;color:var(--forest);margin-top:4px">🍺 Schleusenbrauerei next door</span>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">6</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Fürstenwalder Chaussee stellplatz — Scharmützelsee area <span style="font-size:13px;font-weight:400;color:var(--forest)">FREE · your spreadsheet</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Fürstenwalder Ch, ~15526 Bad Saarow area · GPS: ~52.2800°N, 14.0500°E · ~35 min from school · ~30 min to home · from your spreadsheet</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">Your spreadsheet lists this as "8 free campervan spaces, no water, free. 4.6km to surf n sun." This puts you back in Bad Saarow territory on Saturday night — combines the Müggelsee sailing day with a Scharmützelsee wake-up on Sunday. You could do a morning swim at the Hundestrand, then it's 30 minutes home. Freilich am See is open from 12:00 Sunday if you want lunch before leaving.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#edf7ef;color:var(--forest);margin-top:4px">🌊 Scharmützelsee Sunday morning</span>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start">
+      <div style="background:var(--teal);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;margin-top:2px">7</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Canal spot — your GPS favourite <span style="font-size:13px;font-weight:400;color:var(--forest)">FREE · most local</span></div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 GPS: 52°14'29.0"N 14°28'35.5"E (52.2414°N, 14.4765°E) · ~40 min from school · ~15 min to home · your spreadsheet</div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">Your own description: "Lovely place to park campervan by a canal. Right by water. Can swim. Houses nearby for safety at night." This is the closest option to home — 15 minutes. After a full day of sailing and windsurfing you could be at this spot by 18:30. Canal water, quiet, familiar territory, Orla has room. Sunday morning: swim in the canal, then 15 minutes home before lunch.</p>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--water-pale);color:var(--water);margin-top:4px">🌊 Canal · right by water</span>
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#edf7ef;color:var(--forest);margin-top:4px">🏡 15 min from home</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- PLAN B CAFES -->
+<div style="background:var(--sand);padding:8px 0">
+<div class="wrap">
+  <p class="lbl-b">Eat &amp; Drink</p>
+  <h2>Cafés &amp; Restaurants</h2>
+
+  <div class="area-head">☕ Friedrichshagen village — 10 min cycle</div>
+  <div class="cafe-grid">
+    <div class="cafe">
+      <h4>Café Hörnchen ⭐⭐⭐</h4>
+      <div class="addr">Bölschestraße 54 · Mon–Sat 07:00–18:00 · Sun 08:00–17:00 · +49 30 76006626</div>
+      <p>4.8★ from 260 reviews — a genuinely excellent neighbourhood bakery-café with a courtyard. "Grilled vegetables were especially amazing — incredibly delicious, perfectly seasoned." Excellent coffee, good vegan options. Dog-friendly. The best breakfast stop near the Müggelsee. Book or arrive early on Saturdays.</p>
+      <span class="badge dog">🐕 Dog-friendly</span><span class="badge veg">🌿 Vegan options</span>
+    </div>
+    <div class="cafe">
+      <h4>Mauna Kea ⭐⭐</h4>
+      <div class="addr">Bölschestraße 44 · Daily 08:00–17:00 · +49 30 39202336</div>
+      <p>4.5★, 1,738 reviews. Famous Berlin brunch spot right in Friedrichshagen. Huge breakfast variety by cuisine type — Mexican, German, Arabian plates. A bit hectic and popular — best for Sunday rather than Saturday pre-course. Worth it for the sheer variety of food.</p>
+      <span class="badge veg">🌿 Many vegan options</span>
+    </div>
+  </div>
+
+  <div class="area-head">🐟 On the Müggelsee</div>
+  <div class="cafe-grid">
+    <div class="cafe">
+      <h4>Fisch-Borke ⭐⭐</h4>
+      <div class="addr">Fürstenwalder Damm 848 · Open from 11:00 · +49 30 61201007</div>
+      <p>4.4★, 1,256 reviews. On the famous Borkenstrand, directly on the lake. Fish restaurant, biergarten, sun loungers on the beach. "Fried Zander was amazing, juicy and flavorful." The evening restaurant has elevated dishes; the outdoor kiosk does excellent fresh fish rolls all day. Saturday evening favourite.</p>
+      <span class="badge dog">🐕 Beach area</span><span class="badge water">🌊 On the lake</span>
+    </div>
+    <div class="cafe">
+      <h4>Müggelseefischerei ⭐⭐</h4>
+      <div class="addr">Dorfstraße 13, Rahnsdorf · 4.5★ · 788 reviews</div>
+      <p>Smoked fish stall right on the water — smoked eel, salmon, mackerel, Fischbrötchen. "A wide selection of freshly smoked fishes." Queue on weekends but worth it. Perfect for a Sunday morning roll before the drive home. Simple, local, excellent.</p>
+      <span class="badge water">🌊 Waterside</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PLAN B BUDGET -->
+<div class="wrap">
+  <p class="lbl-b">What It Costs</p>
+  <h2>Budget</h2>
+  <div class="alert amber">
+    <strong>Note on course costs:</strong> The Surf- und Segelschule Müggelsee courses vary — call 030 648 15 80 or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7811161e17381914141d551916551c1d1b13561c1d">[email&#160;protected]</a> for current pricing. Typical day course ~€80–120pp. Book well ahead for summer weekends.
+  </div>
+  <table class="bt">
+    <thead class="b"><tr><th>Item</th><th>Detail</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>⛽ Fuel</td><td>Falkenberg → Müggelsee → home · ~72km round trip</td><td>~€10</td></tr>
+      <tr><td>💤 Stellplatz</td><td>Wild parking free / Historisches Fährhaus ~€32</td><td>€0–32</td></tr>
+      <tr><td>⛵ Sailing course</td><td>Brunow · Alle-an-Deck · call for price</td><td>~€80–120</td></tr>
+      <tr><td>🏄 Windsurfing course</td><td>Rachael · Alle-an-Deck · call for price</td><td>~€80–120</td></tr>
+      <tr><td>☕ Café Hörnchen</td><td>Breakfast Sat · 2 people</td><td>~€20–25</td></tr>
+      <tr><td>🚣 MüggelBay boat hire</td><td>Sun morning · 2h motorboat</td><td>~€30</td></tr>
+      <tr><td>🐟 Fisch-Borke / Müggelseefischerei</td><td>Sat dinner or Sun roll</td><td>~€20–40</td></tr>
+      <tr><td>🛒 Van food</td><td>Fri dinner + misc</td><td>~€15</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2"><strong>TOTAL (excl. courses)</strong></td><td>~€95–142</td></tr>
+    </tfoot>
+  </table>
+  <p style="font-size:13px;color:var(--text-l);margin-top:12px;font-style:italic">💡 The courses are the main cost — but this is the sailing and windsurfing weekend you've been talking about. Everything else is deliberately low-cost to balance it.</p>
+</div>
+
+<div class="footer footer-b">
+  <p>⛵ Plan B · Müggelsee · Berlin-Köpenick</p>
+  <p style="margin-top:8px">
+    <strong>School:</strong> Alle-an-Deck · Fürstenwalder Damm 850 · 030 648 15 80 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29b9c949db2939e9e97df939cdf96979199dc9697">[email&#160;protected]</a> ·
+    <strong>Fährhaus stellplatz:</strong> Müggelbergallee 1, seasonal from 1 April ·
+    <strong>MüggelBay:</strong> +49 30 4749715257 ·
+    <strong>Café Hörnchen:</strong> +49 30 76006626
+  </p>
+</div>
+
+</div><!-- end plan-b -->
+
+<script>
+// Tab switching — wired at bottom of body, no DOMContentLoaded needed
+function showPlan(plan) {
+  document.querySelectorAll('.plan-section').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('.plan-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('plan-' + plan).classList.add('active');
+  document.querySelector('[data-plan="' + plan + '"]').classList.add('active');
+  setTimeout(function() {
+    if (plan === 'a' && window._mapA) window._mapA.invalidateSize();
+    if (plan === 'b' && window._mapB) window._mapB.invalidateSize();
+  }, 150);
+}
+
+document.querySelectorAll('.plan-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() { showPlan(this.getAttribute('data-plan')); });
+});
+
+// Maps
+window.addEventListener('load', function() {
+
+  // PLAN A MAP
+  var mapA = L.map('map-a', {scrollWheelZoom:false}).setView([52.31, 14.12], 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(mapA);
+  window._mapA = mapA;
+
+  function iconA(label, size) {
+    size = size || 28;
+    var bg = label==='H' ? '#2d4a35' : label==='💤' ? '#1a5a8c' : '#c47a2a';
+    return L.divIcon({className:'',html:'<div style="background:'+bg+';color:white;border-radius:50%;width:'+size+'px;height:'+size+'px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+(size>30?14:11)+'px;font-family:sans-serif;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.35)">'+label+'</div>',iconSize:[size,size],iconAnchor:[size/2,size/2],popupAnchor:[0,-size/2]});
+  }
+
+  L.marker([52.3822,14.2369],{icon:iconA('H',34)}).addTo(mapA).bindPopup('<strong>Home — Falkenberg</strong><br>GPS 52.3822°N, 14.2369°E<br>Leave Friday 18:00');
+  L.marker([52.254443,14.047171],{icon:iconA('💤',30)}).addTo(mapA).bindPopup('<strong>Stellplatz — Friedrich-Engels-Damm</strong><br>GPS 52.2544°N, 14.0472°E<br>Free overnight · lake 1 min walk');
+  L.marker([52.279,14.057],{icon:iconA('🍽️',28)}).addTo(mapA).bindPopup('<strong>Freilich am See</strong><br>Lakeside lunch · Sat · 4.2★');
+  L.marker([52.2507,14.049],{icon:iconA('⭐',28)}).addTo(mapA).bindPopup('<strong>Das Dorsch</strong><br>Dinner on the lake · 4.7★<br>Book ahead for Sat eve');
+  L.marker([52.2708,14.0710],{icon:iconA('🏃',26)}).addTo(mapA).bindPopup('<strong>Bahnhof Bad Saarow-Pieskow</strong><br>Rauener Berge Rundweg start');
+  L.marker([52.3656,13.8803],{icon:iconA('🐴',26)}).addTo(mapA).bindPopup('<strong>Serenity Ranch</strong><br>4.8★ · +49 176 43271863 · Sat 09:00–12:00');
+  L.polyline([[52.3822,14.2369],[52.254443,14.047171]],{color:'#1a5a8c',weight:2,dashArray:'5,4',opacity:0.6}).addTo(mapA);
+  setTimeout(function(){ mapA.invalidateSize(); }, 200);
+
+  // PLAN B MAP
+  var mapB = L.map('map-b', {scrollWheelZoom:false}).setView([52.41, 13.97], 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(mapB);
+  window._mapB = mapB;
+
+  function iconB(label, color, size) {
+    size = size || 28;
+    return L.divIcon({className:'',html:'<div style="background:'+color+';color:white;border-radius:50%;width:'+size+'px;height:'+size+'px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+(size>30?14:11)+'px;font-family:sans-serif;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.35)">'+label+'</div>',iconSize:[size,size],iconAnchor:[size/2,size/2],popupAnchor:[0,-size/2]});
+  }
+
+  L.marker([52.3822,14.2369],{icon:iconB('H','#2d4a35',34)}).addTo(mapB).bindPopup('<strong>Home — Falkenberg</strong><br>GPS 52.3822°N, 14.2369°E');
+  L.marker([52.4291,13.681],{icon:iconB('💤','#1a7a7a',30)}).addTo(mapB).bindPopup('<strong>Kleiner Müggelsee — Fri night</strong><br>Wild spot · verify on Park4Night');
+  L.marker([52.442639,13.684472],{icon:iconB('⛵🏄','#1a7a7a',34)}).addTo(mapB).bindPopup('<strong>Surf- &amp; Segelschule Müggelsee</strong><br>GPS: 52.442639°N, 13.684472°E<br>Drive van here Sat 09:15<br>030 648 15 80');
+  L.marker([52.4429,13.6767],{icon:iconB('🐟','#c47a2a',28)}).addTo(mapB).bindPopup('<strong>Fisch-Borke</strong><br>Sat dinner · 4.4★ · open from 11:00');
+  L.marker([52.4291,13.681],{icon:iconB('🚣','#c47a2a',26)}).addTo(mapB).bindPopup('<strong>MüggelBay Boat Hire</strong><br>Sun morning · dogs welcome');
+  L.marker([52.4539,13.6254],{icon:iconB('☕','#c47a2a',26)}).addTo(mapB).bindPopup('<strong>Café Hörnchen</strong><br>Bölschestraße 54 · 4.8★ · opens 07:00 Sat');
+  // Sat night options
+  L.marker([52.4271,13.6124],{icon:iconB('①','#6a6a6a',26)}).addTo(mapB).bindPopup('<strong>① Historisches Fährhaus</strong><br>Guaranteed water view · ~€32/night');
+  L.marker([52.381,13.667],{icon:iconB('④','#6a6a6a',26)}).addTo(mapB).bindPopup('<strong>④ Krossinsee peninsula</strong><br>3 lakes · most scenic');
+  L.marker([52.424,13.754],{icon:iconB('⑤','#6a6a6a',26)}).addTo(mapB).bindPopup('<strong>⑤ Flakensee, Erkner</strong><br>Halfway home · Schleusenbrauerei');
+  L.marker([52.2414,14.4765],{icon:iconB('⑦','#6a6a6a',26)}).addTo(mapB).bindPopup('<strong>⑦ Canal spot (your favourite)</strong><br>15 min from home · can swim');
+  L.polyline([[52.3822,14.2369],[52.4291,13.681]],{color:'#1a7a7a',weight:2,dashArray:'5,4',opacity:0.6}).addTo(mapB);
+  setTimeout(function(){ mapB.invalidateSize(); }, 300);
+
+});
+</script>
+</body>
+</html>

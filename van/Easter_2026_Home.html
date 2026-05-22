@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easter 2026 · Home Base · Falkenberg</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root {
+  --forest:  #2d4a35;
+  --forest-l:#3f6b4a;
+  --water:   #2a5a7c;
+  --water-l: #4a8aaa;
+  --water-pale:#e4f2f8;
+  --sand:    #ede7d3;
+  --sand-d:  #d5cbaf;
+  --cream:   #f8f5ec;
+  --amber:   #c47a2a;
+  --rust:    #9c4a28;
+  --text:    #1e1a12;
+  --text-l:  #6b5e44;
+  --accent:  #3f6b4a;
+  --accent-l:#5a9466;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.7}
+
+.cover{background:linear-gradient(150deg,#1a2e1c 0%,#2d4a35 40%,#4a7a3a 70%,#2a5a2c 100%);min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 32px;position:relative;overflow:hidden;color:white}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:90px;background:var(--cream);clip-path:ellipse(52% 100% at 50% 100%)}
+.cover-sup{font-size:12px;letter-spacing:4px;text-transform:uppercase;opacity:.55;margin-bottom:20px;position:relative;z-index:2}
+.cover h1{font-family:'Fraunces',serif;font-size:clamp(44px,8vw,88px);font-weight:900;line-height:.95;letter-spacing:-2px;position:relative;z-index:2;margin-bottom:6px}
+.cover h1 em{display:block;font-style:italic;font-weight:300;font-size:.42em;letter-spacing:1px;opacity:.75;margin-top:8px}
+.cover-sub{font-family:'Libre Baskerville',serif;font-style:italic;font-size:18px;opacity:.65;margin:18px 0 32px;position:relative;z-index:2}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;position:relative;z-index:2}
+.pill{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:white;padding:6px 15px;border-radius:99px;font-size:13px;font-weight:300}
+.pill.g{background:rgba(45,74,53,.5);border-color:rgba(63,107,74,.6)}
+.pill.a{background:rgba(196,122,42,.4);border-color:rgba(196,122,42,.5)}
+
+.strip{background:var(--forest);color:white;padding:0}
+.strip-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.sv{padding:24px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.sv:last-child{border-right:none}
+.sv-icon{font-size:22px;margin-bottom:5px}
+.sv-lbl{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;opacity:.45;margin-bottom:3px;font-weight:700}
+.sv-val{font-family:'Fraunces',serif;font-size:16px;font-weight:600}
+.sv-sub{font-size:11px;opacity:.5;margin-top:2px}
+
+.wrap{max-width:880px;margin:0 auto;padding:52px 28px}
+.lbl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-l);font-weight:700;margin-bottom:10px}
+h2{font-family:'Fraunces',serif;font-size:36px;color:var(--forest);margin-bottom:20px;line-height:1.15;font-weight:900}
+p.intro{color:var(--text-l);font-size:15px;margin-bottom:24px;line-height:1.7}
+
+.alert{border-radius:14px;padding:18px 22px;margin-bottom:20px;font-size:14px;line-height:1.6}
+.alert.amber{background:#fffbee;border:1px solid #e8d590;border-left:4px solid var(--amber)}
+.alert.green{background:#edf7ef;border:1px solid #b0d8b8;border-left:4px solid var(--forest)}
+.alert.blue{background:var(--water-pale);border:1px solid rgba(42,90,124,.25);border-left:4px solid var(--water)}
+.alert strong{color:var(--forest)}
+.alert.amber strong{color:var(--amber)}
+
+/* DAY CARDS */
+.days-wrap{background:var(--sand);padding:8px 0}
+.day{display:grid;grid-template-columns:96px 1fr;gap:0;margin-bottom:4px}
+@media(max-width:560px){.day{grid-template-columns:68px 1fr}}
+.dl{display:flex;flex-direction:column;align-items:center;padding-top:30px}
+.dlbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-l);font-weight:700;text-align:center;margin-bottom:9px;line-height:1.4}
+.ddot{width:15px;height:15px;border-radius:50%;flex-shrink:0;z-index:2}
+.ddot.f{background:var(--forest);box-shadow:0 0 0 3px var(--forest)}
+.ddot.w{background:var(--water); box-shadow:0 0 0 3px var(--water)}
+.ddot.a{background:var(--amber); box-shadow:0 0 0 3px var(--amber)}
+.ddot.r{background:var(--rust);  box-shadow:0 0 0 3px var(--rust)}
+.dline{width:2px;flex:1;background:linear-gradient(180deg,var(--forest),rgba(45,74,53,.1));margin-top:7px;min-height:40px}
+.dcard{background:white;border-radius:16px;padding:24px 28px;margin:12px 0 12px 12px;box-shadow:0 2px 16px rgba(29,43,35,.07)}
+.dcard.f{border-left:4px solid var(--forest)}
+.dcard.w{border-left:4px solid var(--water)}
+.dcard.a{border-left:4px solid var(--amber)}
+.dcard.r{border-left:4px solid var(--rust)}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:13px;gap:8px;flex-wrap:wrap}
+.dt{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--forest);line-height:1.2}
+.de{font-size:26px;flex-shrink:0}
+.tl{display:flex;flex-direction:column;gap:10px}
+.tr{display:grid;grid-template-columns:68px 1fr;gap:9px;align-items:baseline}
+.tt{font-size:12px;font-weight:700;color:var(--accent-l);letter-spacing:.4px}
+.tx{font-size:14px;color:var(--text);line-height:1.55}
+.tx strong{color:var(--forest)}
+.tx .ni{display:block;font-size:12px;color:var(--text-l);font-style:italic;margin-top:2px}
+.who{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.who.both{background:#edf7ef;color:var(--forest)}
+.who.r{background:#fde8e4;color:#9c2a2a}
+
+/* HIGHLIGHT BOXES */
+.highlight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px}
+.hl{background:white;border-radius:16px;padding:20px 22px;box-shadow:0 2px 16px rgba(29,43,35,.07);border-top:4px solid var(--forest)}
+.hl.amber{border-top-color:var(--amber)}
+.hl.water{border-top-color:var(--water)}
+.hl.rust{border-top-color:var(--rust)}
+.hl h4{font-family:'Fraunces',serif;font-size:17px;color:var(--forest);margin-bottom:8px}
+.hl p{font-size:13px;color:var(--text-l);line-height:1.6}
+.hl .badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;margin-top:8px;margin-right:4px}
+.badge.dog{background:#edf7ef;color:var(--forest)}
+.badge.bike{background:#e8f0ff;color:#2a3a7c}
+.badge.free{background:#f5f0e8;color:#5a4a28}
+.badge.km{background:var(--sand);color:var(--forest)}
+
+/* ROUTE MAP SECTION */
+.map-box{background:white;border-radius:18px;box-shadow:0 3px 22px rgba(29,43,35,.09);margin-bottom:24px}
+.map-head{background:linear-gradient(120deg,var(--forest),var(--accent-l));color:white;padding:16px 24px;display:flex;align-items:center;gap:12px}
+.map-head h4{font-family:'Fraunces',serif;font-size:17px;font-weight:700}
+.map-head p{font-size:12px;opacity:.7;margin-top:2px}
+
+/* LEGEND ITEMS */
+.stop-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:36px}
+.stop-item{background:white;border-radius:12px;padding:13px 15px;box-shadow:0 2px 12px rgba(29,43,35,.07);display:flex;gap:10px;align-items:flex-start}
+.stop-num{border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;margin-top:1px;color:white}
+
+/* CAFÉ SECTION */
+.cafe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:32px}
+.cafe{background:white;border-radius:14px;padding:18px 20px;box-shadow:0 2px 14px rgba(29,43,35,.07)}
+.cafe h4{font-family:'Fraunces',serif;font-size:15px;color:var(--forest);margin-bottom:5px}
+.cafe .addr{font-size:12px;color:var(--text-l);margin-bottom:8px}
+.cafe p{font-size:13px;color:var(--text-l);line-height:1.55}
+.star{color:var(--amber)}
+.area-head{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--forest);margin-bottom:14px;padding-top:8px;border-bottom:2px solid var(--sand-d);padding-bottom:8px}
+
+/* BUDGET */
+table.bt{width:100%;border-collapse:collapse;font-size:15px;margin-top:16px}
+table.bt thead tr{background:var(--forest);color:white}
+table.bt thead th{padding:12px 18px;text-align:left;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+table.bt thead th:last-child{text-align:right}
+table.bt tbody tr{border-bottom:1px solid #ede5d0}
+table.bt tbody td{padding:12px 18px;color:var(--text)}
+table.bt tbody td:last-child{text-align:right;font-weight:700;color:var(--forest);font-family:'Fraunces',serif;font-size:16px}
+table.bt tfoot td{padding:14px 18px;background:var(--sand-d);border-top:2px solid var(--forest);font-weight:700}
+table.bt tfoot td:last-child{text-align:right;font-family:'Fraunces',serif;font-size:20px;font-weight:900;color:var(--forest)}
+
+.footer{background:var(--forest);color:rgba(255,255,255,.5);text-align:center;padding:36px 28px;font-size:13px}
+.footer strong{color:rgba(255,255,255,.85)}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-sup">🏡 Brandenburg · Easter 2026</p>
+  <h1>Easter at Home
+    <em>"The van can wait. The forest can't."</em>
+  </h1>
+  <p class="cover-sub">Fri 3 – Mon 6 April · Rachael + Brunow + Orla 🐕 · Falkenberg 15518</p>
+  <div class="pills">
+    <span class="pill g">🏡 Sleep at home every night</span>
+    <span class="pill g">🚲 Oderbruchbahn cycle day</span>
+    <span class="pill">🌲 Scharmützelsee forest</span>
+    <span class="pill">🐕 Orla off-leash priority</span>
+    <span class="pill a">🥩 Tip Steakhouse · Saturday evening</span>
+    <span class="pill">~€60–80 total</span>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="sv"><div class="sv-icon">🚲</div><div class="sv-lbl">Bike Day</div><div class="sv-val">~28km</div><div class="sv-sub">4★ ADFC route · flat</div></div>
+    <div class="sv"><div class="sv-icon">🌲</div><div class="sv-lbl">Forest Walk</div><div class="sv-val">~15km</div><div class="sv-sub">Rauener Berge certified trail</div></div>
+    <div class="sv"><div class="sv-icon">🏡</div><div class="sv-lbl">Nights out</div><div class="sv-val">0</div><div class="sv-sub">Home every evening</div></div>
+    <div class="sv"><div class="sv-icon">🥩</div><div class="sv-lbl">Meals out</div><div class="sv-val">1</div><div class="sv-sub">Tip Steakhouse · Saturday eve</div></div>
+    <div class="sv"><div class="sv-icon">☕</div><div class="sv-lbl">Café stops</div><div class="sv-val">2</div><div class="sv-sub">On the bike route</div></div>
+  </div>
+</div>
+
+<!-- DAY OVERVIEW -->
+<div class="wrap">
+  <p class="lbl">The Plan at a Glance</p>
+  <h2>Four Days, Four Moods</h2>
+  <p class="intro">No van this time, but four very different days — one on bikes along a century-old railway line, one deep in a Brandenburg forest with a glacial lake, one slow Easter Sunday at home, and one evening splurge on fajitas with a river view. All very Orla-friendly. All under €80.</p>
+
+  <div class="highlight-grid">
+    <div class="hl">
+      <h4>🚲 Friday — Oderbruchbahn</h4>
+      <p>Drive 25min to Müncheberg. Cycle the old trainline through apple orchards, moraine hills and lake edges to Schloss Steinhöfel park. Turn around and ride back. ~28km total, mostly asphalted, zero hills worth mentioning.</p>
+      <span class="badge bike">🚲 Bike day</span>
+      <span class="badge dog">🐕 Orla in doggy cart</span>
+      <span class="badge km">28km</span>
+    </div>
+    <div class="hl amber">
+      <h4>🏺 Saturday — Karlshorst Flohmarkt + Fajitas</h4>
+      <p>Drive 45min to Berlin-Karlshorst for the Easter season-opening antique flea market on the old trotting racecourse — 500 dealers, 25,000m², free entry. Back home by 3pm, then out again for dinner at Tip Steakhouse, Fürstenwalde.</p>
+      <span class="badge dog">🐕 Dogs welcome on market grounds</span>
+      <span class="badge free">🎪 Free entry</span>
+    </div>
+    <div class="hl water">
+      <h4>🌲 Sunday — Scharmützelsee</h4>
+      <p>Drive 30min to Bad Saarow. Walk the Rauener Berge certified trail through deep mixed forest, past 1.45-billion-year-old glacial boulders and up a 45m lookout tower. Finish on the lake promenade. 15.5km of proper nature.</p>
+      <span class="badge dog">🐕 Orla off-leash in forest</span>
+      <span class="badge free">🌲 Free entry</span>
+      <span class="badge km">15km walk</span>
+    </div>
+    <div class="hl rust">
+      <h4>🐴 Monday — Local Ride or Slow Day</h4>
+      <p>Option A: book a morning hack at one of the 5 nearby stables listed below — all within 35km, all open Mondays. Option B: no car, local tracks around Falkenberg, Orla off-leash, Brunow sketches, home cooking. Either way, a good last day.</p>
+      <span class="badge dog">🐕 Orla in the fields</span>
+      <span class="badge free">🏡 No driving required</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAP: DAY TRIPS -->
+<div class="wrap" style="padding-top:0">
+  <p class="lbl">Where You're Going</p>
+  <h2>Day Trip Map</h2>
+  <p class="intro">All within 35km of home. Click any marker for details.</p>
+
+  <div class="map-box">
+    <div class="map-head">
+      <div>
+        <h4>🏡 Falkenberg → Müncheberg · Bad Saarow · Fürstenwalde</h4>
+        <p>Three destinations, all day trips, home every night</p>
+      </div>
+    </div>
+    <div id="daytrip-map" style="height:420px;width:100%"></div>
+  </div>
+
+  <div class="stop-legend">
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--forest)">H</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Home — Falkenberg 15518</div><div style="font-size:12px;color:var(--text-l)">Your base every night</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">F</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Müncheberg · Friday bike</div><div style="font-size:12px;color:var(--text-l)">~25km · start of Oderbruchbahn cycle route</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--amber)">Sa</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Karlshorst · Saturday morning</div><div style="font-size:12px;color:var(--text-l)">~55km · Antikflohmarkt · Easter special · free</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--rust)">S+</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Fürstenwalde · Saturday dinner</div><div style="font-size:12px;color:var(--text-l)">~32km · Tip Steakhouse · fajitas · river view</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:var(--water)">Su</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Bad Saarow · Sunday</div><div style="font-size:12px;color:var(--text-l)">~30km · Scharmützelsee forest walk</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ITINERARY -->
+<div class="days-wrap">
+<div class="wrap">
+  <p class="lbl">Day by Day</p>
+  <h2>The Itinerary</h2>
+  <div style="display:flex;flex-direction:column">
+
+    <!-- FRIDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Fri<br>3 Apr</div><div class="ddot f"></div><div class="dline"></div></div>
+      <div class="dcard f">
+        <div class="dh"><div class="dt">Oderbruchbahn Cycle Day 🚲 <span class="who both">both</span></div><div class="de">🚲🐕</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">Morning</div><div class="tx"><strong>Slow start at home.</strong> Pack the doggy cart, fill the water bottles, throw together a picnic. Leave around 9:30–10:00 — no need to rush.</div></div>
+          <div class="tr"><div class="tt">~10:00</div><div class="tx"><strong>Drive to Müncheberg</strong> (~25km, 25 minutes from Falkenberg). Park near the Bahnhof. Pick up the Oderbruchbahn-Radweg — signed with the green railway logo on a yellow background. Orla goes in the doggy cart.</div></div>
+          <div class="tr"><div class="tt">~10:30</div><div class="tx"><strong>Ride south towards Steinhöfel</strong> (~14km, gently rolling). The route follows the bed of the old Oderbruchbahn narrow-gauge railway (1912–1970s). Almost nobody around in April. Apple trees line the old track — planted from pips thrown from carriage windows over a century of journeys. Lakes appear through the trees. Dorfkirche after Dorfkirche. Storks on almost every rooftop.<span class="ni">Surface: mostly asphalted. A few short gravel sections. Doggy cart handles it fine.</span></div></div>
+          <div class="tr"><div class="tt">~11:30</div><div class="tx"><strong>Stop at Schloss Steinhöfel park.</strong> One of the earliest English landscape gardens in all of Brandenburg, designed in the 1780s. Free to walk — wide gravel paths through ancient trees, a pond, Chinese pavilion, and views back to the Schloss. Orla can roam freely in April — no summer rules yet. Perfect picnic spot. Brunow will want to sketch.</div></div>
+          <div class="tr"><div class="tt">~12:30</div><div class="tx"><strong>Coffee stop — Café am Lindenplatz, Müncheberg</strong> (on the ride back, 500m off route into town). Central café behind the Stadtpfarrkirche, outdoor seating under linden trees, coffee and cake. Dog-friendly. Cheaper and calmer than anything in Steinhöfel.<span class="ni">Or: Landmarkt farm shop in Steinhöfel on the outward leg — hot drinks, simple snacks, fresh local produce.</span></div></div>
+          <div class="tr"><div class="tt">~13:30</div><div class="tx"><strong>Ride back to Müncheberg</strong> (~14km). Same track, different light. Stop at the Milchtankstelle near Buchholz if you pass it — a literal fresh-milk vending machine from local cows. Cold, rich, genuinely delicious.</div></div>
+          <div class="tr"><div class="tt">~14:30</div><div class="tx"><strong>Back to the car. Drive home.</strong> ~25 min. Feet up, Orla asleep, a glass of something cold.</div></div>
+          <div class="tr"><div class="tt">Evening</div><div class="tx"><strong>Home cooking.</strong> A proper keto-vegan dinner. Early-ish night — tomorrow is the Steakhouse, so a good home meal tonight means you arrive hungry on Saturday.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Sat<br>4 Apr<br><span style="font-size:9px;opacity:.6">Easter🐣</span></div><div class="ddot a"></div><div class="dline"></div></div>
+      <div class="dcard a">
+        <div class="dh"><div class="dt">Karlshorst Antik-Flohmarkt + Steakhouse 🎪🥩</div><div class="de">🏺🥩</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">~09:00</div><div class="tx"><strong>Drive to Berlin-Karlshorst</strong> (~55km, ~45 min). <strong>Antikflohmarkt Trabrennbahn Karlshorst — Easter Special &amp; Season Opening.</strong> The Easter weekend event is the biggest of the year: 300–500 professional dealers across 25,000m² of the former trotting racecourse, plus a 1,000m² covered hall. Antique furniture, Bauhaus, Midcentury, DDR, vintage clothing, ceramics, art, collectables. <strong>Free entry. Opens 09:00.</strong>
+          <span class="ni">📍 Treskowallee 159, 10318 Berlin-Karlshorst · Street parking free nearby · Dogs welcome on the grounds</span></div></div>
+          <div class="tr"><div class="tt">Morning</div><div class="tx">Brunow in his element. Orla on a lead between the stalls. This market attracts dealers from all over Germany — the Easter opening weekend always has exceptional stock. On Sunday there's also an Easter egg hunt and the traditional Osterfeuer bonfire in the evening — but Saturday is prime browsing time before it gets busy.</div></div>
+          <div class="tr"><div class="tt">~13:00</div><div class="tx"><strong>Street food on site.</strong> The market has food stalls throughout — a good lunch stop before the drive back without spending extra.</div></div>
+          <div class="tr"><div class="tt">~14:30</div><div class="tx"><strong>Drive home</strong> (~45 min). Unload whatever Brunow found. Rest, change, let Orla have a run in the garden.</div></div>
+          <div class="tr"><div class="tt">~18:00</div><div class="tx"><strong>Drive to Fürstenwalde</strong> (~30km, ~30 min). Tip Steakhouse for 19:00. <strong>Book ahead</strong> — Easter weekend, it will be busy. The fajita sizzle plate, river view. Keto approach: double the protein, skip the tortillas, extra guacamole.
+          <span class="ni">Search "Tip Steakhouse Fürstenwalde" on Google Maps to confirm address and book.</span></div></div>
+          <div class="tr"><div class="tt">~21:00</div><div class="tx"><strong>Drive home.</strong> Market day and a good dinner — that's a proper Easter Saturday.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Sun<br>5 Apr</div><div class="ddot r"></div><div class="dline"></div></div>
+      <div class="dcard r">
+        <div class="dh"><div class="dt">Rauener Berge &amp; Scharmützelsee 🌲 <span class="who both">both</span></div><div class="de">🌲🗻</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">09:30</div><div class="tx"><strong>Drive to Bad Saarow</strong> (~30km, 30 minutes from Falkenberg via B246/L412). Park free at the Bahnhof Bad Saarow-Pieskow (52.2708°N, 14.0710°E) or on Seestraße. Orla on the lead until you're in the forest.</div></div>
+          <div class="tr"><div class="tt">~10:00</div><div class="tx"><strong>Start the Rauener Berge Rundweg</strong> — a certified "Traumtour" (German Hiking Association). 15.5km, ~4–4.5h at a relaxed pace with Orla. Route: Bahnhof → Scharmützelsee promenade north → into the Rauener Berge forest → Markgrafensteine → Aussichtsturm → Petersdorfer See → loop back to Bahnhof.</div></div>
+          <div class="tr"><div class="tt">~11:00</div><div class="tx"><strong>The Markgrafensteine</strong> (52.3196°N, 14.0353°E). Two enormous glacial granite boulders — the largest erratic boulders in all of northern Germany, 1.45 billion years old, carried here from Scandinavia by ice sheets. Something properly humbling about leaning against a rock that existed before complex life on Earth. Orla will try to pee on them. This is acceptable.</div></div>
+          <div class="tr"><div class="tt">~11:30</div><div class="tx"><strong>Aussichtsturm der Rauener Berge — €1 per person.</strong> 45m wooden observation tower with views over the Scharmützelsee and on a clear April day, the Berlin TV tower to the west. Worth every cent.</div></div>
+          <div class="tr"><div class="tt">~13:00</div><div class="tx"><strong>Petersdorfer See.</strong> A Gaststätte right on the smaller lake before the loop back — dog-friendly terrace, coffee, simple food. Orla can paddle at the edge.</div></div>
+          <div class="tr"><div class="tt">~14:30</div><div class="tx"><strong>Scharmützelsee promenade.</strong> Theodor Fontane called this the "Märkisches Meer" — at 1,210 hectares, you understand why. Walk the lakeside path as far as it feels right. <strong>Dedicated Hundestrand</strong> (dog beach) at the Wasserwanderrastplatz — Orla can swim. Cold April lake, she'll love it.</div></div>
+          <div class="tr"><div class="tt">~16:00</div><div class="tx"><strong>Drive home</strong> (30 min). Long hot shower. Brunow sketches the boulders from memory. Orla dries off and collapses.</div></div>
+          <div class="tr"><div class="tt">Evening</div><div class="tx"><strong>Home cooking.</strong> You've done 15km on foot — a good satisfying keto-vegan dinner and an early night.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONDAY -->
+    <div class="day">
+      <div class="dl"><div class="dlbl">Mon<br>6 Apr</div><div class="ddot w"></div></div>
+      <div class="dcard w">
+        <div class="dh"><div class="dt">Slow Local Day — or Ride 🐴 <span class="who both">both options</span></div><div class="de">🌿🐴</div></div>
+        <div class="tl">
+          <div class="tr"><div class="tt">Option A</div><div class="tx"><strong>No car day.</strong> Cycle or walk from home — local tracks north of Falkenberg towards Tiefensee, along old drainage channels, big sky, stork nests, rapeseed just coming into flower. Orla off-leash the whole way. Brunow sketches. Sofa in the afternoon. The correct use of Bank Holiday Monday.</div></div>
+          <div class="tr"><div class="tt">Option B</div><div class="tx"><strong>Morning ride — one of the local stables below.</strong> All within 35km. Call ahead to book an experienced-rider trail or hack. Brunow and Orla can explore wherever you park while you're out, then you all drive home together. See the 5 nearest stables listed below the itinerary.</div></div>
+          <div class="tr"><div class="tt">Evening</div><div class="tx"><strong>Home cooking.</strong> Something keto and genuinely good to close out the long weekend.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- STABLES SECTION -->
+<div style="background:var(--sand);padding:8px 0">
+<div class="wrap">
+  <p class="lbl">Monday Option — Horse Riding</p>
+  <h2>5 Nearest Stables</h2>
+  <p class="intro">All within 35km. Call ahead to book — mention you're an experienced rider since childhood and want a trail hack or hack in the countryside, not a beginner lesson.</p>
+
+  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px">
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+      <div style="background:var(--forest);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Fraunces',serif;font-size:16px;flex-shrink:0;margin-top:2px">1</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Feldreiterhof Molkenberg ⭐⭐⭐</div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Molkenberg 12, 15517 Fürstenwalde · ~30km · <strong>+49 163 6850593</strong></div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">Rated 4.9★ from 32 reviews — the highest rated in the area. Family-run boarding stable with 24/7 pasture access, known for proper animal welfare. Reviewers specifically praise the horses being "genuinely allowed to be horses." Also has a hand-reared bison called Hannibal on site. Combine with the Steakhouse drive easily.</p>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+      <div style="background:var(--forest);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Fraunces',serif;font-size:16px;flex-shrink:0;margin-top:2px">2</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Flower Horse Ranch, Falkenberg ⭐⭐⭐</div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Dorfstraße 11/1, 16259 Falkenberg · ~35km north · <strong>+49 162 4878433</strong></div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">4.8★, 38 reviews. A Western-style ranch with free-roaming horses — reviewers describe "surprising and wonderful encounters" with horses that come to you. One reviewer specifically noted it's campervan-friendly too. "A very compassionate riding instructor." Different in feel to a traditional Reiterhof — more relaxed and open.</p>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+      <div style="background:var(--forest);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Fraunces',serif;font-size:16px;flex-shrink:0;margin-top:2px">3</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Camargue-Pferde-Hof, Altlandsberg ⭐⭐</div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Am Park 2, 15345 Altlandsberg · ~30km west · <strong>+49 3341 49877280</strong></div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">4.5★, 139 reviews. Specialises in Camargue horses — distinctive white horses known for their good temperament and natural gaits. Set within a park with good forest riding territory. Brunow and Orla can walk the park while you ride. Regular events and trail rides offered.</p>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+      <div style="background:var(--forest);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Fraunces',serif;font-size:16px;flex-shrink:0;margin-top:2px">4</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Galgenberghof, Müncheberg ⭐⭐</div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Eberswalder Str. 158a, 15374 Müncheberg · ~25km north · <strong>+49 174 3928029</strong></div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">4.5★, 181 reviews. Conveniently located right by the Oderbruchbahn bike route start — if you do the bike day on Friday and want to return to the same area on Monday on horseback, this works perfectly. Hack into the Märkische Schweiz countryside from here. Forest paths directly accessible.</p>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:14px;padding:18px 22px;box-shadow:0 2px 14px rgba(29,43,35,.07);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start">
+      <div style="background:var(--forest);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:900;font-family:'Fraunces',serif;font-size:16px;flex-shrink:0;margin-top:2px">5</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:17px;color:var(--forest);font-weight:700;margin-bottom:3px">Reiterhof Waldkante, Altlandsberg ⭐⭐</div>
+        <div style="font-size:12px;color:var(--text-l);margin-bottom:6px">📍 Waldkante 3, 15345 Altlandsberg · ~30km west · <strong>+49 173 4471226</strong></div>
+        <p style="font-size:13px;color:var(--text-l);line-height:1.55">4.4★, 67 reviews. Forest-edge stable — the name says it all. Direct access to riding trails through woodland. Well-cared-for horses, knowledgeable instructors noted by reviewers. Note: closed Sundays, so Monday is a good fit. Call ahead to confirm Bank Holiday availability.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="alert green">
+    <strong>When calling:</strong> Say you've been riding since childhood and want a trail ride or hack in the countryside — not a lesson and not a led walk. Ask specifically what the terrain is like for experienced adult riders. Most of these stables will have something suitable, but you need to ask directly.
+  </div>
+</div>
+</div>
+
+<!-- BIKE ROUTE DETAIL -->
+<div class="wrap">
+  <p class="lbl">Friday in Detail</p>
+  <h2>The Oderbruchbahn Route</h2>
+  <p class="intro">The Oderbruchbahn-Radweg is one of Brandenburg's best-rated cycle routes (4 stars ADFC). The section from Müncheberg to Steinhöfel and back is your 20–30km sweet spot — flat enough for the doggy cart, interesting enough to be worth doing again.</p>
+
+  <div class="map-box">
+    <div class="map-head">
+      <div>
+        <h4>🚲 Müncheberg → Steinhöfel → Müncheberg (~28km return)</h4>
+        <p>Signed: green railway logo on yellow background · Mostly asphalt · Doggy cart suitable</p>
+      </div>
+    </div>
+    <div id="bike-map" style="height:380px;width:100%"></div>
+  </div>
+
+  <div class="stop-legend">
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">P</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Park: Bahnhof Müncheberg</div><div style="font-size:12px;color:var(--text-l)">Free parking · start of route</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">1</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Großer Heinersdorfer See</div><div style="font-size:12px;color:var(--text-l)">~5km · lake visible through trees · swimming spot</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">2</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Landmarkt Steinhöfel</div><div style="font-size:12px;color:var(--text-l)">~10km · farm shop / snack stop on the route</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">3</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Schloss Steinhöfel Park</div><div style="font-size:12px;color:var(--text-l)">~12km · free entry · English landscape garden · picnic</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">4</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Milchtankstelle Buchholz</div><div style="font-size:12px;color:var(--text-l)">On return · fresh milk vending machine · cold + delicious</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#4a7a3a">☕</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Café am Lindenplatz, Müncheberg</div><div style="font-size:12px;color:var(--text-l)">500m off route into town · outdoor linden-tree seating · coffee + cake</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WALK ROUTE DETAIL -->
+<div class="wrap" style="padding-top:0">
+  <p class="lbl">Sunday in Detail</p>
+  <h2>The Rauener Berge Rundweg</h2>
+  <p class="intro">A certified "Traumtour" — 15.5km through deep mixed forest, past ice-age boulders and a lake. Start at Bahnhof Bad Saarow-Pieskow. The whole loop is well-signed with a blue "R" plus observation tower symbol. Bring the Orla lead for the first 500m from the car park into the forest.</p>
+
+  <div class="map-box">
+    <div class="map-head">
+      <div>
+        <h4>🌲 Rauener Berge Rundweg — 15.5km loop · ~4h · starts and ends at the Bahnhof</h4>
+        <p>Bahnhof Bad Saarow-Pieskow · 52.2708°N, 14.0710°E · Free parking on Bahnhofstraße</p>
+      </div>
+    </div>
+    <div id="walk-map" style="height:420px;width:100%"></div>
+  </div>
+
+  <div class="stop-legend">
+    <div class="stop-item">
+      <span class="stop-num" style="background:#9c4a28">P</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Start/End: Bahnhof Bad Saarow-Pieskow</div><div style="font-size:12px;color:var(--text-l)">52.2708°N, 14.0710°E · free parking on Bahnhofstraße · 30min from Falkenberg</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#9c4a28">1</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Scharmützelsee north shore</div><div style="font-size:12px;color:var(--text-l)">~1km · lake promenade · Orla can swim here on the way back too</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#9c4a28">2</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Markgrafensteine</div><div style="font-size:12px;color:var(--text-l)">52.3196°N, 14.0353°E · 1.45 billion-year-old glacial boulders · Germany's largest erratic · bench + picnic table</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#9c4a28">3</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Aussichtsturm Rauener Berge</div><div style="font-size:12px;color:var(--text-l)">45m · €1 per person · views over Scharmützelsee · Berlin TV tower on clear days</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#9c4a28">4</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Petersdorfer See</div><div style="font-size:12px;color:var(--text-l)">~11km · Gaststätte on the lake · dog-friendly terrace · coffee stop</div></div>
+    </div>
+    <div class="stop-item">
+      <span class="stop-num" style="background:#9c4a28">🐕</span>
+      <div><div style="font-weight:700;font-size:13px;color:var(--forest)">Hundestrand (dog beach)</div><div style="font-size:12px;color:var(--text-l)">Wasserwanderrastplatz · Orla can swim in the Scharmützelsee · on the return leg</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CAFÉ SECTION -->
+<div style="background:var(--sand);padding:8px 0">
+<div class="wrap">
+  <p class="lbl">Eat &amp; Drink</p>
+  <h2>The Two Café Stops</h2>
+  <p class="intro">One meal out, and two café stops on the bike route. That's the budget. Both are on Friday's route so you don't have to drive anywhere extra.</p>
+
+  <div class="area-head">☕ On the Bike Route — Friday</div>
+  <div class="cafe-grid">
+    <div class="cafe">
+      <h4>Café am Lindenplatz <span class="star">⭐</span></h4>
+      <div class="addr">Behind the Stadtpfarrkirche · Müncheberg · ~500m off route</div>
+      <p>Central Müncheberg café with outdoor seating under the shade of linden trees. Coffee, homemade cake, light lunches. The kind of place that's been there forever and won't fuss about a dog or a muddy doggy cart out front. Stop on the ride back when you've earned it.</p>
+      <span class="badge dog">🐕 Dog-friendly outdoors</span>
+      <span class="badge bike">🚲 On the route</span>
+    </div>
+    <div class="cafe">
+      <h4>Landmarkt Steinhöfel</h4>
+      <div class="addr">Steinhöfel · on the route at ~10km mark</div>
+      <p>A farm shop with hot drinks and simple snacks — not a café exactly, but a good early stop on the outward leg before Schloss Steinhöfel. Fresh local produce, warm drinks. The kind of stop that makes a bike ride feel like an actual outing rather than just exercise.</p>
+      <span class="badge dog">🐕 Outdoor</span>
+      <span class="badge bike">🚲 Right on route</span>
+    </div>
+  </div>
+
+  <div class="area-head">🥩 Saturday Evening — Fürstenwalde</div>
+  <div class="cafe-grid">
+    <div class="cafe">
+      <h4>Tip Steakhouse Fürstenwalde <span class="star">⭐⭐</span></h4>
+      <div class="addr">Fürstenwalde/Spree · ~30min drive · <strong>book ahead for Easter Sunday</strong></div>
+      <p>Your first visit — and the whole reason for the Sunday evening. The fajita sizzle plate with a river view over the Spree is the thing to order. Keto-friendly approach: load up on the protein, skip the tortillas, extra guacamole and sour cream on the side. American diner feel with a Spree terrace. Reviewers consistently say the staff are friendly and it's a genuinely fun atmosphere.</p>
+      <span class="badge">🌊 River view</span>
+      <span class="badge">🥩 Keto-friendly options</span>
+    </div>
+  </div>
+
+  <div class="alert amber">
+    <strong>On chai tea:</strong> This area is not known for it — but it's worth asking at the Tip Steakhouse (American-style menus sometimes have it), and the Café am Lindenplatz in Müncheberg may have it as a specialty tea. If you're making chai at home, bring a good blend — a proper masala chai made in the van before the Friday ride beats most café versions anyway.
+  </div>
+</div>
+</div>
+
+<!-- BUDGET -->
+<div class="wrap">
+  <p class="lbl">What It Costs</p>
+  <h2>Budget Breakdown</h2>
+  <p class="intro">Sleeping at home changes everything. This is an almost-free Easter.</p>
+  <table class="bt">
+    <thead><tr><th>Item</th><th>Detail</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>⛽ Fuel — Fri</td><td>Falkenberg → Müncheberg → home · ~50km round trip</td><td>~€7</td></tr>
+      <tr><td>⛽ Fuel — Sat</td><td>Falkenberg → Fürstenwalde → home · ~64km round trip</td><td>~€9</td></tr>
+      <tr><td>⛽ Fuel — Sun</td><td>Falkenberg → Bad Saarow → home · ~60km round trip</td><td>~€8</td></tr>
+      <tr><td>🗻 Aussichtsturm</td><td>Rauener Berge · €1 per person</td><td>€2</td></tr>
+      <tr><td>☕ Café stops</td><td>2 × coffee + cake (Fri bike route) · 2 people</td><td>~€18</td></tr>
+      <tr><td>🥩 Tip Steakhouse</td><td>Dinner for 2 · Fürstenwalde · Easter Sunday</td><td>~€45–55</td></tr>
+      <tr><td>🛒 Home food</td><td>Breakfasts + lunches + 3 home-cooked dinners</td><td>~€30–40</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2"><strong>TOTAL ESTIMATED</strong></td><td>~€120–140</td></tr>
+    </tfoot>
+  </table>
+  <p style="font-size:13px;color:var(--text-l);margin-top:12px;font-style:italic">💡 The Aussichtsturm is €1. The milk vending machine will cost you about €1.50. The boulders are 1.45 billion years old and entirely free. Not a bad weekend.</p>
+</div>
+
+<div class="footer">
+  <p>🏡 Easter 2026 · Falkenberg 15518, Brandenburg · <strong>Fri 3 – Mon 6 April</strong></p>
+  <p style="margin-top:8px">
+    <strong>Dinner:</strong> Tip Steakhouse, Fürstenwalde — book ahead for Easter Saturday &nbsp;|&nbsp;
+    <strong>Walk:</strong> Rauener Berge Rundweg · Start: Bahnhof Bad Saarow-Pieskow
+  </p>
+  <p style="margin-top:8px;font-size:11px;opacity:.35">Confirm Tip Steakhouse opening on Easter Sunday before going. Café opening times variable in April — check before Friday.</p>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+
+// Day trips overview map
+(function(){
+  var map = L.map('daytrip-map', {scrollWheelZoom:false}).setView([52.22, 14.12], 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(map);
+
+  function makeIcon(label, color, size) {
+    return L.divIcon({className:'',html:'<div style="background:'+color+';color:white;border-radius:50%;width:'+size+'px;height:'+size+'px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+(size<=28?11:13)+'px;font-family:sans-serif;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.35)">'+label+'</div>',iconSize:[size,size],iconAnchor:[size/2,size/2],popupAnchor:[0,-size/2]});
+  }
+
+  // Home
+  L.marker([52.2140, 14.0786], {icon: makeIcon('🏡', '#2d4a35', 36)}).addTo(map)
+    .bindPopup('<strong>Home — Falkenberg 15518</strong><br>Sleep here every night');
+
+  // Müncheberg
+  L.marker([52.5102, 14.1248], {icon: makeIcon('F', '#4a7a3a', 30)}).addTo(map)
+    .bindPopup('<strong>Müncheberg — Friday bike</strong><br>~25km from home<br>Start of Oderbruchbahn-Radweg');
+
+  // Steinhöfel
+  L.marker([52.4328, 14.0927], {icon: makeIcon('St', '#4a7a3a', 28)}).addTo(map)
+    .bindPopup('<strong>Schloss Steinhöfel</strong><br>14km from Müncheberg on the route<br>English park · free · picnic spot');
+
+  // Karlshorst — Saturday morning
+  L.marker([52.4870, 13.5280], {icon: makeIcon('Sa', '#c47a2a', 30)}).addTo(map)
+    .bindPopup('<strong>Berlin-Karlshorst — Saturday morning</strong><br>~55km from home · ~45 min<br>Antikflohmarkt Trabrennbahn · Easter special · free entry<br>Treskowallee 159, 10318 Berlin');
+
+  // Fürstenwalde — Saturday evening
+  L.marker([52.3614, 14.0607], {icon: makeIcon('S+', '#9c4a28', 30)}).addTo(map)
+    .bindPopup('<strong>Fürstenwalde — Saturday dinner</strong><br>~32km from home<br>Tip Steakhouse · river view · fajitas');
+
+  // Bad Saarow — Sunday
+  L.marker([52.2708, 14.0710], {icon: makeIcon('Su', '#2a5a7c', 30)}).addTo(map)
+    .bindPopup('<strong>Bad Saarow — Sunday walk</strong><br>~30km from home<br>Rauener Berge · Scharmützelsee · 15.5km certified trail');
+
+  // Drive lines
+  L.polyline([[52.2140,14.0786],[52.5102,14.1248]], {color:'#4a7a3a',weight:2,dashArray:'5,4',opacity:0.6}).addTo(map);
+  L.polyline([[52.2140,14.0786],[52.4870,13.5280]], {color:'#c47a2a',weight:2,dashArray:'5,4',opacity:0.6}).addTo(map);
+  L.polyline([[52.2140,14.0786],[52.3614,14.0607]], {color:'#9c4a28',weight:2,dashArray:'5,4',opacity:0.5}).addTo(map);
+  L.polyline([[52.2140,14.0786],[52.2708,14.0710]], {color:'#2a5a7c',weight:2,dashArray:'5,4',opacity:0.6}).addTo(map);
+  setTimeout(function(){ map.invalidateSize(); }, 100);
+})();
+
+// Bike route map
+(function(){
+  var map2 = L.map('bike-map', {scrollWheelZoom:false}).setView([52.47, 14.11], 12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(map2);
+
+  function numIcon(n, color) {
+    return L.divIcon({className:'',html:'<div style="background:'+color+';color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;font-family:sans-serif;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.35)">'+n+'</div>',iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-15]});
+  }
+
+  var stops = [
+    {n:'P', lat:52.5102, lng:14.1248, title:'Park: Bahnhof Müncheberg', info:'Free parking · start & finish<br>Pick up route signed with green railway logo'},
+    {n:'1', lat:52.4900, lng:14.1250, title:'Großer Heinersdorfer See', info:'~5km · lake through the trees<br>Good early-ride pause spot'},
+    {n:'2', lat:52.4580, lng:14.1050, title:'Landmarkt Steinhöfel', info:'~10km · farm shop on route<br>Hot drinks · local snacks'},
+    {n:'3', lat:52.4328, lng:14.0927, title:'Schloss Steinhöfel Park', info:'~12km · free entry · picnic · Orla free to roam<br>English landscape garden 1780s'},
+    {n:'4', lat:52.4720, lng:14.1090, title:'Milchtankstelle Buchholz', info:'On return ride · fresh milk vending machine<br>~€1.50 · cold · genuinely brilliant'},
+    {n:'☕', lat:52.5090, lng:14.1190, title:'Café am Lindenplatz', info:'500m off route into town<br>Outdoor linden-tree seating · coffee + cake · 🐕'},
+  ];
+
+  stops.forEach(function(s){
+    L.marker([s.lat,s.lng], {icon: numIcon(s.n,'#4a7a3a')}).addTo(map2)
+      .bindPopup('<strong>'+s.title+'</strong><br>'+s.info, {maxWidth:200});
+  });
+
+  // Route line
+  L.polyline([
+    [52.5102,14.1248],
+    [52.4900,14.1250],
+    [52.4580,14.1050],
+    [52.4328,14.0927],
+    [52.4580,14.1050],
+    [52.4720,14.1090],
+    [52.5090,14.1190],
+    [52.5102,14.1248]
+  ], {color:'#4a7a3a',weight:3,dashArray:'8,4',opacity:0.7}).addTo(map2);
+  setTimeout(function(){ map2.invalidateSize(); }, 200);
+})();
+
+// Walk route map — Rauener Berge Rundweg
+(function(){
+  var map3 = L.map('walk-map', {scrollWheelZoom:false}).setView([52.295, 14.052], 12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(map3);
+
+  function walkIcon(n, color) {
+    return L.divIcon({className:'',html:'<div style="background:'+color+';color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;font-family:sans-serif;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.35)">'+n+'</div>',iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-16]});
+  }
+  function gpsLabel(text) {
+    return L.divIcon({className:'',html:'<div style="background:rgba(156,74,40,0.9);color:white;border-radius:8px;padding:4px 9px;font-weight:700;font-size:10px;font-family:sans-serif;white-space:nowrap;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3)">'+text+'</div>',iconSize:[null,null],iconAnchor:[60,8],popupAnchor:[0,-12]});
+  }
+
+  // GPS start label
+  L.marker([52.2708, 14.0710], {icon: gpsLabel('📍 START: 52.2708°N 14.0710°E')}).addTo(map3);
+
+  var stops = [
+    {n:'P', lat:52.2708, lng:14.0710, title:'Bahnhof Bad Saarow-Pieskow · START/END', info:'<strong>GPS: 52.2708°N, 14.0710°E</strong><br>Free parking on Bahnhofstraße<br>30 min from Falkenberg via B246'},
+    {n:'1', lat:52.2780, lng:14.0600, title:'Scharmützelsee north shore', info:'Lakeside promenade · views over the water<br>Orla can swim on the return leg'},
+    {n:'2', lat:52.3196, lng:14.0353, title:'Markgrafensteine', info:'<strong>GPS: 52.3196°N, 14.0353°E</strong><br>Germany\'s largest glacial erratic boulders<br>1.45 billion years old · bench + picnic table'},
+    {n:'3', lat:52.3170, lng:14.0260, title:'Aussichtsturm Rauener Berge', info:'45m wooden observation tower · <strong>€1 entry</strong><br>Views over Scharmützelsee + Berlin TV tower'},
+    {n:'4', lat:52.2920, lng:14.0490, title:'Petersdorfer See', info:'Gaststätte on the lake · dog-friendly terrace<br>Coffee stop · Orla paddles'},
+    {n:'🐕', lat:52.2720, lng:14.0580, title:'Hundestrand (dog beach)', info:'Wasserwanderrastplatz<br>Orla can swim in the Scharmützelsee'},
+  ];
+
+  stops.forEach(function(s){
+    L.marker([s.lat,s.lng], {icon: walkIcon(s.n,'#9c4a28')}).addTo(map3)
+      .bindPopup('<strong>'+s.title+'</strong><br>'+s.info, {maxWidth:220});
+  });
+
+  // Approximate route loop
+  L.polyline([
+    [52.2708, 14.0710],
+    [52.2780, 14.0600],
+    [52.2950, 14.0480],
+    [52.3100, 14.0380],
+    [52.3196, 14.0353],
+    [52.3170, 14.0260],
+    [52.3080, 14.0300],
+    [52.2920, 14.0490],
+    [52.2800, 14.0550],
+    [52.2720, 14.0580],
+    [52.2708, 14.0710]
+  ], {color:'#9c4a28', weight:3, dashArray:'8,4', opacity:0.7}).addTo(map3);
+  setTimeout(function(){ map3.invalidateSize(); }, 300);
+})();
+
+}); // end window load
+</script>
+</body>
+</html>
