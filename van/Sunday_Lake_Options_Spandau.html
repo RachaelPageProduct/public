@@ -60,6 +60,13 @@ body { font-family:'Source Sans 3',sans-serif; background:var(--cream); color:va
   line-height:1.1; letter-spacing:-.3px }
 .photo-label .direction { font-size:11px; opacity:.8; margin-top:3px; letter-spacing:.3px }
 
+/* LAKE NUMBER */
+.lake-num { position:absolute; top:14px; left:16px; z-index:3;
+  width:28px; height:28px; border-radius:50%; background:rgba(0,0,0,.55);
+  border:2px solid rgba(255,255,255,.7); color:white; font-size:13px; font-weight:700;
+  font-family:sans-serif; display:flex; align-items:center; justify-content:center;
+  backdrop-filter:blur(4px) }
+
 /* ROUTE BADGE */
 .route-badge { display:inline-block; font-size:10px; font-weight:700; padding:3px 9px;
   border-radius:99px; margin-top:5px; letter-spacing:.3px }
@@ -104,7 +111,9 @@ body { font-family:'Source Sans 3',sans-serif; background:var(--cream); color:va
 .map-legend { display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:12px;
   font-size:12.5px; color:var(--text-l) }
 .map-legend span { display:flex; align-items:center; gap:6px }
-.dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; border:2px solid rgba(0,0,0,.15) }
+.dot { width:18px; height:18px; border-radius:50%; flex-shrink:0; border:2px solid rgba(0,0,0,.15) }
+.num-dot { color:white; font-size:10px; font-weight:700; font-family:sans-serif;
+  display:flex; align-items:center; justify-content:center; border-color:rgba(0,0,0,.2) }
 
 /* FOOTER */
 footer { background:var(--forest); color:rgba(255,255,255,.5); text-align:center;
@@ -130,10 +139,10 @@ footer strong { color:rgba(255,255,255,.8) }
   <h3>📍 All four lakes at a glance</h3>
   <div id="overview-map"></div>
   <div class="map-legend">
-    <span><span class="dot" style="background:#3a6e3a"></span> Groß Glienicker See — free parking, 10 min south</span>
-    <span><span class="dot" style="background:#1a5a8c"></span> Tegeler See — free parking, 20 min north</span>
-    <span><span class="dot" style="background:#0a7a5a"></span> Liepnitzsee — 35 min north, paid camping</span>
-    <span><span class="dot" style="background:#8c3a1a"></span> Straussee — free/small fee, on route home</span>
+    <span><span class="dot num-dot" style="background:#3a6e3a">1</span> Groß Glienicker See — free parking, 10 min south</span>
+    <span><span class="dot num-dot" style="background:#1a5a8c">2</span> Tegeler See — free parking, 20 min north</span>
+    <span><span class="dot num-dot" style="background:#0a7a5a">3</span> Liepnitzsee — 35 min north, paid camping</span>
+    <span><span class="dot num-dot" style="background:#8c3a1a">4</span> Straussee — free/small fee, on route home</span>
     <span><span class="dot" style="background:#555"></span> You (Spandau wake-up)</span>
   </div>
 </div>
@@ -144,6 +153,7 @@ footer strong { color:rgba(255,255,255,.8) }
   <div class="card">
     <div class="photo-wrap">
       <div class="gradient" style="background:linear-gradient(160deg,#1a3a1a 0%,#2a6a3a 40%,#1a6a8c 100%)"></div>
+      <div class="lake-num">1</div>
       <img id="img-gross" alt="Groß Glienicker See" />
       <div class="photo-label">
         <h2>Groß Glienicker See</h2>
@@ -170,6 +180,7 @@ footer strong { color:rgba(255,255,255,.8) }
   <div class="card">
     <div class="photo-wrap">
       <div class="gradient" style="background:linear-gradient(160deg,#0d3a5a 0%,#1a6a9a 40%,#2a9a6a 100%)"></div>
+      <div class="lake-num">2</div>
       <img id="img-tegel" alt="Tegeler See" />
       <div class="photo-label">
         <h2>Tegeler See</h2>
@@ -196,6 +207,7 @@ footer strong { color:rgba(255,255,255,.8) }
   <div class="card">
     <div class="photo-wrap">
       <div class="gradient" style="background:linear-gradient(160deg,#0a3a2a 0%,#0a7a5a 40%,#1aaa8a 100%)"></div>
+      <div class="lake-num">3</div>
       <img id="img-liepnitz" alt="Liepnitzsee" />
       <div class="photo-label">
         <h2>Liepnitzsee</h2>
@@ -222,6 +234,7 @@ footer strong { color:rgba(255,255,255,.8) }
   <div class="card">
     <div class="photo-wrap">
       <div class="gradient" style="background:linear-gradient(160deg,#0d2a4a 0%,#1a4a8c 40%,#2a6aaa 100%)"></div>
+      <div class="lake-num">4</div>
       <img id="img-straussee" alt="Straussee" />
       <div class="photo-label">
         <h2>Straussee</h2>
@@ -263,23 +276,26 @@ footer strong { color:rgba(255,255,255,.8) }
     maxZoom: 18
   }).addTo(map);
 
-  function mkIcon(color) {
+  function mkIcon(color, num) {
+    const inner = num
+      ? `<span style="color:white;font-size:10px;font-weight:700;font-family:sans-serif;line-height:22px">${num}</span>`
+      : '';
     return L.divIcon({
-      html: `<div style="width:16px;height:16px;background:${color};border:3px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>`,
-      iconSize:[16,16], iconAnchor:[8,8], popupAnchor:[0,-10], className:''
+      html: `<div style="width:22px;height:22px;background:${color};border:2.5px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center">${inner}</div>`,
+      iconSize:[22,22], iconAnchor:[11,11], popupAnchor:[0,-12], className:''
     });
   }
 
   const spots = [
-    { lat:52.5353, lng:13.2001, color:'#555',    label:'<b>You — Spandau wake-up</b>', note:'Starting point' },
-    { lat:52.4695, lng:13.1290, color:'#3a6e3a',  label:'<b>Groß Glienicker See</b>', note:'Free parking · Verlängerte Uferpromenade · 10 min south' },
-    { lat:52.5875, lng:13.2783, color:'#1a5a8c',  label:'<b>Tegeler See</b>', note:'Free parking · Greenwichpromenade · 20 min north' },
-    { lat:52.7183, lng:13.5003, color:'#0a7a5a',  label:'<b>Liepnitzsee</b>', note:'Campingplatz entrance · €5–10 day visit · 35 min north' },
-    { lat:52.5757, lng:13.8958, color:'#8c3a1a',  label:'<b>Straussee</b>', note:'Strandbad car park · Free/small fee · On route home' },
+    { lat:52.5353, lng:13.2001, color:'#555',   num:null, label:'<b>You — Spandau wake-up</b>', note:'Starting point' },
+    { lat:52.4695, lng:13.1290, color:'#3a6e3a', num:'1', label:'<b>① Groß Glienicker See</b>', note:'Free parking · Verlängerte Uferpromenade · 10 min south' },
+    { lat:52.5875, lng:13.2783, color:'#1a5a8c', num:'2', label:'<b>② Tegeler See</b>', note:'Free parking · Greenwichpromenade · 20 min north' },
+    { lat:52.7183, lng:13.5003, color:'#0a7a5a', num:'3', label:'<b>③ Liepnitzsee</b>', note:'Campingplatz entrance · €5–10 day visit · 35 min north' },
+    { lat:52.5757, lng:13.8958, color:'#8c3a1a', num:'4', label:'<b>④ Straussee</b>', note:'Strandbad car park · Free/small fee · On route home' },
   ];
 
   spots.forEach(s => {
-    L.marker([s.lat, s.lng], { icon: mkIcon(s.color) })
+    L.marker([s.lat, s.lng], { icon: mkIcon(s.color, s.num) })
       .addTo(map)
       .bindPopup(`${s.label}<br><span style="font-size:12px;color:#555">${s.note}</span>`, { maxWidth: 220 });
   });
