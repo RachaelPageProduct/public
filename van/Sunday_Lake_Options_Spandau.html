@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunday Lake Options · From Spandau · 31 May 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root {
   --forest: #2d4a35;
@@ -93,6 +95,17 @@ body { font-family:'Source Sans 3',sans-serif; background:var(--cream); color:va
   border:1px solid #e8d590; border-radius:8px; padding:9px 12px; margin-top:2px; align-items:flex-start }
 .van-warn .ic { flex-shrink:0 }
 
+/* MAP SECTION */
+.map-section { max-width:1100px; margin:0 auto; padding:0 24px 8px }
+.map-section h3 { font-family:'Fraunces',serif; font-size:20px; font-weight:600;
+  color:var(--forest); margin-bottom:12px; padding-top:32px }
+#overview-map { width:100%; height:420px; border-radius:16px;
+  box-shadow:0 3px 20px rgba(0,0,0,.13); overflow:hidden }
+.map-legend { display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:12px;
+  font-size:12.5px; color:var(--text-l) }
+.map-legend span { display:flex; align-items:center; gap:6px }
+.dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; border:2px solid rgba(0,0,0,.15) }
+
 /* FOOTER */
 footer { background:var(--forest); color:rgba(255,255,255,.5); text-align:center;
   padding:28px 24px; font-size:12.5px; margin-top:8px }
@@ -111,6 +124,18 @@ footer strong { color:rgba(255,255,255,.8) }
 
 <div class="van-banner">
   🚐 <strong>Van note applied throughout:</strong> All options below are on tarmac roads only — no gravel tracks, no forest paths, no tight turns. Flagged where any uncertainty exists.
+</div>
+
+<div class="map-section">
+  <h3>📍 All four lakes at a glance</h3>
+  <div id="overview-map"></div>
+  <div class="map-legend">
+    <span><span class="dot" style="background:#3a6e3a"></span> Groß Glienicker See — free parking, 10 min south</span>
+    <span><span class="dot" style="background:#1a5a8c"></span> Tegeler See — free parking, 20 min north</span>
+    <span><span class="dot" style="background:#0a7a5a"></span> Liepnitzsee — 35 min north, paid camping</span>
+    <span><span class="dot" style="background:#8c3a1a"></span> Straussee — free/small fee, on route home</span>
+    <span><span class="dot" style="background:#555"></span> You (Spandau wake-up)</span>
+  </div>
 </div>
 
 <div class="grid">
@@ -162,7 +187,7 @@ footer strong { color:rgba(255,255,255,.8) }
         <div class="p-row"><span class="ic">🛣️</span><span>Access via <strong>Greenwichpromenade / Karolinenstraße</strong> — standard tarmac roads through Tegel, no issues for a large van.</span></div>
         <div class="p-row"><span class="ic">🐕</span><span>Dogs welcome along the shore outside the formal Strandbad swimming area.</span></div>
         <div class="p-row"><span class="ic">💶</span><span><span class="cost free">Free Parking</span> &nbsp;<span class="cost check">Strandbad entry ~€4pp if using the beach</span></span></div>
-        <div class="p-row"><span class="ic">🏠</span><span>If you ever want to <strong>overnight</strong> here: Marina Lanke Wohnmobilstellplatz (Scharfe Lanke 109, GPS 52.5028°N 13.1872°E) — €35/night for up to 7.5m. Dogs welcome. Open May–October.</span></div>
+        <div class="p-row"><span class="ic">🏠</span><span>Nearest formal overnight: Marina Lanke (52.5028°N 13.1872°E) — but at <strong>€35/night</strong> that's well over budget. For a free overnight at Tegel, check Park4Night for informal spots along Greenwichpromenade or the Tegelort edge — plenty of vans use the area.</span></div>
       </div>
     </div>
   </div>
@@ -187,7 +212,7 @@ footer strong { color:rgba(255,255,255,.8) }
         <div class="p-row"><span class="ic">📍</span><span><strong>Campingplatz Am Liepnitzsee</strong>, Am Liepnitzsee 8, 16348 Wandlitz OT Lanke. Motorhome-grade pitches with electricity. 55+ spaces.<br><span class="gps">52.7183°N, 13.5003°E</span></span></div>
         <div class="p-row"><span class="ic">🛣️</span><span>Approach via <strong>A10/A11 motorway then B273</strong> — all tarmac, designed for motorhomes. The campsite road is paved throughout. No forest tracks needed.</span></div>
         <div class="p-row"><span class="ic">🐕</span><span>Dogs welcome throughout the campsite and on the lake shore.</span></div>
-        <div class="p-row"><span class="ic">💶</span><span><span class="cost paid">Day visit / parking: ask on arrival (likely €5–10)</span> &nbsp;<span class="cost paid">Overnight from €27.50 + electricity</span></span></div>
+        <div class="p-row"><span class="ic">💶</span><span><span class="cost paid">Day visit / parking: ask on arrival (likely €5–10)</span> &nbsp;<span class="cost paid">Overnight from €27.50 — over budget for a sleep stop</span></span></div>
         <div class="p-row"><span class="ic">🗺️</span><span>From Liepnitzsee home to Falkenberg: ~60 min southeast via A10 and B1. Total trip extension vs. going straight home: about 45 min extra.</span></div>
       </div>
     </div>
@@ -228,6 +253,46 @@ footer strong { color:rgba(255,255,255,.8) }
 </footer>
 
 <script>
+// ── OVERVIEW MAP ──────────────────────────────────────────────
+(function initMap() {
+  const map = L.map('overview-map', { zoomControl: true, scrollWheelZoom: false })
+    .setView([52.59, 13.42], 10);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  function mkIcon(color) {
+    return L.divIcon({
+      html: `<div style="width:16px;height:16px;background:${color};border:3px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>`,
+      iconSize:[16,16], iconAnchor:[8,8], popupAnchor:[0,-10], className:''
+    });
+  }
+
+  const spots = [
+    { lat:52.5353, lng:13.2001, color:'#555',    label:'<b>You — Spandau wake-up</b>', note:'Starting point' },
+    { lat:52.4695, lng:13.1290, color:'#3a6e3a',  label:'<b>Groß Glienicker See</b>', note:'Free parking · Verlängerte Uferpromenade · 10 min south' },
+    { lat:52.5875, lng:13.2783, color:'#1a5a8c',  label:'<b>Tegeler See</b>', note:'Free parking · Greenwichpromenade · 20 min north' },
+    { lat:52.7183, lng:13.5003, color:'#0a7a5a',  label:'<b>Liepnitzsee</b>', note:'Campingplatz entrance · €5–10 day visit · 35 min north' },
+    { lat:52.5757, lng:13.8958, color:'#8c3a1a',  label:'<b>Straussee</b>', note:'Strandbad car park · Free/small fee · On route home' },
+  ];
+
+  spots.forEach(s => {
+    L.marker([s.lat, s.lng], { icon: mkIcon(s.color) })
+      .addTo(map)
+      .bindPopup(`${s.label}<br><span style="font-size:12px;color:#555">${s.note}</span>`, { maxWidth: 220 });
+  });
+
+  // Dashed route line: Spandau → Groß Glienicker → Straussee (the two on/near route)
+  L.polyline([[52.5353,13.2001],[52.4695,13.1290]], { color:'#3a6e3a', weight:2, dashArray:'6 5', opacity:.6 }).addTo(map);
+  L.polyline([[52.5353,13.2001],[52.5757,13.8958]], { color:'#8c3a1a', weight:2, dashArray:'6 5', opacity:.6 }).addTo(map);
+  // Detour lines
+  L.polyline([[52.5353,13.2001],[52.5875,13.2783]], { color:'#1a5a8c', weight:1.5, dashArray:'4 6', opacity:.45 }).addTo(map);
+  L.polyline([[52.5353,13.2001],[52.7183,13.5003]], { color:'#0a7a5a', weight:1.5, dashArray:'4 6', opacity:.45 }).addTo(map);
+})();
+
+// ── WIKIPEDIA PHOTOS ──────────────────────────────────────────
 // Load Wikipedia thumbnail photos for each lake
 async function loadPhoto(wikiTitle, imgId) {
   try {
