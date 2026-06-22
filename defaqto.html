@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rachael Page — Design Systems · Built for Defaqto</title>
+  <meta name="description" content="30 years product design. AI-native workflow. Fintech experience. Here's why Rachael Page is the right fit to build Defaqto's multi-brand design system.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════
+       DESIGN TOKENS — the page itself runs on these
+       ═══════════════════════════════════════════════ */
+    :root {
+      /* Colour */
+      --navy:          #0d1b2a;
+      --navy-mid:      #1a2d42;
+      --navy-light:    #253d56;
+      --teal:          #048ba2;
+      --teal-bright:   #06b6d4;
+      --teal-bg:       #e0f7fa;
+      --teal-border:   #b2ebf2;
+      --coral:         #ee7c7b;
+      --coral-bg:      #fef2f2;
+      --gold:          #f59e0b;
+      --gold-bg:       #fffbeb;
+      --white:         #ffffff;
+      --off-white:     #f8fafc;
+      --surface:       #f1f5f9;
+      --border:        #e2e8f0;
+      --border-mid:    #cbd5e1;
+      --text:          #0d1b2a;
+      --text-mid:      #334155;
+      --text-light:    #64748b;
+      --text-xlight:   #94a3b8;
+
+      /* Typography */
+      --font:    'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+      /* Scale */
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+      --text-5xl:  3rem;
+      --text-6xl:  3.75rem;
+
+      /* Spacing */
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+
+      /* Shape */
+      --radius-sm: 4px;
+      --radius:    10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+
+      /* Shadow */
+      --shadow-sm: 0 1px 3px rgba(13,27,42,0.08), 0 1px 2px rgba(13,27,42,0.06);
+      --shadow:    0 4px 16px rgba(13,27,42,0.10), 0 2px 4px rgba(13,27,42,0.06);
+      --shadow-lg: 0 20px 48px rgba(13,27,42,0.14), 0 8px 16px rgba(13,27,42,0.08);
+
+      --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      --max-w: 1160px;
+    }
+
+    /* ═══ RESET ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,27,42,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      height: 60px; display: flex; align-items: center;
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-8);
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: var(--text-sm); font-weight: 700; color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .nav-brand span { color: var(--teal-bright); }
+    .nav-links { display: flex; gap: var(--space-8); }
+    .nav-links a {
+      font-size: var(--text-sm); font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--teal); color: var(--white) !important;
+      padding: 7px 18px; border-radius: var(--radius-sm); font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--teal-bright) !important; color: var(--white) !important; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 60% -10%, rgba(4,139,162,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 90% 90%, rgba(238,124,123,0.08) 0%, transparent 60%);
+      padding: 140px var(--space-8) 96px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 80%);
+    }
+    .hero-inner {
+      max-width: var(--max-w); margin: 0 auto; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      background: rgba(4,139,162,0.15); border: 1px solid rgba(4,139,162,0.3);
+      color: var(--teal-bright); border-radius: 100px;
+      padding: 6px 16px; font-size: var(--text-xs); font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-8);
+    }
+    .hero-badge::before { content: '◆'; font-size: 7px; }
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.1; letter-spacing: -0.03em;
+      max-width: 820px; margin-bottom: var(--space-6);
+    }
+    .hero h1 em { font-style: normal; color: var(--teal-bright); }
+    .hero h1 .coral { color: var(--coral); }
+    .hero-sub {
+      font-size: var(--text-lg); color: rgba(255,255,255,0.60);
+      max-width: 620px; line-height: 1.7; margin-bottom: var(--space-12);
+    }
+    .hero-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 14px 28px; border-radius: var(--radius);
+      font-family: var(--font); font-size: var(--text-base); font-weight: 600;
+      cursor: pointer; border: none; transition: all var(--transition);
+    }
+    .btn-primary { background: var(--teal); color: var(--white); }
+    .btn-primary:hover { background: var(--teal-bright); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(4,139,162,0.4); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.10); color: var(--white); }
+    .hero-stats {
+      display: flex; gap: var(--space-12); margin-top: var(--space-16);
+      padding-top: var(--space-12); border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+    .hero-stat .n { font-size: var(--text-3xl); font-weight: 800; color: var(--white); letter-spacing: -0.03em; }
+    .hero-stat .n span { color: var(--teal-bright); }
+    .hero-stat .l { font-size: var(--text-sm); color: rgba(255,255,255,0.40); margin-top: 2px; }
+    .availability-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25);
+      color: #4ade80; border-radius: 100px; padding: 6px 14px;
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.04em;
+      margin-left: auto; align-self: flex-end;
+    }
+    .availability-pill::before {
+      content: ''; width: 7px; height: 7px;
+      background: #4ade80; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ═══ SECTION WRAPPERS ═══ */
+    section { padding: var(--space-24) var(--space-8); }
+    section:nth-child(even) { background: var(--off-white); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label {
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: var(--space-4);
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800;
+      letter-spacing: -0.03em; color: var(--text); line-height: 1.15;
+      margin-bottom: var(--space-4);
+    }
+    .section-sub {
+      font-size: var(--text-lg); color: var(--text-light);
+      max-width: 600px; line-height: 1.7; margin-bottom: var(--space-12);
+    }
+
+    /* ═══ BRIEF MAPPING ═══ */
+    .brief-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);
+    }
+    .brief-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: var(--space-8);
+      transition: all var(--transition);
+    }
+    .brief-card:hover { box-shadow: var(--shadow); border-color: var(--teal-border); transform: translateY(-2px); }
+    .brief-card .need {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .brief-card .need-icon {
+      width: 32px; height: 32px; border-radius: var(--radius-sm);
+      background: var(--teal-bg); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0; margin-top: 2px;
+    }
+    .brief-card .need-title {
+      font-size: var(--text-sm); font-weight: 700; color: var(--text); line-height: 1.4;
+    }
+    .brief-card .need-from {
+      font-size: var(--text-xs); color: var(--text-xlight); font-style: italic;
+      margin-top: 2px;
+    }
+    .brief-card .divider {
+      height: 1px; background: var(--border); margin: var(--space-4) 0;
+    }
+    .brief-card .proof-label {
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: var(--space-3);
+    }
+    .brief-card .proof {
+      font-size: var(--text-sm); color: var(--text-mid); line-height: 1.65;
+    }
+    .brief-card .proof a {
+      color: var(--teal); font-weight: 600; border-bottom: 1px solid var(--teal-border);
+    }
+    .brief-card .proof a:hover { color: var(--teal-bright); border-color: var(--teal); }
+
+    /* ═══ DESIGN SYSTEMS SHOWCASE ═══ */
+    .systems-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6);
+    }
+    .system-card {
+      border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--border); background: var(--white);
+      transition: all var(--transition);
+    }
+    .system-card:hover { box-shadow: var(--shadow-lg); border-color: var(--teal-border); transform: translateY(-3px); }
+    .system-card-preview {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .system-card-preview.dual-brand {
+      background: linear-gradient(135deg, #233030 0%, #048ba2 100%);
+    }
+    .system-card-preview.ticklists {
+      background: linear-gradient(135deg, #1e3a2e 0%, #2d6a4f 100%);
+    }
+    .system-card-preview.terra {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    .preview-tokens {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+      padding: 24px; width: 100%;
+    }
+    .preview-token {
+      height: 32px; border-radius: 6px; opacity: 0.85;
+    }
+    .system-card-body { padding: var(--space-6); }
+    .system-card-label {
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-xlight); margin-bottom: var(--space-2);
+    }
+    .system-card-title { font-size: var(--text-xl); font-weight: 700; color: var(--text); margin-bottom: var(--space-3); }
+    .system-card-desc { font-size: var(--text-sm); color: var(--text-light); line-height: 1.6; margin-bottom: var(--space-4); }
+    .system-card-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); font-weight: 600; color: var(--teal);
+    }
+    .system-card-link:hover { color: var(--teal-bright); }
+    .system-card-link::after { content: '→'; }
+
+    /* ═══ TOKEN STRIP ═══ */
+    .token-strip {
+      background: var(--navy); padding: var(--space-12) var(--space-8);
+    }
+    .token-strip .section-label { color: rgba(255,255,255,0.4); }
+    .token-strip .section-title { color: var(--white); margin-bottom: var(--space-2); }
+    .token-strip .section-sub { color: rgba(255,255,255,0.5); margin-bottom: var(--space-8); }
+    .token-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+    .token-item {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); padding: var(--space-4); display: flex; align-items: center; gap: var(--space-3);
+    }
+    .token-swatch { width: 36px; height: 36px; border-radius: var(--radius-sm); flex-shrink: 0; }
+    .token-name { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.45); }
+    .token-value { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 500; margin-top: 2px; }
+    .token-strip-note {
+      margin-top: var(--space-6); padding: var(--space-4) var(--space-6);
+      background: rgba(4,139,162,0.12); border: 1px solid rgba(4,139,162,0.25);
+      border-radius: var(--radius); color: rgba(255,255,255,0.6); font-size: var(--text-sm); line-height: 1.6;
+    }
+    .token-strip-note strong { color: var(--teal-bright); }
+
+    /* ═══ PROJECTS ═══ */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6);
+    }
+    .project-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: var(--space-8);
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--teal); transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card.fintech::before { background: var(--coral); }
+    .project-card.enterprise::before { background: var(--gold); }
+    .project-tag {
+      display: inline-block; background: var(--teal-bg); color: var(--teal);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+      margin-bottom: var(--space-4);
+    }
+    .project-tag.fintech { background: var(--coral-bg); color: var(--coral); }
+    .project-tag.enterprise { background: var(--gold-bg); color: var(--gold); }
+    .project-card h3 { font-size: var(--text-2xl); font-weight: 700; color: var(--text); margin-bottom: var(--space-3); letter-spacing: -0.02em; }
+    .project-card .duration { font-size: var(--text-sm); color: var(--text-xlight); margin-bottom: var(--space-4); }
+    .project-card p { font-size: var(--text-sm); color: var(--text-mid); line-height: 1.7; margin-bottom: var(--space-6); }
+    .project-bullets { list-style: none; margin-bottom: var(--space-6); }
+    .project-bullets li {
+      font-size: var(--text-sm); color: var(--text-mid); padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--surface); display: flex; align-items: flex-start; gap: var(--space-3);
+      line-height: 1.5;
+    }
+    .project-bullets li::before { content: '›'; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .project-card .fintech-bullet::before { color: var(--coral); }
+    .project-card .enterprise-bullet::before { color: var(--gold); }
+    .project-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); font-weight: 600; color: var(--teal);
+      border: 1px solid var(--teal-border); border-radius: var(--radius-sm);
+      padding: 8px 16px; transition: all var(--transition);
+    }
+    .project-link:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .project-link.fintech:hover { background: var(--coral); border-color: var(--coral); }
+
+    /* ═══ APPROACH ═══ */
+    .approach-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); margin-bottom: var(--space-12); }
+    .approach-step {
+      position: relative;
+    }
+    .approach-step::after {
+      content: '→'; position: absolute; right: -18px; top: 20px;
+      color: var(--teal-border); font-size: var(--text-xl); font-weight: 300;
+    }
+    .approach-step:last-child::after { display: none; }
+    .step-n {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--navy); color: var(--teal-bright);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 500;
+      margin-bottom: var(--space-4);
+    }
+    .approach-step h3 { font-size: var(--text-lg); font-weight: 700; color: var(--text); margin-bottom: var(--space-3); }
+    .approach-step p { font-size: var(--text-sm); color: var(--text-light); line-height: 1.65; }
+    .approach-callout {
+      background: var(--navy); border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-12);
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-8);
+    }
+    .approach-callout p { font-size: var(--text-lg); color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .approach-callout p strong { color: var(--teal-bright); }
+    .approach-callout .rebrand-note {
+      background: rgba(4,139,162,0.12); border: 1px solid rgba(4,139,162,0.25);
+      border-radius: var(--radius); padding: var(--space-6); min-width: 280px;
+    }
+    .approach-callout .rebrand-note p { font-size: var(--text-sm); color: rgba(255,255,255,0.6); margin-bottom: var(--space-3); }
+    .approach-callout .rebrand-note ul { list-style: none; }
+    .approach-callout .rebrand-note li {
+      font-size: var(--text-sm); color: var(--teal-bright); padding: var(--space-1) 0;
+      display: flex; gap: var(--space-2);
+    }
+    .approach-callout .rebrand-note li::before { content: '✓'; }
+
+    /* ═══ AI-READY SPEC ═══ */
+    .spec-container {
+      background: var(--navy); border-radius: var(--radius-xl);
+      overflow: hidden; box-shadow: var(--shadow-lg);
+    }
+    .spec-header {
+      background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: var(--space-4) var(--space-6); display: flex; align-items: center; gap: var(--space-4);
+    }
+    .spec-dots { display: flex; gap: 6px; }
+    .spec-dots span { width: 12px; height: 12px; border-radius: 50%; }
+    .spec-dots span:nth-child(1) { background: #ff5f57; }
+    .spec-dots span:nth-child(2) { background: #febc2e; }
+    .spec-dots span:nth-child(3) { background: #28c840; }
+    .spec-filename { font-family: var(--font-mono); font-size: var(--text-sm); color: rgba(255,255,255,0.4); }
+    .spec-body { padding: var(--space-8); font-family: var(--font-mono); font-size: 13px; line-height: 1.8; overflow-x: auto; }
+    .spec-body pre { white-space: pre-wrap; word-break: break-word; }
+    .c-comment { color: rgba(255,255,255,0.25); }
+    .c-key     { color: #7dd3fc; }
+    .c-val     { color: #86efac; }
+    .c-str     { color: #fde68a; }
+    .c-enum    { color: #c4b5fd; }
+    .c-bool    { color: #fb923c; }
+    .c-section { color: var(--teal-bright); font-weight: 500; }
+    .spec-note {
+      margin-top: var(--space-6); padding: var(--space-4) var(--space-6);
+      background: rgba(4,139,162,0.12); border: 1px solid rgba(4,139,162,0.25);
+      border-radius: var(--radius); color: rgba(255,255,255,0.6); font-size: var(--text-sm); line-height: 1.7;
+    }
+
+    /* ═══ VIDEO PLACEHOLDER ═══ */
+    .video-slot {
+      background: var(--surface); border: 2px dashed var(--border);
+      border-radius: var(--radius-xl); padding: var(--space-16);
+      text-align: center; margin-top: var(--space-8);
+    }
+    .video-slot .icon { font-size: 40px; margin-bottom: var(--space-4); opacity: 0.4; }
+    .video-slot p { font-size: var(--text-sm); color: var(--text-xlight); }
+    .video-slot.has-video { background: transparent; border: none; padding: 0; }
+    .video-slot.has-video iframe { width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-lg); border: 0; }
+
+    /* ═══ WORKING TOGETHER ═══ */
+    .together-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: start; }
+    .together-cards { display: flex; flex-direction: column; gap: var(--space-4); }
+    .together-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: var(--space-6);
+      display: flex; gap: var(--space-4); align-items: flex-start;
+      transition: all var(--transition);
+    }
+    .together-card:hover { border-color: var(--teal-border); box-shadow: var(--shadow-sm); }
+    .together-card .card-icon {
+      width: 44px; height: 44px; border-radius: var(--radius); flex-shrink: 0;
+      background: var(--teal-bg); display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .together-card h4 { font-size: var(--text-base); font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .together-card p { font-size: var(--text-sm); color: var(--text-light); line-height: 1.6; }
+    .together-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius-xl); padding: var(--space-12);
+      display: flex; flex-direction: column; gap: var(--space-6);
+      justify-content: center;
+    }
+    .together-cta h3 { font-size: var(--text-3xl); font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1.2; }
+    .together-cta p { font-size: var(--text-base); color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .together-cta .email-chip {
+      display: inline-flex; align-items: center; gap: var(--space-3);
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius); padding: var(--space-3) var(--space-4);
+      color: var(--teal-bright); font-size: var(--text-sm); font-weight: 600;
+      transition: all var(--transition);
+    }
+    .together-cta .email-chip:hover { background: rgba(4,139,162,0.2); border-color: rgba(4,139,162,0.4); }
+    .together-cta .btn-primary { width: fit-content; }
+    .vat-note {
+      background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25);
+      border-radius: var(--radius); padding: var(--space-4) var(--space-6);
+      font-size: var(--text-sm); color: rgba(255,255,255,0.6); line-height: 1.6;
+    }
+    .vat-note strong { color: var(--gold); }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-12) var(--space-8);
+      text-align: center;
+    }
+    footer .footer-name { font-size: var(--text-lg); font-weight: 700; color: var(--white); margin-bottom: var(--space-2); }
+    footer p { font-size: var(--text-sm); color: rgba(255,255,255,0.3); }
+    footer a { color: rgba(255,255,255,0.5); }
+    footer a:hover { color: var(--teal-bright); }
+    .footer-links { display: flex; gap: var(--space-8); justify-content: center; margin: var(--space-6) 0; flex-wrap: wrap; }
+    .footer-links a { font-size: var(--text-sm); color: rgba(255,255,255,0.4); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--teal-bright); }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .brief-grid, .projects-grid, .together-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: 1fr; }
+      .approach-steps { grid-template-columns: 1fr 1fr; }
+      .approach-step::after { display: none; }
+      .approach-callout { grid-template-columns: 1fr; }
+      .approach-callout .rebrand-note { min-width: auto; }
+      .nav-links { display: none; }
+      .hero-stats { gap: var(--space-8); }
+      .availability-pill { margin-left: 0; align-self: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .approach-steps { grid-template-columns: 1fr; }
+      section { padding: var(--space-16) var(--space-6); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Rachael Page <span>· Design Systems</span></div>
+    <div class="nav-links">
+      <a href="#brief">The brief</a>
+      <a href="#systems">Systems work</a>
+      <a href="#projects">Projects</a>
+      <a href="#approach">Approach</a>
+      <a href="#ai-spec">AI-ready spec</a>
+      <a href="#together" class="nav-cta">Work together</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Design Systems · Fintech · AI-Native Workflow</div>
+    <h1>The designer who thinks in <em>systems</em> and ships in <span class="coral">code.</span></h1>
+    <p class="hero-sub">
+      30 years of product design. A live app shipped solo in 2026. An AI-native workflow that produces specifications a machine can build from. Here's why I'm the right fit for Defaqto.
+    </p>
+    <div class="hero-actions">
+      <a href="#brief" class="btn btn-primary">See why I'm the right fit</a>
+      <a href="https://rachaelpage.com" target="_blank" class="btn btn-ghost">Full portfolio →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="n">30<span>yr</span></div><div class="l">Product design</div></div>
+      <div class="hero-stat"><div class="n">B2B<span> &amp;</span>B2C</div><div class="l">SaaS · Fintech · Marketing sites</div></div>
+      <div class="hero-stat"><div class="n">Live<span> now</span></div><div class="l">App shipped solo 2026</div></div>
+      <div class="hero-stat"><div class="n">AI<span>-native</span></div><div class="l">Specs machines can build from</div></div>
+      <div class="availability-pill">Available immediately</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BRIEF REFLECTION ═══ -->
+<section id="brief">
+  <div class="section-inner">
+    <div class="section-label">I read your brief</div>
+    <h2 class="section-title">What Defaqto needs. What I bring.</h2>
+    <p class="section-sub">
+      You've named five requirements explicitly. Here's my specific evidence against each one — not general claims, actual work.
+    </p>
+    <div class="brief-grid">
+
+      <div class="brief-card">
+        <div class="need">
+          <div class="need-icon">🏗️</div>
+          <div>
+            <div class="need-title">Multi-brand design system from scratch — tokens to page templates</div>
+            <div class="need-from">From your brief: "A core Defaqto design language... one family"</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="proof-label">My evidence</div>
+        <p class="proof">
+          I built a <strong>dual-brand design system</strong> for Artfuly.com and rachaelpage.com from a single shared token base — one colour system, one type scale, brand-specific layers on top. It's live and in production.
+          <br><br>
+          <a href="https://rachaelpageproduct.github.io/public/artfuly-brand-guidelines.html#shared" target="_blank">View the live dual-brand guidelines →</a>
+          <br><br>
+          Tokens → components → page templates: the same structure your brief describes. And I built it in a single afternoon using Claude to demonstrate the approach.
+        </p>
+      </div>
+
+      <div class="brief-card">
+        <div class="need">
+          <div class="need-icon">⚛️</div>
+          <div>
+            <div class="need-title">Atomic design methodology — explicitly required</div>
+            <div class="need-from">From your brief: "Our preference would be to structure this using the Atomic Design model"</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="proof-label">My evidence</div>
+        <p class="proof">
+          I built the Terra Listens design system using atomic design methodology — atoms, molecules, organisms feeding into page templates, with a master Figma file that propagated changes across all product screens. Two-plus years as Principal Product Designer maintaining that system across multiple product surfaces.
+          <br><br>
+          I also built Ticklists brand guidelines as a structured HTML doc: atoms (colours, type, icons), molecules (form states, card variants), organisms (navigation, list patterns).
+          <br><br>
+          <a href="https://rachaelpageproduct.github.io/public/ticklists-brand-guidelines.html" target="_blank">View Ticklists design system →</a>
+        </p>
+      </div>
+
+      <div class="brief-card">
+        <div class="need">
+          <div class="need-icon">🤖</div>
+          <div>
+            <div class="need-title">AI-ready specifications — structured, explicit, zero ambiguity</div>
+            <div class="need-from">From your brief: "Avoid anything that requires interpretation"</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="proof-label">My evidence</div>
+        <p class="proof">
+          This is rare, and it's genuinely my strongest differentiator. I don't just use AI tools — I design <em>for</em> how AI builds and maintains UIs. My day job for the past year has included evaluating AI design outputs for a major AI company, giving structured feedback on typography, colour, hierarchy, layout, and constraint systems.
+          <br><br>
+          The result: I write component specs in a format AI can act on without ambiguity. See the live example below — I've written a real Defaqto-style status component spec to show what my output would look like.
+          <br><br>
+          <a href="#ai-spec">Skip to the AI-ready spec demo →</a>
+        </p>
+      </div>
+
+      <div class="brief-card">
+        <div class="need">
+          <div class="need-icon">📐</div>
+          <div>
+            <div class="need-title">Figma at systems level — variables, auto-layout, variants</div>
+            <div class="need-from">From your brief: "not just screen design"</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="proof-label">My evidence</div>
+        <p class="proof">
+          I've used Figma across long, complex projects — component libraries, auto-layout at every level, shared styles feeding all screens. For Terra I maintained a living Figma system across multiple product lines for 2+ years.
+          <br><br>
+          My working style now uses Figma variables and tokens as the source of truth, with design decisions made at the root level to propagate automatically. I can show you the Terra Figma file on request — it demonstrates the systematic approach you're describing.
+        </p>
+      </div>
+
+      <div class="brief-card">
+        <div class="need">
+          <div class="need-icon">🏦</div>
+          <div>
+            <div class="need-title">Complex B2B SaaS + fintech experience</div>
+            <div class="need-from">From your brief: "Unity adviser platform... multi-step workflows"</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="proof-label">My evidence</div>
+        <p class="proof">
+          <strong>Veda/Inivio:</strong> Senior UX Architect on a complex self-serve B2B data platform for financial and marketing professionals. Multi-step data processing workflows, lead generation, address validation, data profiling — directly analogous to Unity's adviser workflow.
+          <br><br>
+          <strong>ING banking app</strong> (new product from scratch), <strong>Bob Finance</strong> (mobile loan UX), <strong>Inyova</strong> (impact investing startup). KPMG and PwC enterprise user research.
+          <br><br>
+          Fintech is not new territory for me.
+        </p>
+      </div>
+
+      <div class="brief-card">
+        <div class="need">
+          <div class="need-icon">🔗</div>
+          <div>
+            <div class="need-title">Marketing sites + logged-in product: one continuous experience</div>
+            <div class="need-from">From your brief: "Moving from marketing site → logged-in Unity should feel continuous"</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="proof-label">My evidence</div>
+        <p class="proof">
+          Ticklists solves this exact problem in production today. <a href="https://ticklists.com" target="_blank">ticklists.com</a> (marketing) and <a href="https://ticklists.app" target="_blank">ticklists.app</a> (the PWA) share the same design tokens, component language, and visual rhythm. No visual reset when you move from one to the other.
+          <br><br>
+          I also run Artfuly.com and rachaelpage.com from a single shared codebase — same system, different brand expression. That's the exact multi-brand-one-family model you're describing.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DESIGN SYSTEMS SHOWCASE ═══ -->
+<section id="systems">
+  <div class="section-inner">
+    <div class="section-label">Live design systems</div>
+    <h2 class="section-title">Systems I've built. Live and in production.</h2>
+    <p class="section-sub">
+      Not mockups. These are real guidelines driving real products you can open in your browser right now.
+    </p>
+    <div class="systems-grid">
+
+      <div class="system-card">
+        <div class="system-card-preview dual-brand">
+          <div class="preview-tokens">
+            <div class="preview-token" style="background:#048ba2"></div>
+            <div class="preview-token" style="background:#3ba89c"></div>
+            <div class="preview-token" style="background:#ee7c7b"></div>
+            <div class="preview-token" style="background:#233030"></div>
+            <div class="preview-token" style="background:#ceeaeb"></div>
+            <div class="preview-token" style="background:#f3f3f3"></div>
+            <div class="preview-token" style="background:#000050"></div>
+            <div class="preview-token" style="background:#ffffff; opacity:0.3"></div>
+          </div>
+        </div>
+        <div class="system-card-body">
+          <div class="system-card-label">Dual-brand guidelines</div>
+          <div class="system-card-title">Artfuly &amp; Rachael Page</div>
+          <p class="system-card-desc">
+            One shared token base. Two distinct brand expressions. Colour system, typography scale, spacing grid, component variants — all built with CSS custom properties so a single root change propagates everywhere. This is the same architecture Defaqto needs.
+          </p>
+          <a href="https://rachaelpageproduct.github.io/public/artfuly-brand-guidelines.html#shared" target="_blank" class="system-card-link">Open live guidelines</a>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-card-preview ticklists">
+          <div class="preview-tokens">
+            <div class="preview-token" style="background:#22c55e"></div>
+            <div class="preview-token" style="background:#16a34a"></div>
+            <div class="preview-token" style="background:#dcfce7"></div>
+            <div class="preview-token" style="background:#1e3a2e"></div>
+            <div class="preview-token" style="background:#f0fdf4"></div>
+            <div class="preview-token" style="background:#4ade80"></div>
+            <div class="preview-token" style="background:#166534"></div>
+            <div class="preview-token" style="background:#ffffff; opacity:0.2"></div>
+          </div>
+        </div>
+        <div class="system-card-body">
+          <div class="system-card-label">Product brand system</div>
+          <div class="system-card-title">Ticklists Design System</div>
+          <p class="system-card-desc">
+            Atoms to organisms: colour tokens, type scale, spacing, icon system, card variants, form states, navigation patterns. Built as structured HTML — AI-readable as well as human-readable.
+          </p>
+          <a href="https://rachaelpageproduct.github.io/public/ticklists-brand-guidelines.html" target="_blank" class="system-card-link">Open live guidelines</a>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-card-preview terra">
+          <div class="preview-tokens">
+            <div class="preview-token" style="background:#6366f1"></div>
+            <div class="preview-token" style="background:#8b5cf6"></div>
+            <div class="preview-token" style="background:#a855f7"></div>
+            <div class="preview-token" style="background:#1a1a2e"></div>
+            <div class="preview-token" style="background:#e0e7ff"></div>
+            <div class="preview-token" style="background:#312e81"></div>
+            <div class="preview-token" style="background:#c7d2fe"></div>
+            <div class="preview-token" style="background:#ffffff; opacity:0.2"></div>
+          </div>
+        </div>
+        <div class="system-card-body">
+          <div class="system-card-label">2+ years sustained · Atomic design</div>
+          <div class="system-card-title">Terra Listens Product System</div>
+          <p class="system-card-desc">
+            Atomic design methodology across a complex multi-feature SaaS: native apps, marketing site, data dashboard. Principal Product Designer and PM for 26+ months. Figma system feeding multiple product surfaces. Client testimonial from Scott Whittle.
+          </p>
+          <a href="https://terralistens-com-49c003ef872736728a813b.webflow.io/" target="_blank" class="system-card-link">View the product site</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TOKEN STRIP ═══ -->
+<div class="token-strip">
+  <div class="section-inner">
+    <div class="section-label">Why this matters for Defaqto</div>
+    <h2 class="section-title" style="color:var(--white)">This page runs on design tokens.</h2>
+    <p class="section-sub">
+      Every colour, spacing value, shadow, and type size on this page is defined as a token — a CSS custom property. To rebrand the entire page, I change values at the root. Nothing else. That's the architecture I'd build for Defaqto.
+    </p>
+    <div class="token-grid">
+      <div class="token-item">
+        <div class="token-swatch" style="background:#0d1b2a"></div>
+        <div><div class="token-name">--navy</div><div class="token-value">#0d1b2a</div></div>
+      </div>
+      <div class="token-item">
+        <div class="token-swatch" style="background:#048ba2"></div>
+        <div><div class="token-name">--teal</div><div class="token-value">#048ba2</div></div>
+      </div>
+      <div class="token-item">
+        <div class="token-swatch" style="background:#ee7c7b"></div>
+        <div><div class="token-name">--coral</div><div class="token-value">#ee7c7b</div></div>
+      </div>
+      <div class="token-item">
+        <div class="token-swatch" style="background:#f59e0b"></div>
+        <div><div class="token-name">--gold</div><div class="token-value">#f59e0b</div></div>
+      </div>
+      <div class="token-item">
+        <div class="token-swatch" style="background:#334155"></div>
+        <div><div class="token-name">--text-mid</div><div class="token-value">#334155</div></div>
+      </div>
+      <div class="token-item">
+        <div class="token-swatch" style="background:#e2e8f0"></div>
+        <div><div class="token-name">--border</div><div class="token-value">#e2e8f0</div></div>
+      </div>
+    </div>
+    <div class="token-strip-note">
+      <strong>Key point for Defaqto:</strong> Because I build with variables from the ground up, the design can be rebranded at the root level at any time — change a colour or typeface once, and it propagates through all design files and all pages instantly. VouchedFor, RSMR, Unity — each gets its own token layer, but inherits the shared base. One system, multiple brand expressions, zero divergence.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Portfolio highlights</div>
+    <h2 class="section-title">Work that maps directly to Defaqto.</h2>
+    <p class="section-sub">
+      Selected for relevance to your brief: B2B SaaS, fintech, complex adviser workflows, and multi-brand systems.
+    </p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-tag">Shipped solo · 2026</div>
+        <h3>Ticklists App</h3>
+        <div class="duration">Concept → research → design → build → launch</div>
+        <p>Full-stack product designed and shipped solo from zero. Real-time shared lists, cross-platform PWA, Stripe payments, full brand and design system. Proves I can take a product from nothing to live without a team — the same challenge Defaqto faces with Unity.</p>
+        <ul class="project-bullets">
+          <li>Competitor analysis before any UI work</li>
+          <li>Full brand guidelines system before the first screen</li>
+          <li>Design decisions driven by systematic thinking, not ad hoc choices</li>
+          <li>Live at ticklists.app and ticklists.com today</li>
+        </ul>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://ticklists.app" target="_blank" class="project-link">Open the app</a>
+          <a href="https://ticklists.com" target="_blank" class="project-link">Marketing site</a>
+        </div>
+      </div>
+
+      <div class="project-card fintech">
+        <div class="project-tag fintech">B2B Fintech</div>
+        <h3>Veda / Inivio — Big Data SaaS</h3>
+        <div class="duration">Senior UX Architect · B2B data platform</div>
+        <p>The closest match to Defaqto Unity in my portfolio. Complex self-serve B2B data platform for financial and marketing professionals. Multi-step workflows: lead generation, address validation, deduplication, data profiling. Agile with BAs and market experts. Same DNA as an adviser workflow.</p>
+        <ul class="project-bullets">
+          <li class="fintech-bullet">Specialist B2B audience: financial and marketing professionals</li>
+          <li class="fintech-bullet">Complex multi-step data processing UX</li>
+          <li class="fintech-bullet">Defined information architecture for an evolving data model</li>
+        </ul>
+        <a href="https://rachaelpage.com" target="_blank" class="project-link fintech">See in portfolio →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">2+ years · Principal Designer</div>
+        <h3>Terra Listens — Native Apps + SaaS</h3>
+        <div class="duration">Principal Product Designer &amp; PM · Complex multi-feature product</div>
+        <p>Two-plus years as Principal Product Designer and PM on a complex native app with live device data, onboarding flows, data entry, device management, and streaming UX. Managed developers. Went through multiple major design iterations. Client testimonial available from Scott Whittle.</p>
+        <ul class="project-bullets">
+          <li>Atomic design system across native apps and marketing site</li>
+          <li>Onboarding, fact-find, device management — directly maps to Unity</li>
+          <li>Managed developers across a sustained engagement</li>
+        </ul>
+        <a href="https://terralistens-com-49c003ef872736728a813b.webflow.io/" target="_blank" class="project-link">View Terra Listens →</a>
+      </div>
+
+      <div class="project-card enterprise">
+        <div class="project-tag enterprise">Enterprise UX</div>
+        <h3>ING · Bob Finance · Inyova + Big Four</h3>
+        <div class="duration">Fintech credibility across multiple engagements</div>
+        <p>Financial services across banking, lending, and impact investing. Plus enterprise user research with KPMG and PwC. Not adjacent to fintech — I've been doing it for years.</p>
+        <ul class="project-bullets">
+          <li class="enterprise-bullet">ING: New banking product app from scratch, complex user education</li>
+          <li class="enterprise-bullet">Bob Finance: Mobile loan form UX — regulated journey design</li>
+          <li class="enterprise-bullet">Inyova: Impact investing startup — data-heavy adviser-style product</li>
+          <li class="enterprise-bullet">KPMG + PwC: Enterprise user research (available to discuss in interview)</li>
+        </ul>
+        <a href="https://rachaelpage.com" target="_blank" class="project-link">Full portfolio →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ APPROACH ═══ -->
+<section id="approach" style="background:var(--off-white)">
+  <div class="section-inner">
+    <div class="section-label">How I'd tackle Defaqto</div>
+    <h2 class="section-title">The approach I'd take.</h2>
+    <p class="section-sub">
+      Not starting from blank. Starting from what you have, building on it, testing at every stage. This is how you get to a system that scales — not by designing everything up front.
+    </p>
+    <div class="approach-steps">
+      <div class="approach-step">
+        <div class="step-n">01</div>
+        <h3>Audit existing assets</h3>
+        <p>Map what already exists — Defaqto brand materials, the design file from your in-house UX designer, Unity's current patterns. Understand what's working before changing anything.</p>
+      </div>
+      <div class="approach-step">
+        <div class="step-n">02</div>
+        <h3>Define the shared base</h3>
+        <p>Extract the tokens that must be consistent across all brands: layout grid, spacing scale, base type scale, motion principles. This is the foundation every surface inherits from.</p>
+      </div>
+      <div class="approach-step">
+        <div class="step-n">03</div>
+        <h3>Build brand layers</h3>
+        <p>Defaqto.com, Unity, VouchedFor, RSMR each get a brand-specific token set that overrides only what needs to change. Colour, tone, imagery emphasis — not structure or interaction.</p>
+      </div>
+      <div class="approach-step">
+        <div class="step-n">04</div>
+        <h3>Test regularly, ship in phases</h3>
+        <p>Each component and pattern validated against all brand contexts before moving on. Defaqto.com live in September doesn't mean the whole system is done — it means the first phase is solid.</p>
+      </div>
+    </div>
+    <div class="approach-callout">
+      <p>
+        The system can be <strong>rebranded at any time</strong> because I work with variables, global colour tokens, and type styles at the root level. Change a brand colour once and it propagates through every component, every page, every brand surface — automatically. That's not just good practice. For Defaqto, managing 6–7 acquired brands, it's the only way that scales.
+      </p>
+      <div class="rebrand-note">
+        <p style="margin-bottom:var(--space-2);font-weight:700;color:rgba(255,255,255,0.8);">What "rebrand at root" means in practice:</p>
+        <ul>
+          <li>Global token → all components update</li>
+          <li>Brand layer → only that brand updates</li>
+          <li>No hunt-and-replace across files</li>
+          <li>VouchedFor brand in January: just a token swap</li>
+          <li>New acquisition? Add a new brand layer only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI-READY SPEC ═══ -->
+<section id="ai-spec">
+  <div class="section-inner">
+    <div class="section-label">AI-ready specification — live demo</div>
+    <h2 class="section-title">This is what my output looks like.</h2>
+    <p class="section-sub">
+      Your brief says: "Structured. Explicit. Unambiguous." Most designers don't know what that actually means in practice. I do. Here's a real component spec in the format I'd deliver for Defaqto.
+    </p>
+
+    <div class="spec-container">
+      <div class="spec-header">
+        <div class="spec-dots"><span></span><span></span><span></span></div>
+        <div class="spec-filename">defaqto-system / components / status-badge.spec.json</div>
+      </div>
+      <div class="spec-body">
+<pre>
+<span class="c-section">// COMPONENT: StatusBadge</span>
+<span class="c-comment">// Purpose: Communicates the current state of an entity (adviser, product, submission)
+// Used in: Unity dashboard cards, table rows, adviser profile headers, submission review</span>
+
+{
+  <span class="c-key">"component"</span>: <span class="c-str">"StatusBadge"</span>,
+  <span class="c-key">"version"</span>: <span class="c-str">"1.0"</span>,
+
+  <span class="c-section">// ─── INPUTS ───────────────────────────────────────────────────────</span>
+  <span class="c-key">"inputs"</span>: {
+    <span class="c-key">"status"</span>: {
+      <span class="c-key">"type"</span>: <span class="c-str">"enum"</span>,
+      <span class="c-key">"required"</span>: <span class="c-bool">true</span>,
+      <span class="c-key">"values"</span>: [
+        <span class="c-enum">"active"</span>, <span class="c-enum">"pending"</span>, <span class="c-enum">"review"</span>,
+        <span class="c-enum">"submitted"</span>, <span class="c-enum">"expired"</span>, <span class="c-enum">"error"</span>
+      ]
+    },
+    <span class="c-key">"label"</span>: {
+      <span class="c-key">"type"</span>: <span class="c-str">"string"</span>,
+      <span class="c-key">"required"</span>: <span class="c-bool">false</span>,
+      <span class="c-key">"default"</span>: <span class="c-str">"derived from status"</span>,
+      <span class="c-key">"maxLength"</span>: <span class="c-val">20</span>,
+      <span class="c-key">"note"</span>: <span class="c-str">"Override only when status label must match local language or brand voice"</span>
+    },
+    <span class="c-key">"size"</span>: {
+      <span class="c-key">"type"</span>: <span class="c-str">"enum"</span>,
+      <span class="c-key">"required"</span>: <span class="c-bool">false</span>,
+      <span class="c-key">"values"</span>: [<span class="c-enum">"sm"</span>, <span class="c-enum">"md"</span>],
+      <span class="c-key">"default"</span>: <span class="c-enum">"md"</span>
+    }
+  },
+
+  <span class="c-section">// ─── DISPLAY MAP ─────────────────────────────────────────────────</span>
+  <span class="c-key">"displayMap"</span>: {
+    <span class="c-enum">"active"</span>:    { <span class="c-key">"label"</span>: <span class="c-str">"Active"</span>,    <span class="c-key">"token"</span>: <span class="c-str">"--status-green"</span>,  <span class="c-key">"icon"</span>: <span class="c-str">"dot-filled"</span> },
+    <span class="c-enum">"pending"</span>:   { <span class="c-key">"label"</span>: <span class="c-str">"Pending"</span>,   <span class="c-key">"token"</span>: <span class="c-str">"--status-amber"</span>,  <span class="c-key">"icon"</span>: <span class="c-str">"clock"</span>      },
+    <span class="c-enum">"review"</span>:    { <span class="c-key">"label"</span>: <span class="c-str">"In review"</span>, <span class="c-key">"token"</span>: <span class="c-str">"--status-blue"</span>,   <span class="c-key">"icon"</span>: <span class="c-str">"eye"</span>        },
+    <span class="c-enum">"submitted"</span>: { <span class="c-key">"label"</span>: <span class="c-str">"Submitted"</span>, <span class="c-key">"token"</span>: <span class="c-str">"--status-teal"</span>,   <span class="c-key">"icon"</span>: <span class="c-str">"check"</span>      },
+    <span class="c-enum">"expired"</span>:   { <span class="c-key">"label"</span>: <span class="c-str">"Expired"</span>,   <span class="c-key">"token"</span>: <span class="c-str">"--status-grey"</span>,   <span class="c-key">"icon"</span>: <span class="c-str">"minus"</span>      },
+    <span class="c-enum">"error"</span>:     { <span class="c-key">"label"</span>: <span class="c-str">"Error"</span>,     <span class="c-key">"token"</span>: <span class="c-str">"--status-red"</span>,    <span class="c-key">"icon"</span>: <span class="c-str">"alert"</span>      }
+  },
+
+  <span class="c-section">// ─── RULES ────────────────────────────────────────────────────────</span>
+  <span class="c-key">"rules"</span>: {
+    <span class="c-key">"use"</span>: [
+      <span class="c-str">"To communicate the current lifecycle state of a record"</span>,
+      <span class="c-str">"In table rows, cards, and profile headers where state is actionable information"</span>,
+      <span class="c-str">"Alongside the entity name, not in isolation"</span>
+    ],
+    <span class="c-key">"doNotUse"</span>: [
+      <span class="c-str">"For decorative categorisation (use a Tag component instead)"</span>,
+      <span class="c-str">"When state is not directly actionable by the current user"</span>,
+      <span class="c-str">"More than one StatusBadge per row or card"</span>
+    ]
+  },
+
+  <span class="c-section">// ─── CONSTRAINTS ──────────────────────────────────────────────────</span>
+  <span class="c-key">"constraints"</span>: {
+    <span class="c-key">"layout"</span>: <span class="c-str">"Inline flex, icon left of label, no wrapping"</span>,
+    <span class="c-key">"padding"</span>: { <span class="c-key">"sm"</span>: <span class="c-str">"4px 8px"</span>, <span class="c-key">"md"</span>: <span class="c-str">"6px 12px"</span> },
+    <span class="c-key">"typography"</span>: <span class="c-str">"font-weight: 600; font-size: var(--text-xs); letter-spacing: 0.04em"</span>,
+    <span class="c-key">"iconSize"</span>: { <span class="c-key">"sm"</span>: <span class="c-val">10</span>, <span class="c-key">"md"</span>: <span class="c-val">12</span> },
+    <span class="c-key">"borderRadius"</span>: <span class="c-str">"var(--radius-sm)"</span>,
+    <span class="c-key">"backgroundOpacity"</span>: <span class="c-val">0.12</span>,
+    <span class="c-key">"behaviour"</span>: <span class="c-str">"Never interactive (not a button, no hover state)"</span>,
+    <span class="c-key">"accessibility"</span>: <span class="c-str">"aria-label must include status value; colour alone must not communicate state"</span>
+  }
+}
+</pre>
+      </div>
+    </div>
+
+    <div class="spec-note" style="margin-top:var(--space-6)">
+      <strong>Why this format matters:</strong> This isn't a spec a developer has to interpret — it's a spec an AI can execute directly. Every value is explicit. Every rule states both what to do AND what not to do. Every constraint specifies layout, sizing, and behaviour without ambiguity. This is exactly the structured output your brief describes, and it's how I work already.
+    </div>
+
+    <!-- VIDEO SLOT — Rachael: replace this block with your Loom or YouTube embed when ready -->
+    <div style="margin-top:var(--space-12)">
+      <div class="section-label" style="margin-bottom:var(--space-4)">Seeing it in action</div>
+      <h3 style="font-size:var(--text-2xl);font-weight:700;margin-bottom:var(--space-3)">Watch: how fast I can build a design system</h3>
+      <p style="color:var(--text-light);margin-bottom:var(--space-6)">
+        I'll record a short walkthrough showing how quickly I can go from a brand brief to a working, token-based design system. Replace this block with the embed when ready.
+      </p>
+      <!-- TO ADD VIDEO: replace the div below with:
+           <div class="video-slot has-video"><iframe src="YOUR_LOOM_OR_YOUTUBE_EMBED_URL" allow="autoplay; fullscreen"></iframe></div>
+      -->
+      <div class="video-slot">
+        <div class="icon">▶</div>
+        <p>Video coming shortly — building a design system in real time, from token setup to first page template.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ WORKING TOGETHER ═══ -->
+<section id="together" style="background:var(--off-white)">
+  <div class="section-inner">
+    <div class="section-label">Working together</div>
+    <h2 class="section-title">Practical details.</h2>
+    <div class="together-grid">
+
+      <div class="together-cards">
+        <div class="together-card">
+          <div class="card-icon">🟢</div>
+          <div>
+            <h4>Available immediately</h4>
+            <p>No notice period, no other contracts blocking a start. I'm happy to begin with 10 hours and reassess from there. No pressure and no hard feelings if the fit isn't right — I'd rather both sides know early.</p>
+          </div>
+        </div>
+        <div class="together-card">
+          <div class="card-icon">📄</div>
+          <div>
+            <h4>Invoicing — flexible</h4>
+            <p>I can invoice weekly or on agreed milestones. Based in Germany (Brandenburg), invoicing as a sole trader with German tax registration. Weekly invoicing works well for a time-tracked engagement.</p>
+          </div>
+        </div>
+        <div class="together-card">
+          <div class="card-icon">💶</div>
+          <div>
+            <h4>No VAT on UK invoices</h4>
+            <p>As a German-registered sole trader providing B2B professional services to a UK company, German VAT does not apply. Invoices to Defaqto would be issued without VAT, which means no VAT for you to reclaim. (Please confirm with your finance team — this is my understanding of the post-Brexit cross-border B2B rule.)</p>
+          </div>
+        </div>
+        <div class="together-card">
+          <div class="card-icon">🤝</div>
+          <div>
+            <h4>How I work best</h4>
+            <p>Collaboratively, with clear decision-makers. I bring a point of view and I push back when I think a decision will hurt the system's integrity — that's part of what you're paying for. I work AI-natively, which means faster iteration and better-documented outputs than traditional design processes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="together-cta">
+        <div>
+          <h3>Let's talk next steps.</h3>
+          <p>I'm excited about this project. The multi-brand, AI-ready design system problem is exactly what I'm set up to solve — and September is a tight but achievable deadline for the first phase.</p>
+        </div>
+        <a href="mailto:hi@artfuly.com" class="email-chip">hi@artfuly.com</a>
+        <div>
+          <a href="https://rachaelpage.com" target="_blank" class="btn btn-primary">Full portfolio → rachaelpage.com</a>
+        </div>
+        <div class="vat-note">
+          <strong>German VAT note:</strong> I hold USt-IdNr. DE322813798. For UK B2B clients, the supply of professional services from Germany is outside scope of German VAT under post-Brexit rules. I'd recommend your finance team confirm, but you should not expect a VAT line on my invoices.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-name">Rachael Page</div>
+  <div class="footer-links">
+    <a href="https://rachaelpage.com" target="_blank">Portfolio</a>
+    <a href="https://artfuly.com" target="_blank">Artfuly.com</a>
+    <a href="https://ticklists.app" target="_blank">Ticklists App</a>
+    <a href="https://rachaelpageproduct.github.io/public/artfuly-brand-guidelines.html" target="_blank">Brand guidelines</a>
+    <a href="mailto:hi@artfuly.com">hi@artfuly.com</a>
+  </div>
+  <p>This page was built for Defaqto · Product/UI Designer · June 2026</p>
+</footer>
+
+<script>
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id], .token-strip');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(s => { if (s.id) observer.observe(s); });
+</script>
+
+</body>
+</html>
