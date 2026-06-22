@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artfuly & Rachael Page — Brand Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600&family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal-dark:   #048ba2;
+      --teal-mid:    #3ba89c;
+      --teal-light:  #ceeaeb;
+      --teal-bg:     #e6f7f7;
+      --coral:       #ee7c7b;
+      --coral-hover: #e5605e;
+      --charcoal:    #233030;
+      --navy:        #000050;
+      --black:       #000000;
+      --white:       #ffffff;
+      --grey:        #888888;
+      --tag-bg:      #f3f3f3;
+      --border:      #e5e5e5;
+      --surface:     #f7f7f7;
+      --sidebar:     240px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--surface);
+      color: var(--charcoal);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar);
+      background: var(--teal-dark);
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 0 24px;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 24px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .sidebar-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .sidebar-wordmark {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .sidebar-wordmark span {
+      display: block;
+      font-size: 9px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 2px;
+    }
+
+    .nav-site-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      padding: 20px 24px 6px;
+    }
+
+    .nav-site-label.shared  { color: rgba(255,255,255,0.4); }
+    .nav-site-label.artfuly { color: var(--teal-light); }
+    .nav-site-label.rp      { color: rgba(255,255,255,0.6); }
+
+    .nav-link {
+      display: block;
+      padding: 7px 24px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: all 0.15s;
+      border-left: 2px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav-link.active {
+      color: var(--coral);
+      border-left-color: var(--coral);
+      background: rgba(238,124,123,0.08);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 20px 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 10px;
+      color: rgba(255,255,255,0.22);
+      line-height: 1.8;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      margin-left: var(--sidebar);
+      flex: 1;
+      padding: 0;
+    }
+
+    /* ── SITE BANNER (marks start of each brand section) ── */
+    .site-banner {
+      padding: 28px 64px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-banner.artfuly { background: var(--teal-dark); }
+    .site-banner.rp      { background: var(--black); }
+    .site-banner.shared  { background: var(--charcoal); }
+
+    .site-banner-pill {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .site-banner.artfuly .site-banner-pill { background: rgba(255,255,255,0.15); color: var(--teal-light); }
+    .site-banner.rp      .site-banner-pill { background: rgba(255,255,255,0.1);  color: rgba(255,255,255,0.7); }
+    .site-banner.shared  .site-banner-pill { background: rgba(255,255,255,0.1);  color: rgba(255,255,255,0.65); }
+
+    .site-banner-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: -0.02em;
+    }
+
+    .site-banner-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      margin-left: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 64px 64px;
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .section:last-child { border-bottom: none; }
+    .section.tinted { background: var(--surface); }
+
+    .section-intro { margin-bottom: 44px; }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.35;
+      margin-bottom: 6px;
+    }
+
+    .section-num.teal  { color: var(--teal-dark); }
+    .section-num.black { color: var(--black); }
+    .section-num.grey  { color: var(--charcoal); }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .section-title.teal  { color: var(--charcoal); }
+    .section-title.black { color: var(--black); }
+
+    .section-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      max-width: 560px;
+      font-weight: 400;
+    }
+
+    .subsection { margin-bottom: 52px; }
+    .subsection:last-child { margin-bottom: 0; }
+
+    .sub-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sub-label.teal  { color: var(--teal-dark); }
+    .sub-label.black { color: var(--black); }
+    .sub-label.grey  { color: #999; }
+
+    /* ── RULE BOX ── */
+    .rule-box {
+      border-radius: 0 8px 8px 0;
+      padding: 13px 18px;
+      font-size: 12.5px;
+      line-height: 1.65;
+      margin-top: 16px;
+    }
+
+    .rule-box.teal  { background: rgba(4,139,162,0.06); border-left: 3px solid var(--teal-dark); color: var(--charcoal); }
+    .rule-box.black { background: rgba(0,0,0,0.04); border-left: 3px solid var(--black); color: var(--black); }
+    .rule-box.coral { background: rgba(238,124,123,0.07); border-left: 3px solid var(--coral); color: var(--charcoal); }
+
+    .rule-box strong { font-weight: 700; }
+
+    /* ── COLOUR SWATCHES ── */
+    .colour-grid {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .colour-grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .colour-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .colour-grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+    .colour-swatch {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .swatch-block { height: 88px; }
+
+    .swatch-info {
+      background: var(--white);
+      padding: 11px 13px;
+    }
+
+    .swatch-name {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .swatch-hex.teal  { color: var(--teal-dark); }
+    .swatch-hex.black { color: var(--black); }
+    .swatch-hex.grey  { color: var(--grey); }
+
+    .swatch-use {
+      font-size: 10px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* contrast pairs */
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .contrast-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .contrast-preview {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contrast-preview span {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .contrast-meta {
+      background: var(--white);
+      padding: 9px 13px;
+      font-size: 10.5px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contrast-pass {
+      background: #f0fdf4;
+      color: #15803d;
+      font-weight: 700;
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .type-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .type-meta {
+      padding: 14px 22px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .type-meta.teal  { background: var(--teal-dark); }
+    .type-meta.black { background: var(--black); }
+    .type-meta.grey  { background: #444; }
+
+    .type-family {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-light);
+    }
+
+    .type-role {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .type-role.coral { color: var(--coral); }
+
+    .type-import {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.28);
+      margin-left: auto;
+      letter-spacing: 0.5px;
+    }
+
+    .type-preview {
+      padding: 24px 24px 20px;
+    }
+
+    .type-scale {
+      padding: 0 24px 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+
+    .type-scale-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px 0 8px;
+    }
+
+    .type-scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 5px 0;
+      border-bottom: 0.5px solid #f0ede8;
+    }
+
+    .type-scale-row:last-child { border-bottom: none; }
+
+    .type-scale-size {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+      width: 56px;
+      flex-shrink: 0;
+    }
+
+    .type-scale-use {
+      font-size: 10px;
+      color: #aaa;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .type-rules {
+      padding: 14px 24px 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 24px;
+    }
+
+    .type-rule { flex: 1; }
+
+    .type-rule-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .type-rule-label.do   { color: #15803d; }
+    .type-rule-label.dont { color: #b91c1c; }
+
+    .type-rule-text {
+      font-size: 11.5px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ── LOGO ── */
+    .logo-bg {
+      border-radius: 14px;
+      padding: 48px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logo-bg.teal  { background: var(--teal-dark); }
+    .logo-bg.light { background: var(--white); border: 1px solid var(--border); }
+    .logo-bg.cyan  { background: var(--teal-bg); border: 1px solid #c5e8ea; }
+    .logo-bg.dark  { background: #1a1a2e; }
+
+    .logo-caption {
+      font-size: 10.5px;
+      color: #888;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .logo-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .logo-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    /* Clear space */
+    .clearspace-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .clearspace-inner {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clearspace-box {
+      position: absolute;
+      inset: -20px;
+      border: 1.5px dashed var(--teal-mid);
+      border-radius: 4px;
+      opacity: 0.5;
+    }
+
+    .clearspace-label {
+      position: absolute;
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--teal-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .clearspace-label.top    { top: -28px; left: 50%; transform: translateX(-50%); }
+    .clearspace-label.bottom { bottom: -26px; left: 50%; transform: translateX(-50%); }
+    .clearspace-label.left   { left: -56px; top: 50%; transform: translateY(-50%); }
+    .clearspace-label.right  { right: -56px; top: 50%; transform: translateY(-50%); }
+
+    /* Don'ts */
+    .donts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .dont-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    .dont-card::after {
+      content: '✕';
+      position: absolute;
+      top: -10px; right: -10px;
+      width: 21px; height: 21px;
+      background: #ef4444;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .dont-desc {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── COMPONENT FRAMES ── */
+    .comp-frame {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 14px;
+    }
+
+    .comp-frame.teal { background: var(--teal-dark); }
+    .comp-frame.dark { background: var(--charcoal); }
+    .comp-frame.black { background: var(--black); }
+    .comp-frame.navy  { background: var(--navy); }
+    .comp-frame.cyan  { background: var(--teal-bg); }
+    .comp-frame.grey  { background: var(--surface); }
+
+    .comp-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #bbb;
+      margin-bottom: 18px;
+    }
+
+    .comp-label.on-dark { color: rgba(255,255,255,0.3); }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* ── ARTFULY BUTTONS ── */
+    .a-btn-coral {
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 30px;
+      border: none;
+      letter-spacing: 0.3px;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .a-btn-coral-lg {
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 30px;
+      border: none;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .a-btn-ghost {
+      background: transparent;
+      color: var(--teal-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 2px solid var(--teal-dark);
+      cursor: default;
+      display: inline-block;
+    }
+
+    .a-btn-subscribe {
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: none;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .a-btn-share {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid var(--teal-mid);
+      border-radius: 4px;
+      color: var(--teal-mid);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: default;
+    }
+
+    /* ── RACHAEL PAGE BUTTONS ── */
+    .rp-btn-dark {
+      display: inline-block;
+      padding: 13px 28px;
+      background: var(--black);
+      color: #fff;
+      border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: default;
+    }
+
+    .rp-btn-outline {
+      display: inline-block;
+      padding: 13px 28px;
+      background: #fff;
+      color: var(--black);
+      border: 2px solid var(--black);
+      border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: default;
+    }
+
+    /* ── SKILL / CATEGORY PILLS ── */
+    .skill-pill {
+      display: inline-block;
+      background: var(--teal-light);
+      border-radius: 30px;
+      border: 1px solid #fff;
+      outline: 1px solid #fff;
+      padding: 0.3rem 0.85rem;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--charcoal);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .cat-pill {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .cat-pill.active {
+      background: var(--teal-mid);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ── ARTICLE CARD ── */
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 300px;
+    }
+
+    .article-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--teal-bg) 0%, var(--teal-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--teal-mid);
+      font-weight: 600;
+    }
+
+    .article-card-body {
+      padding: 14px 16px;
+    }
+
+    .article-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .article-card-excerpt {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ── WORK CARD (RP) ── */
+    .work-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 280px;
+    }
+
+    .work-card-img {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #e8e8e8 0%, #f3f3f3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #999;
+    }
+
+    .work-card-info {
+      padding: 14px 16px;
+    }
+
+    .work-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .work-card-excerpt {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12.5px;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    /* ── IMPACT CALLOUT (RP) ── */
+    .impact-block {
+      background: #f7f7f7;
+      border-left: 4px solid var(--teal-mid);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      max-width: 480px;
+    }
+
+    .impact-block strong {
+      display: block;
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal-mid);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .impact-block p {
+      font-size: 14px;
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ── ARTFULY NAV DEMO ── */
+    .a-nav-demo {
+      background: rgba(206,234,235,0.92);
+      border-radius: 10px;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 680px;
+    }
+
+    .a-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .a-nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .a-nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .a-nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--charcoal);
+    }
+
+    .a-nav-cta {
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
+
+    /* ── RP NAV DEMO ── */
+    .rp-nav-demo {
+      background: rgba(206,234,235,0.92);
+      border-radius: 10px;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 680px;
+    }
+
+    .rp-nav-wordmark {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+
+    .rp-nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .rp-nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--black);
+    }
+
+    /* ── TESTIMONIAL (RP) ── */
+    .rp-testimonial {
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 22px;
+      max-width: 380px;
+    }
+
+    .rp-stars {
+      color: var(--teal-mid);
+      font-size: 14px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .rp-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--black);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .rp-cite {
+      font-size: 12px;
+      color: var(--grey);
+    }
+
+    /* ── SPEC TABLE ── */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    .spec-table th {
+      text-align: left;
+      padding: 7px 12px;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #bbb;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-table td {
+      padding: 9px 12px;
+      border-bottom: 0.5px solid var(--border);
+      color: var(--charcoal);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .spec-table td:first-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+      color: var(--teal-dark);
+    }
+
+    .spec-table.dark td:first-child { color: var(--black); }
+    .spec-table tr:last-child td { border-bottom: none; }
+
+    /* ── UTILITIES ── */
+    .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .spacer    { height: 24px; }
+    .spacer-sm { height: 12px; }
+
+    .anchor-target { scroll-margin-top: 32px; }
+
+    .pills-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* ── SHARED NAV STRIP DEMO ── */
+    .shared-nav-strip {
+      background: rgba(206,234,235,0.82);
+      border-radius: 10px;
+      padding: 0 28px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--black);
+      max-width: 680px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .shared-nav-strip .logo-mark {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Montserrat weight ramp */
+    .weight-ramp > div {
+      padding: 6px 0;
+      border-bottom: 0.5px solid #f0f0f0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      color: var(--charcoal);
+    }
+
+    .weight-ramp > div:last-child { border-bottom: none; }
+
+    .weight-tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #bbb;
+      min-width: 80px;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SIDEBAR
+     ══════════════════════════════════════ -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <img src="artfuly-round-logo.png" alt="Artfuly logo">
+    <div class="sidebar-wordmark">
+      Artfuly
+      <span>Brand Guidelines</span>
+    </div>
+  </div>
+
+  <div class="nav-site-label shared">Shared Foundation</div>
+  <a href="#shared" class="nav-link">Dual-brand overview</a>
+  <a href="#shared-nav" class="nav-link">Navigation</a>
+  <a href="#shared-type" class="nav-link">Typography system</a>
+
+  <div class="nav-site-label artfuly">artfuly.com</div>
+  <a href="#a-logo" class="nav-link active">Logo</a>
+  <a href="#a-colour" class="nav-link">Colour</a>
+  <a href="#a-type" class="nav-link">Typography</a>
+  <a href="#a-buttons" class="nav-link">Buttons</a>
+  <a href="#a-components" class="nav-link">Components</a>
+
+  <div class="nav-site-label rp">rachaelpage.com</div>
+  <a href="#rp-name" class="nav-link">Name treatment</a>
+  <a href="#rp-colour" class="nav-link">Colour</a>
+  <a href="#rp-type" class="nav-link">Typography</a>
+  <a href="#rp-buttons" class="nav-link">Buttons</a>
+  <a href="#rp-components" class="nav-link">Components</a>
+
+  <div class="sidebar-footer">
+    Rachael Page — Design system<br>
+    Artfuly.com &amp; RachaelPage.com<br>
+    Built June 2026
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     MAIN CONTENT
+     ══════════════════════════════════════ -->
+<main class="main">
+
+
+  <!-- ══════════════════════════════════════
+       BANNER: SHARED FOUNDATION
+       ══════════════════════════════════════ -->
+  <div class="site-banner shared">
+    <span class="site-banner-pill">Foundation</span>
+    <span class="site-banner-title">Shared Design System</span>
+    <span class="site-banner-sub">— the rules that connect both brands</span>
+  </div>
+
+
+  <!-- ──────────────────────────────────────
+       SHARED OVERVIEW
+       ────────────────────────────────────── -->
+  <section class="section" id="shared">
+    <div class="section-intro">
+      <div class="section-num grey">00</div>
+      <h1 class="section-title teal">Dual-brand overview</h1>
+      <p class="section-desc">Artfuly and Rachael Page are two distinct brands owned by the same designer — Rachael Page. They share a typeface family, a navigation colour, and a teal accent. Everything else is intentionally differentiated: Artfuly is warm and educational; rachaelpage.com is crisp and portfolio-focused.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label grey">How they relate</div>
+      <div class="two-col">
+        <div style="background:#e6f7f7;border:1px solid #c5e8ea;border-radius:12px;padding:24px;">
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--teal-dark);margin-bottom:10px;">artfuly.com</div>
+          <div style="font-size:15px;font-weight:700;color:var(--charcoal);margin-bottom:6px;">Design education platform</div>
+          <div style="font-size:13px;color:#555;line-height:1.6;">Resources, articles, courses. Warm teal palette. Coral CTAs. Merriweather for long-form reading.</div>
+        </div>
+        <div style="background:#f3f3f3;border:1px solid #e0e0e0;border-radius:12px;padding:24px;">
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#333;margin-bottom:10px;">rachaelpage.com</div>
+          <div style="font-size:15px;font-weight:700;color:var(--black);margin-bottom:6px;">Professional portfolio</div>
+          <div style="font-size:13px;color:#555;line-height:1.6;">30 years UX/product work. Black and white dominant. Teal used as accent only. Montserrat throughout.</div>
+        </div>
+      </div>
+
+      <div class="rule-box teal" style="margin-top:20px;">
+        <strong>Same codebase, two domains.</strong> Both sites are built in Astro and deployed to Netlify. artfuly.com serves <code>/</code>; rachaelpage.com is served via a 200 rewrite at <code>/rachael-page/</code>. The shared teal nav colour (below) is the most visible design thread connecting them.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       SHARED NAV
+       ────────────────────────────────────── -->
+  <section class="section tinted" id="shared-nav">
+    <div class="section-intro">
+      <div class="section-num grey">01</div>
+      <h1 class="section-title teal">Shared navigation</h1>
+      <p class="section-desc">Both sites use an identical semi-transparent light-cyan navigation bar. It is the most direct visual link between the two brands. The content differs — one uses the Artfuly round logo, the other uses a text wordmark — but the bar itself is the same.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label grey">Nav background colour</div>
+      <div style="display:flex;gap:12px;align-items:flex-end;margin-bottom:24px;">
+        <div style="text-align:center;">
+          <div style="width:100px;height:40px;background:rgba(206,234,235,0.82);border-radius:6px;border:1px solid rgba(0,0,0,0.06);"></div>
+          <div style="font-size:10px;color:#888;margin-top:6px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">rgba(206,234,235,0.82)</div>
+        </div>
+        <div style="font-size:12px;color:#666;max-width:320px;line-height:1.6;padding-bottom:4px;">Translucent light cyan. Scrolls as a fixed bar — page content is dimly visible through it. Never use an opaque background in the nav.</div>
+      </div>
+
+      <div class="sub-label grey">artfuly.com nav</div>
+      <div class="a-nav-demo" style="margin-bottom:10px;">
+        <div class="a-nav-logo">
+          <img src="artfuly-round-logo.png" alt="Artfuly logo">
+        </div>
+        <div class="a-nav-links">
+          <span class="a-nav-link">Design Resources</span>
+          <span class="a-nav-link">About</span>
+          <span class="a-nav-cta">Work with me</span>
+        </div>
+      </div>
+      <div class="logo-caption">Artfuly round logo (PNG) + Montserrat 300 links + coral pill CTA.</div>
+
+      <div class="spacer-sm"></div>
+
+      <div class="sub-label grey">rachaelpage.com nav</div>
+      <div class="rp-nav-demo" style="margin-bottom:10px;">
+        <span class="rp-nav-wordmark">Rachael Page</span>
+        <div class="rp-nav-links">
+          <span class="rp-nav-link">Work</span>
+          <span class="rp-nav-link">About</span>
+          <span class="rp-nav-link">Get in touch</span>
+        </div>
+      </div>
+      <div class="logo-caption">Montserrat 700 name wordmark + Montserrat 300 links. No separate logo mark.</div>
+
+      <div class="rule-box teal">
+        <strong>Font weight rule:</strong> Nav links are always Montserrat 300 (Light) on both sites. The logo/wordmark uses Montserrat 700. The CTA button in the Artfuly nav uses Montserrat 800.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       SHARED TYPOGRAPHY OVERVIEW
+       ────────────────────────────────────── -->
+  <section class="section" id="shared-type">
+    <div class="section-intro">
+      <div class="section-num grey">02</div>
+      <h1 class="section-title teal">Typography system</h1>
+      <p class="section-desc">Montserrat is the single shared typeface across both brands — used in 9 weights from Light to Black. Each site then adds one supplementary typeface for a specific purpose.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label grey">Typefaces in use</div>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Font</th>
+            <th>Role</th>
+            <th>Weights</th>
+            <th>Used on</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Montserrat</td>
+            <td>Primary — headings, body, buttons, nav</td>
+            <td>300 · 400 · 500 · 600 · 700 · 800 · 900</td>
+            <td>Both sites</td>
+          </tr>
+          <tr>
+            <td>Merriweather</td>
+            <td>Article body text only</td>
+            <td>300 · 400 · 700</td>
+            <td>artfuly.com</td>
+          </tr>
+          <tr>
+            <td>Barlow Condensed</td>
+            <td>Testimonial blockquotes only</td>
+            <td>400 · 500 · 600</td>
+            <td>rachaelpage.com</td>
+          </tr>
+          <tr>
+            <td>Great Vibes</td>
+            <td>Decorative display — single use</td>
+            <td>400</td>
+            <td>artfuly.com (1 instance)</td>
+          </tr>
+          <tr>
+            <td>Parisienne</td>
+            <td>Decorative — surface pattern page names</td>
+            <td>400</td>
+            <td>rachaelpage.com (1 page type)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rule-box teal" style="margin-top:20px;">
+        <strong>Great Vibes and Parisienne</strong> are art-direction choices for specific contexts, not brand fonts. Do not use them for anything outside their designated single use.
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label grey">Montserrat weight ramp — shared</div>
+      <div class="weight-ramp">
+        <div><span class="weight-tag">300 · Light</span><span style="font-weight:300;">Navigation links, body copy, captions</span></div>
+        <div><span class="weight-tag">400 · Regular</span><span style="font-weight:400;">Body paragraphs, form labels</span></div>
+        <div><span class="weight-tag">500 · Medium</span><span style="font-weight:500;">Card titles, subheadings</span></div>
+        <div><span class="weight-tag">600 · SemiBold</span><span style="font-weight:600;">Active nav, section sub-labels</span></div>
+        <div><span class="weight-tag">700 · Bold</span><span style="font-weight:700;">Section headings, buttons, nav wordmark</span></div>
+        <div><span class="weight-tag">800 · ExtraBold</span><span style="font-weight:800;">Hero display, primary CTA labels</span></div>
+        <div><span class="weight-tag">900 · Black</span><span style="font-weight:900;">Large display use only — artfuly.com hero</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       BANNER: ARTFULY.COM
+       ══════════════════════════════════════ -->
+  <div class="site-banner artfuly">
+    <span class="site-banner-pill">artfuly.com</span>
+    <span class="site-banner-title">Artfuly</span>
+    <span class="site-banner-sub">— design education platform</span>
+  </div>
+
+
+  <!-- ──────────────────────────────────────
+       A — LOGO
+       ────────────────────────────────────── -->
+  <section class="section" id="a-logo">
+    <div class="section-intro">
+      <div class="section-num teal">03</div>
+      <h1 class="section-title teal">Artfuly logo</h1>
+      <p class="section-desc">The Artfuly logo is a circle in mid-teal (#3ba89c) with the wordmark "Artfuly" in white Montserrat. The favicon is a teal square with a white "A" styled as an artist's easel. There is no separate standalone mark — the circle is the mark.</p>
+    </div>
+
+    <div class="subsection" id="a-logo-versions">
+      <div class="sub-label teal">Logo on approved backgrounds</div>
+      <div class="logo-grid-3" style="margin-bottom:8px;">
+        <div>
+          <div class="logo-bg light">
+            <img src="artfuly-round-logo.png" alt="Artfuly logo" style="width:120px;height:120px;">
+          </div>
+          <div class="logo-caption">On white — primary use for marketing and print.</div>
+        </div>
+        <div>
+          <div class="logo-bg cyan">
+            <img src="artfuly-round-logo.png" alt="Artfuly logo" style="width:120px;height:120px;">
+          </div>
+          <div class="logo-caption">On light cyan — section backgrounds, email.</div>
+        </div>
+        <div>
+          <div class="logo-bg teal">
+            <img src="artfuly-round-logo.png" alt="Artfuly logo" style="width:120px;height:120px;">
+          </div>
+          <div class="logo-caption">On dark teal — nav header, dark overlays.</div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="sub-label teal">Favicon</div>
+      <div class="two-col" style="max-width:520px;">
+        <div>
+          <div class="comp-frame" style="display:flex;align-items:center;gap:16px;padding:20px 28px;">
+            <img src="artfuly-favicon.png" alt="Artfuly favicon" style="width:32px;height:32px;image-rendering:pixelated;">
+            <img src="artfuly-favicon.png" alt="Artfuly favicon" style="width:48px;height:48px;image-rendering:crisp-edges;">
+            <img src="artfuly-favicon.png" alt="Artfuly favicon" style="width:64px;height:64px;image-rendering:crisp-edges;">
+          </div>
+          <div class="logo-caption">Favicon at 32px, 48px, 64px. Teal square, white A.</div>
+        </div>
+        <div>
+          <div class="comp-frame grey" style="padding:20px 24px;">
+            <div style="font-size:12px;color:#555;line-height:1.7;">
+              The favicon "A" is stylised as an <strong>artist's easel</strong> — a deliberate reference to art/design craft. It is not a generic letter A. Do not substitute with a plain A in any typeface.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" id="a-logo-clearspace">
+      <div class="sub-label teal">Clear space</div>
+      <div class="clearspace-wrap">
+        <div class="clearspace-inner">
+          <img src="artfuly-round-logo.png" alt="Artfuly logo" style="width:80px;height:80px;">
+          <div class="clearspace-box"></div>
+          <span class="clearspace-label top">½ × logo diameter</span>
+          <span class="clearspace-label bottom">½ × logo diameter</span>
+          <span class="clearspace-label left">½ × dia.</span>
+          <span class="clearspace-label right">½ × dia.</span>
+        </div>
+      </div>
+      <div class="logo-caption">Minimum clear space on all sides = half the logo's diameter. No text, buttons, or imagery inside this zone.</div>
+      <div class="rule-box teal">
+        <strong>Minimum sizes:</strong> Full logo (circle + wordmark together) — 80px diameter minimum. In the nav the logo is rendered at 32–36px. Below 24px, use only the favicon.
+      </div>
+    </div>
+
+    <div class="subsection" id="a-logo-donts">
+      <div class="sub-label teal">Don'ts</div>
+      <div class="donts-grid">
+        <div class="dont-card">
+          <div style="width:80px;height:80px;background:#ef4444;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:white;">Artfuly</div>
+          <div class="dont-desc">Don't change the circle colour. Only mid-teal (#3ba89c) is approved.</div>
+        </div>
+        <div class="dont-card">
+          <div style="width:100px;height:60px;background:#3ba89c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:white;">Artfuly</div>
+          <div class="dont-desc">Don't stretch or distort the circle. It must remain a perfect circle.</div>
+        </div>
+        <div class="dont-card">
+          <div style="width:80px;height:80px;background:#3ba89c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:white;filter:drop-shadow(3px 3px 6px rgba(0,0,0,0.5));">Artfuly</div>
+          <div class="dont-desc">Don't add drop shadows, glows, or effects to the logo.</div>
+        </div>
+        <div class="dont-card">
+          <div style="width:80px;height:80px;background:#888;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:white;">Artfuly</div>
+          <div class="dont-desc">Don't place on non-approved backgrounds. White, light cyan, and dark teal only.</div>
+        </div>
+        <div class="dont-card">
+          <div style="width:80px;height:80px;background:#3ba89c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Georgia',serif;font-size:20px;font-weight:700;color:white;">Artfuly</div>
+          <div class="dont-desc">Don't retype the wordmark in a different font. Always use the PNG asset.</div>
+        </div>
+        <div class="dont-card">
+          <div style="opacity:0.25;width:80px;height:80px;background:#3ba89c;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:white;">Artfuly</div>
+          <div class="dont-desc">Don't use the logo at reduced opacity.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       A — COLOUR
+       ────────────────────────────────────── -->
+  <section class="section tinted" id="a-colour">
+    <div class="section-intro">
+      <div class="section-num teal">04</div>
+      <h1 class="section-title teal">Artfuly colour palette</h1>
+      <p class="section-desc">The palette is anchored by two teals and one coral. Dark teal dominates structural elements. Coral is reserved for primary CTA buttons only — never for decorative use. Charcoal is <em>text only</em> and must never be used as a background.</p>
+    </div>
+
+    <div class="subsection" id="a-colour-primary">
+      <div class="sub-label teal">Primary palette</div>
+      <div class="colour-grid colour-grid-4" style="margin-bottom:12px;">
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#048ba2;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Dark Teal</div>
+            <div class="swatch-hex teal">#048ba2</div>
+            <div class="swatch-use">Hero backgrounds, nav section, primary buttons, footer, section headers.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#3ba89c;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mid Teal</div>
+            <div class="swatch-hex teal">#3ba89c</div>
+            <div class="swatch-use">Links, hover states, share buttons, borders, logo circle.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#ee7c7b;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Coral</div>
+            <div class="swatch-hex" style="color:var(--coral);">#ee7c7b</div>
+            <div class="swatch-use">CTA buttons only. Subscribe, Work with me, article actions.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#e5605e;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Coral Hover</div>
+            <div class="swatch-hex" style="color:#c0504f;">#e5605e</div>
+            <div class="swatch-use">Hover state for all coral buttons. Not used for anything else.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="colour-grid colour-grid-4">
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#ceeaeb;border-bottom:1px solid #b8e0e2;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Light Cyan</div>
+            <div class="swatch-hex teal">#ceeaeb</div>
+            <div class="swatch-use">Nav background, mobile overlay, skill pills on RP site.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#e6f7f7;border-bottom:1px solid #c5e8ea;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cyan Background</div>
+            <div class="swatch-hex teal">#e6f7f7</div>
+            <div class="swatch-use">Section backgrounds, contact pre-footer, card backgrounds.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#233030;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Charcoal ⚠</div>
+            <div class="swatch-hex" style="color:#233030;">#233030</div>
+            <div class="swatch-use"><strong>Text only.</strong> Headings and body on light backgrounds. Never as a background colour.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#000050;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Navy</div>
+            <div class="swatch-hex" style="color:#000050;">#000050</div>
+            <div class="swatch-use">Email CTA section background only.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box coral">
+        <strong>Charcoal (#233030) is text only.</strong> It must never be used as a section, card, or element background. For dark backgrounds use #048ba2 (teal) or #000050 (navy).
+      </div>
+    </div>
+
+    <div class="subsection" id="a-colour-contrast">
+      <div class="sub-label teal">Approved contrast pairs</div>
+      <div class="contrast-grid">
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#048ba2;">
+            <span style="color:#ffffff;">White on Dark Teal</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#fff on #048ba2</span>
+            <span class="contrast-pass">AA ✓</span>
+          </div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#048ba2;">
+            <span style="color:#ceeaeb;">Light Cyan on Dark Teal</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#ceeaeb on #048ba2</span>
+            <span class="contrast-pass">AA ✓</span>
+          </div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#ffffff;">
+            <span style="color:#233030;">Charcoal on White</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#233030 on #fff</span>
+            <span class="contrast-pass">AAA ✓</span>
+          </div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#ee7c7b;">
+            <span style="color:#ffffff;">White on Coral</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#fff on #ee7c7b</span>
+            <span class="contrast-pass">AA ✓</span>
+          </div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#e6f7f7;">
+            <span style="color:#233030;">Charcoal on Cyan Bg</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#233030 on #e6f7f7</span>
+            <span class="contrast-pass">AAA ✓</span>
+          </div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#000050;">
+            <span style="color:#ffffff;">White on Navy</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#fff on #000050</span>
+            <span class="contrast-pass">AAA ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       A — TYPOGRAPHY
+       ────────────────────────────────────── -->
+  <section class="section" id="a-type">
+    <div class="section-intro">
+      <div class="section-num teal">05</div>
+      <h1 class="section-title teal">Artfuly typography</h1>
+      <p class="section-desc">Montserrat handles all structural type. Merriweather is used exclusively for article body paragraphs to aid long-form reading. The two fonts are never mixed within a single text block.</p>
+    </div>
+
+    <div class="subsection" id="a-type-montserrat">
+      <div class="sub-label teal">Montserrat — primary</div>
+      <div class="type-block">
+        <div class="type-meta teal">
+          <span class="type-family">Montserrat</span>
+          <span class="type-role">Headings · UI · Buttons · Body</span>
+          <span class="type-import">Google Fonts · weights 300–900</span>
+        </div>
+        <div class="type-preview">
+          <div style="font-family:'Montserrat',sans-serif;font-size:40px;font-weight:800;color:#233030;letter-spacing:-0.03em;line-height:1.1;margin-bottom:8px;">Design better, teach better.</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;color:#555;line-height:1.7;">Artfuly is a design education platform created by Rachael Page, a UX and product designer with 30 years of experience.</div>
+        </div>
+        <div class="type-scale">
+          <div class="type-scale-label">Type scale — artfuly.com</div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">40px · 800</span>
+            <span class="type-scale-use">Hero display heading</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;color:#233030;letter-spacing:-0.03em;">Design better</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">28px · 700</span>
+            <span class="type-scale-use">Section heading (H2)</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;color:#233030;">Top Design Resources</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">22px · 700</span>
+            <span class="type-scale-use">Sub-section heading</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#233030;">Free Design Tools</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">16px · 700</span>
+            <span class="type-scale-use">Card title, bold label</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#233030;">ElevenLabs AI Voice</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">15px · 500</span>
+            <span class="type-scale-use">Card title (medium)</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:500;color:#233030;">How to sell on Spoonflower</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">14px · 400</span>
+            <span class="type-scale-use">Body / captions</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;color:#555;">Platform for creators and designers.</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">14px · 300</span>
+            <span class="type-scale-use">Nav links</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#233030;">Design Resources</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">11px · 700</span>
+            <span class="type-scale-use">Uppercase label / meta tag</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:2px;">Design Insights</span>
+          </div>
+        </div>
+        <div class="type-rules">
+          <div class="type-rule">
+            <div class="type-rule-label do">Use</div>
+            <div class="type-rule-text">Montserrat for all UI elements, labels, headings, and buttons on artfuly.com.</div>
+          </div>
+          <div class="type-rule">
+            <div class="type-rule-label dont">Avoid</div>
+            <div class="type-rule-text">Never use Montserrat for long-form article paragraphs — use Merriweather for body text inside articles.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" id="a-type-merriweather">
+      <div class="sub-label teal">Merriweather — article body</div>
+      <div class="type-block">
+        <div class="type-meta teal">
+          <span class="type-family" style="font-family:'Merriweather',serif;">Merriweather</span>
+          <span class="type-role coral">Article paragraphs only</span>
+          <span class="type-import">Google Fonts · 300 · 400 · 700</span>
+        </div>
+        <div class="type-preview">
+          <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;color:#233030;margin-bottom:12px;">How to Use AI to Create Seamless Patterns</div>
+          <p style="font-family:'Merriweather',serif;font-size:16px;line-height:1.8;color:#1d1d1d;max-width:540px;">Generating surface pattern designs with AI tools has become one of the fastest ways to build a Spoonflower portfolio. The key is knowing how to combine Midjourney prompts with Topaz Gigapixel for the final upscale.</p>
+          <p style="font-family:'Merriweather',serif;font-size:16px;line-height:1.8;color:#1d1d1d;max-width:540px;margin-top:12px;font-style:italic;">Italic Merriweather for pull-quotes and callout text within articles.</p>
+        </div>
+        <div class="type-rules">
+          <div class="type-rule">
+            <div class="type-rule-label do">Use</div>
+            <div class="type-rule-text">16px / 1.8 line-height for all article body paragraphs (<code>.w-richtext p</code>). Strong readability at length.</div>
+          </div>
+          <div class="type-rule">
+            <div class="type-rule-label dont">Avoid</div>
+            <div class="type-rule-text">Never use Merriweather in UI — buttons, nav, labels, or headings outside the article rich-text container.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" id="a-type-decorative">
+      <div class="sub-label teal">Great Vibes — decorative (one instance)</div>
+      <div class="type-block">
+        <div class="type-meta grey">
+          <span class="type-family" style="font-family:'Great Vibes',cursive;color:rgba(255,255,255,0.85);">Great Vibes</span>
+          <span class="type-role">Decorative display — one use only</span>
+          <span class="type-import">Google Fonts · 400</span>
+        </div>
+        <div class="type-preview" style="background:#111;border-radius:0;">
+          <div style="font-family:'Great Vibes',cursive;font-size:64px;color:#fff;line-height:1.1;text-shadow:0 2px 16px rgba(0,0,0,0.5);">Away from the Race</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">Used only in this hero section</div>
+        </div>
+        <div class="type-rules">
+          <div class="type-rule">
+            <div class="type-rule-label dont">Art-direction only</div>
+            <div class="type-rule-text">Used in one specific hero section. Do not apply to any other element on the site.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       A — BUTTONS
+       ────────────────────────────────────── -->
+  <section class="section tinted" id="a-buttons">
+    <div class="section-intro">
+      <div class="section-num teal">06</div>
+      <h1 class="section-title teal">Artfuly buttons</h1>
+      <p class="section-desc">Three button types cover all actions on artfuly.com. Coral is always the primary CTA — it must stand out from the teal environment. Ghost and pill variants handle secondary and nav-level actions.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label teal">Button types</div>
+
+      <div class="comp-frame" style="margin-bottom:12px;">
+        <div class="comp-label">Primary CTA — coral pill</div>
+        <div class="btn-row" style="margin-bottom:14px;">
+          <span class="a-btn-coral">Work with me</span>
+          <span class="a-btn-coral">Subscribe</span>
+          <span class="a-btn-coral-lg">Read the full article →</span>
+        </div>
+        <table class="spec-table">
+          <thead><tr><th>Property</th><th>Standard</th><th>Large (article CTA)</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>#ee7c7b</td><td>#ee7c7b</td></tr>
+            <tr><td>Hover bg</td><td>#e5605e</td><td>#e5605e</td></tr>
+            <tr><td>Text</td><td>#ffffff · Montserrat 700</td><td>#ffffff · Montserrat 700</td></tr>
+            <tr><td>Font size</td><td>13px</td><td>16px</td></tr>
+            <tr><td>Padding</td><td>12px 22px</td><td>16px 40px</td></tr>
+            <tr><td>Border radius</td><td>30px (pill)</td><td>30px (pill)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="comp-frame" style="margin-bottom:12px;">
+        <div class="comp-label">Secondary — ghost teal</div>
+        <div class="btn-row" style="margin-bottom:14px;">
+          <span class="a-btn-ghost">Learn more</span>
+          <span class="a-btn-ghost">View all resources</span>
+        </div>
+        <table class="spec-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>transparent</td></tr>
+            <tr><td>Border</td><td>2px solid #048ba2</td></tr>
+            <tr><td>Hover</td><td>bg #048ba2 · text white</td></tr>
+            <tr><td>Text</td><td>#048ba2 · Montserrat 700 · 13px</td></tr>
+            <tr><td>Padding</td><td>10px 20px</td></tr>
+            <tr><td>Border radius</td><td>30px</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="comp-frame teal">
+        <div class="comp-label on-dark">Subscribe button — article hero (overlaid on image)</div>
+        <div class="btn-row">
+          <span class="a-btn-subscribe">Subscribe to newsletter</span>
+        </div>
+        <div style="margin-top:14px;font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.6;">This button is positioned absolute — top-right of the article hero image. Coral fill. Same styles as the primary CTA. Font size drops to 11px on mobile (&lt;480px).</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label teal">Share buttons</div>
+      <div class="comp-frame">
+        <div class="comp-label">Article share bar — inline below content</div>
+        <div class="btn-row">
+          <span class="a-btn-share">← Twitter</span>
+          <span class="a-btn-share">LinkedIn →</span>
+          <span class="a-btn-share">Copy link</span>
+        </div>
+        <div style="margin-top:12px;font-size:11.5px;color:#888;line-height:1.6;">Border: 1px solid #3ba89c. Colour: #3ba89c. Border-radius: 4px (square-ish, not pill). Hover: bg #3ba89c, white text.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       A — COMPONENTS
+       ────────────────────────────────────── -->
+  <section class="section" id="a-components">
+    <div class="section-intro">
+      <div class="section-num teal">07</div>
+      <h1 class="section-title teal">Artfuly components</h1>
+      <p class="section-desc">Key repeating patterns used across artfuly.com: the article card, article body layout, and email sign-up form. Each has a fixed structure that should not be varied.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label teal">Article card</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:8px;">
+        <div class="article-card">
+          <div class="article-card-img">16:9 cover image</div>
+          <div class="article-card-body">
+            <div class="article-card-title">The Best Free Image Sites for Designers in 2025</div>
+            <div class="article-card-excerpt">A curated list of the highest-quality free image sources for web and print design projects.</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img">16:9 cover image</div>
+          <div class="article-card-body">
+            <div class="article-card-title">How to Sell Your First Design on Spoonflower</div>
+            <div class="article-card-excerpt">Everything you need to get your first surface pattern uploaded, approved, and listed.</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="article-card-img">16:9 cover image</div>
+          <div class="article-card-body">
+            <div class="article-card-title">ElevenLabs Review: Is It Worth It for Designers?</div>
+            <div class="article-card-excerpt">A hands-on look at whether AI voice generation has a real place in a designer's workflow.</div>
+          </div>
+        </div>
+      </div>
+      <table class="spec-table" style="margin-top:16px;max-width:580px;">
+        <thead><tr><th>Element</th><th>Style</th></tr></thead>
+        <tbody>
+          <tr><td>Image</td><td>16:9 aspect ratio · border-radius 4px · scale(1.03) on hover</td></tr>
+          <tr><td>Title</td><td>Montserrat 700 · 15px · #233030 · turns #3ba89c on hover</td></tr>
+          <tr><td>Excerpt</td><td>Montserrat 400 · 14px · #555 · line-height 1.6</td></tr>
+          <tr><td>Card wrapper</td><td>display:block · text-decoration:none · no card border</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label teal">Article body — rich text</div>
+      <div class="comp-frame" style="max-width:600px;">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;color:#233030;margin-bottom:8px;">Section heading (H2)</h2>
+        <p style="font-family:'Merriweather',serif;font-size:16px;line-height:1.8;color:#1d1d1d;margin-bottom:12px;">This is article body text set in Merriweather Regular at 16px with 1.8 line-height. Long-form reading comfort is the priority — the extra leading helps eyes track back across a full-width paragraph.</p>
+        <p style="font-family:'Merriweather',serif;font-size:16px;line-height:1.8;color:#1d1d1d;margin-bottom:12px;"><a href="#" style="color:#3ba89c;cursor:default;">Mid teal #3ba89c</a> is used for inline links within article text. <strong style="font-weight:700;">Bold uses Merriweather 700.</strong> <em>Italics use Merriweather Italic.</em></p>
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#233030;margin-bottom:6px;">Sub-heading (H3)</h3>
+        <p style="font-family:'Merriweather',serif;font-size:16px;line-height:1.8;color:#1d1d1d;">H2 and H3 inside articles revert to Montserrat 700 to maintain a clear typographic hierarchy against the Merriweather body.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label teal">Email CTA section</div>
+      <div class="comp-frame navy" style="max-width:640px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:8px;">Design Insights</div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.2;">Get weekly design resources</div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Free tools, tutorials, and Spoonflower tips delivered every Thursday.</div>
+          </div>
+          <div>
+            <div style="background:#fff;border-radius:5px;padding:10px 14px;margin-bottom:10px;font-family:'Montserrat',sans-serif;font-size:14px;color:#aaa;">your@email.com</div>
+            <span class="a-btn-coral" style="display:inline-block;">Subscribe free</span>
+          </div>
+        </div>
+      </div>
+      <div class="rule-box teal">
+        Section background: #000050 (navy). Heading: Montserrat 700 22px white. Meta label: Montserrat 700 11px uppercase letter-spaced, rgba(255,255,255,0.6). Coral CTA button as standard.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       BANNER: RACHAELPAGE.COM
+       ══════════════════════════════════════ -->
+  <div class="site-banner rp">
+    <span class="site-banner-pill">rachaelpage.com</span>
+    <span class="site-banner-title">Rachael Page</span>
+    <span class="site-banner-sub">— professional portfolio</span>
+  </div>
+
+
+  <!-- ──────────────────────────────────────
+       RP — NAME TREATMENT
+       ────────────────────────────────────── -->
+  <section class="section" id="rp-name">
+    <div class="section-intro">
+      <div class="section-num black">08</div>
+      <h1 class="section-title black">Name treatment</h1>
+      <p class="section-desc">rachaelpage.com has no separate logo mark. The name "Rachael Page" set in Montserrat 700 is the brand identity. It appears in the nav, on headings, and in the footer — always in black (#000000) on light backgrounds.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Approved name treatments</div>
+      <div class="two-col" style="max-width:600px;margin-bottom:20px;">
+        <div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:#000;letter-spacing:-0.02em;">Rachael Page</span>
+          </div>
+          <div class="logo-caption">Nav wordmark — Montserrat 700, #000000.</div>
+        </div>
+        <div>
+          <div style="background:#000;border-radius:12px;padding:28px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.02em;">Rachael Page</span>
+          </div>
+          <div class="logo-caption">On dark — white. Used for dark-bg sections.</div>
+        </div>
+      </div>
+
+      <div class="rule-box black">
+        <strong>No graphic mark.</strong> The name is the identity. Do not add shapes, underlines, or icons around it. Letter-spacing: -0.02em (tighter than default). Font: always Montserrat 700.
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Hero treatment</div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:36px;overflow:hidden;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:#000;margin-bottom:4px;">Analytical</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:800;letter-spacing:-0.04em;line-height:1;color:#000;text-align:right;">+ Creative</div>
+      </div>
+      <div class="logo-caption" style="margin-top:8px;">"Analytical" slides in from left, "+ Creative" from right. Montserrat 800, letter-spacing -0.04em, line-height 1. These two words are the hero tagline — they should never be changed.</div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       RP — COLOUR
+       ────────────────────────────────────── -->
+  <section class="section tinted" id="rp-colour">
+    <div class="section-intro">
+      <div class="section-num black">09</div>
+      <h1 class="section-title black">rachaelpage.com colour</h1>
+      <p class="section-desc">The portfolio palette is deliberately restrained: black and white carry the structure, teal appears only as an accent. This keeps the work (case studies, images) as the visual focus rather than the surrounding chrome.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Palette</div>
+      <div class="colour-grid colour-grid-4" style="margin-bottom:12px;">
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#000000;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Black</div>
+            <div class="swatch-hex black">#000000</div>
+            <div class="swatch-use">Primary text, hero headings, dark sections, primary buttons.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#ffffff;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex grey">#ffffff</div>
+            <div class="swatch-use">Page background, card backgrounds, text on dark sections.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#3ba89c;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal Accent</div>
+            <div class="swatch-hex teal">#3ba89c</div>
+            <div class="swatch-use">Links, hover states, section heading underlines, next-project arrow.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#ceeaeb;border-bottom:1px solid #b8e0e2;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Light Cyan</div>
+            <div class="swatch-hex teal">#ceeaeb</div>
+            <div class="swatch-use">Skill pills, nav background (shared). Never used for body backgrounds.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="colour-grid colour-grid-4">
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#f3f3f3;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Tag Grey</div>
+            <div class="swatch-hex grey">#f3f3f3</div>
+            <div class="swatch-use">Skill tag backgrounds, testimonial card backgrounds.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#888888;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Muted Grey</div>
+            <div class="swatch-hex grey">#888888</div>
+            <div class="swatch-use">Secondary text — excerpts, captions, dates, metadata.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#f7f7f7;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface</div>
+            <div class="swatch-hex grey">#f7f7f7</div>
+            <div class="swatch-use">Impact callout backgrounds. Alternating section backgrounds.</div>
+          </div>
+        </div>
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#dddddd;border-bottom:1px solid #c0c0c0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Border</div>
+            <div class="swatch-hex grey">#dddddd</div>
+            <div class="swatch-use">Rule lines, card borders, dividers, skill-tag border.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box black" style="margin-top:20px;">
+        <strong>Teal is an accent, not a background.</strong> On rachaelpage.com, #3ba89c appears as a 2px underline on section headings, as a colour for links and hover states, and as the "active" state on category filter pills. It is never used as a background on this site.
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Contrast pairs</div>
+      <div class="contrast-grid">
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#000000;">
+            <span style="color:#ffffff;">White on Black</span>
+          </div>
+          <div class="contrast-meta"><span>#fff on #000</span><span class="contrast-pass">AAA ✓</span></div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#ffffff;">
+            <span style="color:#000000;">Black on White</span>
+          </div>
+          <div class="contrast-meta"><span>#000 on #fff</span><span class="contrast-pass">AAA ✓</span></div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#f3f3f3;">
+            <span style="color:#000000;">Black on Tag Grey</span>
+          </div>
+          <div class="contrast-meta"><span>#000 on #f3f3f3</span><span class="contrast-pass">AAA ✓</span></div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#ceeaeb;">
+            <span style="color:#000000;">Black on Light Cyan</span>
+          </div>
+          <div class="contrast-meta"><span>#000 on #ceeaeb</span><span class="contrast-pass">AAA ✓</span></div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#ffffff;">
+            <span style="color:#3ba89c;">Teal on White</span>
+          </div>
+          <div class="contrast-meta"><span>#3ba89c on #fff</span><span class="contrast-pass">AA ✓</span></div>
+        </div>
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#000000;">
+            <span style="color:#3ba89c;">Teal on Black</span>
+          </div>
+          <div class="contrast-meta"><span>#3ba89c on #000</span><span class="contrast-pass">AA ✓</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       RP — TYPOGRAPHY
+       ────────────────────────────────────── -->
+  <section class="section" id="rp-type">
+    <div class="section-intro">
+      <div class="section-num black">10</div>
+      <h1 class="section-title black">rachaelpage.com typography</h1>
+      <p class="section-desc">Montserrat is used throughout at weights from 300 to 800. Barlow Condensed appears in one specific context — testimonial blockquotes — for its distinctive condensed italic character.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Montserrat — portfolio type scale</div>
+      <div class="type-block">
+        <div class="type-meta black">
+          <span class="type-family">Montserrat</span>
+          <span class="type-role">All type on rachaelpage.com</span>
+          <span class="type-import">Google Fonts · weights 300–800</span>
+        </div>
+        <div class="type-preview">
+          <div style="font-family:'Montserrat',sans-serif;font-size:48px;font-weight:800;color:#000;letter-spacing:-0.04em;line-height:1;margin-bottom:8px;">Analytical</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:15px;font-weight:400;color:#888;line-height:1.7;">UX &amp; Product Designer · 30 years experience · London / Berlin</div>
+        </div>
+        <div class="type-scale">
+          <div class="type-scale-label">Type scale — rachaelpage.com</div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">72px · 800</span>
+            <span class="type-scale-use">Hero words (Analytical / Creative)</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:800;color:#000;letter-spacing:-0.04em;">Analytical</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">32px · 800</span>
+            <span class="type-scale-use">Work section heading</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#000;letter-spacing:-0.03em;">Selected Work</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">24px · 700</span>
+            <span class="type-scale-use">Section heading / project title</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;color:#000;letter-spacing:-0.02em;">Ticklists App</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">16px · 700</span>
+            <span class="type-scale-use">Card title, bold label</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#000;">Surface Pattern Design</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">15px · 400</span>
+            <span class="type-scale-use">Body / bio paragraph</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;color:#555;line-height:1.7;">30 years experience across UX, product, and visual design.</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">14px · 300</span>
+            <span class="type-scale-use">Nav links</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#000;">Work</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">12px · 600</span>
+            <span class="type-scale-use">Uppercase section label</span>
+            <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:1.5px;">Case Study</span>
+          </div>
+        </div>
+        <div class="type-rules">
+          <div class="type-rule">
+            <div class="type-rule-label do">Use</div>
+            <div class="type-rule-text">Tight negative letter-spacing (−0.02em to −0.04em) on headings weight 700+. This matches the sharp, editorial feel of the portfolio.</div>
+          </div>
+          <div class="type-rule">
+            <div class="type-rule-label dont">Avoid</div>
+            <div class="type-rule-text">Do not use Merriweather on rachaelpage.com. It is an artfuly.com-only typeface.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Barlow Condensed — testimonials only</div>
+      <div class="type-block">
+        <div class="type-meta black">
+          <span class="type-family" style="font-family:'Barlow Condensed',sans-serif;">Barlow Condensed</span>
+          <span class="type-role">Testimonial blockquotes only</span>
+          <span class="type-import">Google Fonts · 400 · 500 · 600</span>
+        </div>
+        <div class="type-preview">
+          <div class="rp-testimonial" style="max-width:100%;">
+            <div class="rp-stars">★★★★★</div>
+            <div class="rp-quote">"Rachael delivered a complete design system in three weeks that our engineering team adopted immediately. The documentation alone was worth the engagement."</div>
+            <div class="rp-cite"><strong>Head of Product, SaaS company</strong> · London</div>
+          </div>
+        </div>
+        <div class="type-rules">
+          <div class="type-rule">
+            <div class="type-rule-label do">Use</div>
+            <div class="type-rule-text">18px / line-height 1.5 for testimonial quote text inside <code>.r-block-quote</code> only.</div>
+          </div>
+          <div class="type-rule">
+            <div class="type-rule-label dont">Avoid</div>
+            <div class="type-rule-text">Barlow Condensed must not appear in headings, buttons, navigation, or labels on this site.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Parisienne — decorative (one page type only)</div>
+      <div class="type-block">
+        <div class="type-meta black">
+          <span class="type-family" style="font-family:'Parisienne',cursive;color:rgba(255,255,255,0.85);">Parisienne</span>
+          <span class="type-role">Surface pattern collection page names</span>
+          <span class="type-import">Google Fonts · 400</span>
+        </div>
+        <div class="type-preview" style="background:linear-gradient(135deg,#e8f8f8 0%,#f5f5f5 100%);">
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#3ba89c;margin-bottom:10px;">Surface Pattern Collection</div>
+          <div style="font-family:'Parisienne',cursive;font-size:52px;color:#048ba2;line-height:1.05;">William Morris</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;color:#888;margin-top:8px;letter-spacing:0.08em;text-transform:uppercase;">Wallpaper · Fabric · Cushions</div>
+        </div>
+        <div class="type-rules">
+          <div class="type-rule">
+            <div class="type-rule-label dont">Art-direction only</div>
+            <div class="type-rule-text">Used exclusively for the hero collection name on surface-pattern-design pages. Never use elsewhere.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       RP — BUTTONS
+       ────────────────────────────────────── -->
+  <section class="section tinted" id="rp-buttons">
+    <div class="section-intro">
+      <div class="section-num black">11</div>
+      <h1 class="section-title black">rachaelpage.com buttons</h1>
+      <p class="section-desc">Two primary button styles: solid black pill for primary actions, outlined pill for secondary. Both use 100px border-radius giving a full pill shape. There are no coral or teal-fill buttons on rachaelpage.com.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Button types</div>
+
+      <div class="comp-frame" style="margin-bottom:12px;">
+        <div class="comp-label">Primary — solid black pill</div>
+        <div class="btn-row" style="margin-bottom:14px;">
+          <span class="rp-btn-dark">Email me</span>
+          <span class="rp-btn-dark">Book a meeting</span>
+          <span class="rp-btn-dark">View all work →</span>
+        </div>
+        <table class="spec-table dark">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>#000000</td></tr>
+            <tr><td>Text</td><td>#ffffff · Montserrat 600 · 14px</td></tr>
+            <tr><td>Hover</td><td>opacity 0.8</td></tr>
+            <tr><td>Padding</td><td>13px 28px</td></tr>
+            <tr><td>Border radius</td><td>100px (full pill)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="comp-frame" style="margin-bottom:12px;">
+        <div class="comp-label">Secondary — outline pill</div>
+        <div class="btn-row" style="margin-bottom:14px;">
+          <span class="rp-btn-outline">Copy email</span>
+          <span class="rp-btn-outline">Download CV</span>
+        </div>
+        <table class="spec-table dark">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>#ffffff</td></tr>
+            <tr><td>Border</td><td>2px solid #000000</td></tr>
+            <tr><td>Text</td><td>#000000 · Montserrat 600 · 14px</td></tr>
+            <tr><td>Hover</td><td>opacity 0.7</td></tr>
+            <tr><td>Border radius</td><td>100px (full pill)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rule-box black">
+        <strong>No coral buttons on rachaelpage.com.</strong> The coral CTA is an Artfuly.com-only pattern. The portfolio keeps its palette strictly black, white, and teal-accent — coral would clash with the editorial feel.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────
+       RP — COMPONENTS
+       ────────────────────────────────────── -->
+  <section class="section" id="rp-components">
+    <div class="section-intro">
+      <div class="section-num black">12</div>
+      <h1 class="section-title black">rachaelpage.com components</h1>
+      <p class="section-desc">The portfolio's key repeating components: skill pills, work cards, category filter pills, and the impact callout block used in case studies.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Skill / deliverable pills</div>
+      <div class="comp-frame">
+        <div class="comp-label">Displayed on project pages below the header</div>
+        <div class="pills-row" style="margin-bottom:14px;">
+          <span class="skill-pill">UX Research</span>
+          <span class="skill-pill">Interaction Design</span>
+          <span class="skill-pill">Design System</span>
+          <span class="skill-pill">Prototyping</span>
+          <span class="skill-pill">React / PWA</span>
+          <span class="skill-pill">Firebase</span>
+        </div>
+        <table class="spec-table dark">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>#ceeaeb (light cyan)</td></tr>
+            <tr><td>Border</td><td>1px solid #fff · outline: 1px solid #fff</td></tr>
+            <tr><td>Text</td><td>#233030 · Montserrat 500 · 12–13px</td></tr>
+            <tr><td>Border radius</td><td>30px (pill)</td></tr>
+            <tr><td>Padding</td><td>0.3rem 0.85rem</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Category filter pills</div>
+      <div class="comp-frame black">
+        <div class="comp-label on-dark">Used on the Featured Work section — on dark background</div>
+        <div class="pills-row" style="margin-bottom:8px;">
+          <span class="cat-pill active">All</span>
+          <span class="cat-pill">Apps &amp; PWAs</span>
+          <span class="cat-pill">UX Design</span>
+          <span class="cat-pill">Motion Design</span>
+          <span class="cat-pill">Graphic Design</span>
+        </div>
+      </div>
+      <table class="spec-table dark" style="max-width:520px;">
+        <thead><tr><th>State</th><th>Background</th><th>Text</th></tr></thead>
+        <tbody>
+          <tr><td>Default</td><td>rgba(255,255,255,0.1)</td><td>rgba(255,255,255,0.8) · Montserrat 500</td></tr>
+          <tr><td>Active</td><td>#3ba89c</td><td>#fff · Montserrat 600</td></tr>
+          <tr><td>Hover</td><td>#3ba89c</td><td>#fff</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Work card</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:16px;">
+        <div class="work-card">
+          <div class="work-card-img">project thumbnail</div>
+          <div class="work-card-info">
+            <div class="work-card-title">Ticklists App</div>
+            <div class="work-card-excerpt">PWA for shared household checklists and routines.</div>
+            <div style="color:#3ba89c;font-size:14px;margin-top:6px;">→</div>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-card-img">project thumbnail</div>
+          <div class="work-card-info">
+            <div class="work-card-title">Surface Pattern Design</div>
+            <div class="work-card-excerpt">William Morris and geometric collections for Spoonflower.</div>
+            <div style="color:#3ba89c;font-size:14px;margin-top:6px;">→</div>
+          </div>
+        </div>
+      </div>
+      <table class="spec-table dark" style="max-width:520px;">
+        <thead><tr><th>Element</th><th>Style</th></tr></thead>
+        <tbody>
+          <tr><td>Card wrapper</td><td>bg #fff · border-radius 8px · hover opacity 0.9</td></tr>
+          <tr><td>Image</td><td>220px height · object-fit cover</td></tr>
+          <tr><td>Title</td><td>Montserrat 700 · 14–16px · #000</td></tr>
+          <tr><td>Excerpt</td><td>Montserrat 400 · 13px · #888 · line-height 1.5</td></tr>
+          <tr><td>Arrow</td><td>#3ba89c · 14–16px</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Impact callout block</div>
+      <div class="comp-frame" style="max-width:560px;margin-bottom:14px;">
+        <div class="impact-block">
+          <strong>Outcome</strong>
+          <p>The new design system reduced designer onboarding time from 3 days to under 4 hours, and eliminated 94% of visual inconsistencies across the product.</p>
+        </div>
+      </div>
+      <table class="spec-table dark" style="max-width:520px;">
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Background</td><td>#f7f7f7</td></tr>
+          <tr><td>Left border</td><td>4px solid #3ba89c</td></tr>
+          <tr><td>Border radius</td><td>0 8px 8px 0</td></tr>
+          <tr><td>Label</td><td>Montserrat 700 · 9.5px · uppercase · letter-spacing · #3ba89c</td></tr>
+          <tr><td>Body text</td><td>Montserrat 400 · 14px · #000 · line-height 1.6</td></tr>
+          <tr><td>Max width</td><td>72ch</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-label black">Section heading pattern</div>
+      <div class="comp-frame">
+        <div style="margin-bottom:20px;">
+          <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#000;padding-bottom:8px;border-bottom:2px solid #3ba89c;display:inline-block;margin-bottom:12px;">Skills &amp; Deliverables</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#000;padding-bottom:8px;border-bottom:2px solid #3ba89c;display:inline-block;margin-bottom:12px;margin-left:40px;">Experience</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#000;padding-bottom:8px;border-bottom:2px solid #3ba89c;display:inline-block;margin-left:40px;">What makes me unique</div>
+        </div>
+        <div style="font-size:11.5px;color:#888;line-height:1.7;">Section headings use a 2px teal bottom border as the only decorative element. The border is on the heading element itself, not a full-width rule. This is one of the few places teal appears visually prominent on rachaelpage.com.</div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<script>
+  // Sidebar active state on scroll
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id], div.site-banner');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        links.forEach(l => {
+          l.classList.remove('active');
+          if (l.getAttribute('href') === '#' + id) l.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
