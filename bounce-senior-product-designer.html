@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="30 years product design. Consumer product experience. AI-native workflow. Here's why Rachael Page is the right fit for Bounce's Senior Product Designer contract.">
+<meta name="robots" content="noindex, nofollow">
+<title>Rachael Page — Senior Product Designer · Built for Bounce</title>
+<style>
+  :root {
+    --bounce-blue: #0057ff;
+    --bounce-dark: #0a1628;
+    --bounce-mid: #1e3a5f;
+    --bounce-light: #e8f0fe;
+    --accent: #00c2ff;
+    --text-dark: #1d1d1d;
+    --text-mid: #334155;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --bg: #ffffff;
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+  }
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  nav a {
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  nav a:hover { color: var(--bounce-blue); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .inner { max-width: 860px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    background: var(--bounce-dark);
+    color: white;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+  }
+  .hero-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--bounce-blue);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat { text-align: center; }
+  .stat .num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+  }
+  .stat .label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* BRIEF MATCH */
+  .brief-match { background: #f8fafc; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bounce-blue);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    color: var(--text-mid);
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .match-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .match-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .match-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .match-card .quote {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--bounce-blue);
+  }
+  .match-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .match-card p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .match-card a {
+    color: var(--bounce-blue);
+    font-weight: 500;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: white;
+  }
+  .project-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--bounce-light);
+    color: var(--bounce-blue);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+  .project-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .project-card p {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .project-card a {
+    font-size: 0.85rem;
+    color: var(--bounce-blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .bullets {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  .bullets li {
+    font-size: 0.83rem;
+    color: var(--text-mid);
+    padding: 0.2rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .bullets li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--bounce-blue);
+  }
+
+  /* APPROACH */
+  .approach { background: #f8fafc; }
+  .steps {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+  }
+  .step-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--bounce-blue);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+  .step h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .step p {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+  }
+
+  /* PRACTICAL */
+  .practical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .practical-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .practical-card .icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .practical-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .practical-card p { font-size: 0.8rem; color: var(--text-mid); }
+
+  /* CONTACT */
+  .contact {
+    background: var(--bounce-dark);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .contact h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .contact p {
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .contact a.btn-primary { background: var(--bounce-blue); }
+  .contact-meta {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .contact-meta a { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 600px) {
+    nav ul { gap: 1rem; }
+    .stats-bar { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#brief">The brief</a></li>
+    <li><a href="#projects">Relevant work</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#practical">Practical details</a></li>
+    <li><a href="#contact">Work together</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Senior Product Designer · Bounce · June 2026</div>
+  <h1>The designer who ships real consumer products — <em>fast</em>.</h1>
+  <p>30 years of product design. A live app shipped solo in 2026. An AI-native workflow. Here's why I'm the right fit for Bounce's 6-month contract.</p>
+  <div class="hero-cta">
+    <a href="#brief" class="btn-primary">See the brief match →</a>
+    <a href="https://rachaelpage.com" class="btn-secondary" target="_blank">Full portfolio</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><span class="num">30yr</span><span class="label">Product design</span></div>
+    <div class="stat"><span class="num">B2C</span><span class="label">Consumer apps + web</span></div>
+    <div class="stat"><span class="num">Live</span><span class="label">App shipped solo 2026</span></div>
+    <div class="stat"><span class="num">AI-native</span><span class="label">Fast iteration workflow</span></div>
+    <div class="stat"><span class="num">Now</span><span class="label">Available immediately</span></div>
+  </div>
+</div>
+
+<!-- BRIEF MATCH -->
+<section class="brief-match" id="brief">
+  <div class="inner">
+    <div class="section-label">Brief match</div>
+    <h2 class="section-title">What Bounce needs. What I bring.</h2>
+    <p class="section-intro">I read your brief carefully. Here's my specific evidence against each core requirement — real work, not claims.</p>
+
+    <div class="match-grid">
+
+      <div class="match-card">
+        <div class="icon">🛍️</div>
+        <div class="quote">From your brief: "Contribute to the UX of Bounce's consumer-facing product across web and mobile"</div>
+        <h3>Consumer product across web + mobile — this is my default</h3>
+        <p>I've designed for end-users as my primary audience throughout my career. Most recently I designed, built, and shipped <strong>Ticklists</strong> — a consumer PWA (installable from browser, no App Store required) and its companion marketing site. Both live today. Before that, 2+ years as Principal Product Designer on <strong>Terra Listens</strong> native iOS and Android apps, and before that the <strong>original McDonalds Monopoly mobile-first web app</strong> for Australia. Consumer product at every scale, from startup to blue chip.</p>
+        <a href="https://artfuly.com/rachael-page/project/ticklists-app/" target="_blank">View Ticklists →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🔍</div>
+        <div class="quote">From your brief: "Participate in user interviews, usability tests, and research sessions"</div>
+        <h3>User research is my strongest discipline — not a side task</h3>
+        <p>I'm an accredited usability practitioner (Usability247). I ran the complete user research programme for the <strong>University of Sydney</strong> website redesign, delivering a full courses search and listing overhaul based on structured interviews, testing, and IA work. I also conducted user research for <strong>KPMG</strong> and <strong>PwC</strong> on enterprise platforms, and at Artfuly ran ongoing research with buyers and artists across 19 countries to drive product decisions.</p>
+        <a href="https://artfuly.com/rachael-page/work/user-research-testing/" target="_blank">User research portfolio →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">⚙️</div>
+        <div class="quote">From your brief: "Help maintain and extend Bounce's design system, ensuring consistency across surfaces"</div>
+        <h3>Design systems — I've built and maintained them, not just used them</h3>
+        <p>For Terra Listens I maintained a living Figma design system across native iOS, Android, marketing site, and web app for 26+ months — components, variants, auto-layout, shared styles propagating across all surfaces. I also built the Ticklists design system from scratch (atoms to organisms) and a dual-brand system for Artfuly.com and rachaelpage.com sharing a single token base. Systems are how I work, not a deliverable I produce once.</p>
+        <a href="https://rachaelpageproduct.github.io/public/ticklists-brand-guidelines.html" target="_blank">View Ticklists design system →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🤖</div>
+        <div class="quote">From your brief: "Use Figma and AI tools to communicate and validate design decisions"</div>
+        <h3>AI-native workflow — I use Claude, Figma AI, Midjourney, V0.dev daily</h3>
+        <p>This is genuine, not a buzzword. I built and shipped Ticklists using AI tools throughout the workflow — Figma AI for design, Claude for specifications and copy, V0.dev for component prototyping. I've also evaluated AI design outputs professionally for a major AI company, which means I understand exactly where these tools succeed and fail. My workflow produces faster iteration and better-documented decisions than traditional process.</p>
+        <a href="https://artfuly.com/rachael-page/project/ticklists-app/" target="_blank">See the shipped product →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🤝</div>
+        <div class="quote">From your brief: "Partner with engineers to understand technical constraints and ensure design feasibility"</div>
+        <h3>Engineering collaboration — I've been the PM and the designer</h3>
+        <p>At Terra Listens I was both Principal Product Designer and de facto PM — hiring developers, writing briefs, managing the roadmap across native apps, web app, and marketing site. At Artfuly I built and ran the platform myself. This means I don't hand over designs that can't be built. I understand technical constraints, I ask the right questions early, and I know when to simplify a design to ship on time versus when to push back.</p>
+        <a href="https://artfuly.com/rachael-page/work/product-design/" target="_blank">Product design portfolio →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="section-label">Portfolio highlights</div>
+    <h2 class="section-title">Work that maps directly to Bounce.</h2>
+    <p class="section-intro">Selected for relevance: consumer products, web + mobile, fast iteration, design systems at scale.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <span class="project-tag">Consumer PWA · Shipped 2026</span>
+        <h3>Ticklists App</h3>
+        <p>Designed and shipped solo from zero: concept → research → brand system → design → build → launch. A progressive web app for shared household routines and shopping, working live today.</p>
+        <ul class="bullets">
+          <li>Full design system before first screen</li>
+          <li>PWA — installs from browser, no App Store</li>
+          <li>Stripe payments, real-time sync</li>
+          <li>Marketing site + app share same design tokens</li>
+        </ul>
+        <a href="https://artfuly.com/rachael-page/project/ticklists-app/" target="_blank">View case study →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Native Apps · 2+ years</span>
+        <h3>Terra Listens</h3>
+        <p>Principal Product Designer on a complex multi-surface product: native iOS + Android apps, live data streaming, a marketing site, and a web dashboard. 26+ months sustained engagement.</p>
+        <ul class="bullets">
+          <li>Atomic design system across all surfaces</li>
+          <li>Onboarding, device management, live data UX</li>
+          <li>Managed developers and roadmap as PM</li>
+          <li>Multiple major iterations shipped</li>
+        </ul>
+        <a href="https://artfuly.com/rachael-page/project/terra-app/" target="_blank">View case study →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Consumer · Mobile-first · Blue chip</span>
+        <h3>McDonalds Monopoly App</h3>
+        <p>Designed the original mobile-first McDonalds Monopoly web app for Australia — the first year it went mobile. High-scale consumer product, tight deadline, complex gamification UX.</p>
+        <ul class="bullets">
+          <li>Mobile-first before it was standard</li>
+          <li>Millions of users at peak campaign</li>
+          <li>Complex game mechanics in simple UX</li>
+          <li>M&C Saatchi collaboration</li>
+        </ul>
+        <a href="https://rachaelpage.com" target="_blank">Full portfolio →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">E-commerce · 8 years · Founder</span>
+        <h3>Artfuly.com Marketplace</h3>
+        <p>Founded and ran a bootstrapped art marketplace — 116 artists, 19 countries. Designed the entire UX including a sophisticated multi-axis filtering system for browsing original art.</p>
+        <ul class="bullets">
+          <li>Full UX ownership from concept to live</li>
+          <li>Complex filtering: keyword, size, colour, price</li>
+          <li>Buyer + seller dual experience design</li>
+          <li>8 years of continuous iteration from real data</li>
+        </ul>
+        <a href="https://artfuly.com/rachael-page/project/artfuly-original-art-marketplace/" target="_blank">View case study →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="inner">
+    <div class="section-label">How I'd tackle Bounce</div>
+    <h2 class="section-title">The way I'd work in this role.</h2>
+    <p class="section-intro">Not starting from blank. Starting from understanding what's working and what isn't — then iterating fast.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h4>Get inside the product and the data fast</h4>
+          <p>Before designing anything, I'd spend the first week using Bounce as a traveller, reviewing analytics and prior research, and talking to anyone on the team who knows where the real pain points are. I don't assume I know the problem before I've seen the evidence.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h4>Design in the open — no big reveals</h4>
+          <p>I work iteratively and share early. Messy Figma frames beat polished decks that surprise engineers two weeks later. I'd rather show a low-fi concept in a Slack thread and get a fast "no" than build the wrong thing to perfection.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h4>Ship first, refine second</h4>
+          <p>You're a fast-moving, scrappy team. I operate the same way. Viable beats perfect — I know when something is good enough to ship and when it genuinely needs more work. The Ticklists MVP is a live example: functional, in production, deliberately not over-polished until the concept is validated.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h4>Maintain the design system as infrastructure, not overhead</h4>
+          <p>Design systems only stay consistent if someone treats them as a living product. I'd work with whatever exists at Bounce, extend it pragmatically, and flag inconsistencies before they compound — without slowing the team down to polish tokens nobody will see.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICAL -->
+<section id="practical">
+  <div class="inner">
+    <div class="section-label">Practical details</div>
+    <h2 class="section-title">What working together looks like.</h2>
+
+    <div class="practical-grid">
+      <div class="practical-card">
+        <div class="icon">🟢</div>
+        <h4>Available immediately</h4>
+        <p>No notice period, no other contracts blocking a start. Ready to begin the week we agree terms.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">🕐</div>
+        <h4>Lisbon hours — no problem</h4>
+        <p>Based in Brandenburg, Germany (CET). Lisbon is just one hour behind — full overlap with your team's working hours.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">📄</div>
+        <h4>Invoicing — weekly or milestone</h4>
+        <p>German-registered sole trader with German tax registration (USt-IdNr. DE322813798). Flexible invoicing schedule to suit your finance process.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">🇬🇧</div>
+        <h4>UK + Australian passports</h4>
+        <p>Permanent residence in Germany. Full EU work authorisation. No visa issues, no complications.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">🤝</div>
+        <h4>Collaborative, not precious</h4>
+        <p>I bring a point of view and I'll push back when I think something will hurt the product — but I take feedback well and don't make it personal. Design ego kills shipping velocity.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">⚡</div>
+        <h4>6 months is enough time to matter</h4>
+        <p>I've done sustained contract engagements — 2+ years at Terra, 4 years contracting across M&C Saatchi, DDB, Sapient, and others. I ramp fast and don't need hand-holding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="inner">
+    <h2>Let's talk next steps.</h2>
+    <p>I'm excited about this role. Consumer product design, fast iteration, a team that values experimentation — this is the kind of work I do best.</p>
+    <div class="contact-links">
+      <a href="mailto:hi@artfuly.com" class="btn-primary">hi@artfuly.com</a>
+      <a href="https://rachaelpage.com" class="btn-secondary" target="_blank">Full portfolio →</a>
+      <a href="https://artfuly.com/rachael-page/work/product-design/" class="btn-secondary" target="_blank">Product design work →</a>
+    </div>
+    <div class="contact-meta">
+      <a href="https://rachaelpage.com" target="_blank">rachaelpage.com</a> ·
+      <a href="https://linkedin.com/in/rachaelpage" target="_blank">LinkedIn</a> ·
+      +49 15733 912 321 · Brandenburg, Germany
+    </div>
+  </div>
+</div>
+
+<footer style="background: #0a1628; padding: 1.5rem 2rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.35);">
+  This page was built for Bounce · Senior Product Designer Contract · June 2026
+</footer>
+
+</body>
+</html>
