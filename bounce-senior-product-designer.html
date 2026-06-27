@@ -70,6 +70,19 @@
     color: white;
     padding: 5rem 2rem 4rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: absolute;
+    right: 0; bottom: 0;
+    height: 100%; width: auto;
+    opacity: 0.13;
+    object-fit: contain;
+    object-position: right bottom;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 45%);
+    mask-image: linear-gradient(to right, transparent 0%, black 45%);
   }
   .hero-label {
     font-size: 0.8rem;
@@ -369,8 +382,8 @@
 
 <!-- HERO -->
 <div class="hero">
+  <img src="https://rachaelpageproduct.github.io/public/rachael-headshot.png" alt="" class="hero-photo" aria-hidden="true">
   <div class="hero-label">Senior Product Designer · Bounce · June 2026</div>
-  <img src="https://rachaelpageproduct.github.io/public/rachael-headshot.png" alt="Rachael Page" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);margin-bottom:1.5rem;display:block;margin-left:auto;margin-right:auto;">
   <h1>The designer who ships real consumer products — <em>fast</em>.</h1>
   <p>30 years of product design. A live app shipped solo in 2026. An AI-native workflow. Here's why I'm the right fit for Bounce's 6-month contract.</p>
   <div class="hero-cta">
