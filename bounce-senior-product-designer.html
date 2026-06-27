@@ -68,16 +68,25 @@
   .hero {
     background: var(--bounce-dark);
     color: white;
-    padding: 5rem 2rem 4rem;
+    padding: 140px 2rem 96px;
     text-align: center;
     position: relative;
     overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 80%);
   }
   .hero-photo {
     position: absolute;
     right: 0; bottom: 0;
     height: 100%; width: auto;
-    opacity: 0.28;
+    opacity: 0.13;
     object-fit: contain;
     object-position: right bottom;
     pointer-events: none;
