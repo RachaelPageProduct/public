@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Senior UX Designer for Wordwall. Evidence-based UX, component-driven Figma systems, mentoring, EdTech-adjacent experience. Here's why Rachael Page is the right fit.">
+<title>Rachael Page — Senior UX Designer · Built for Wordwall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #00adef;
+    --blue-dark: #0088bf;
+    --blue-light: #d7f1fb;
+    --dark: #0a2540;
+    --text: #1d1d1d;
+    --text-mid: #1d1d1d;
+    --text-light: #1d1d1d;
+    --border: #dddddd;
+    --bg: #ffffff;
+    --bg-alt: #f3f8fb;
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+  }
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  nav a {
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  nav a:hover { color: var(--blue-dark); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .inner { max-width: 860px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    color: white;
+    padding: 140px 2rem 96px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 80%);
+  }
+  .hero-photo {
+    position: absolute;
+    right: 0; bottom: 0;
+    height: 520px; width: auto;
+    max-height: 100%;
+    opacity: 0.70;
+    object-fit: contain;
+    object-position: right bottom;
+    pointer-events: none;
+    z-index: 1;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 45%);
+    mask-image: linear-gradient(to right, transparent 0%, black 45%);
+  }
+  .hero > *:not(.hero-photo) { position: relative; z-index: 2; }
+  .hero-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--blue);
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: var(--dark);
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue-dark); color: white; }
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat { text-align: center; }
+  .stat .num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+  }
+  .stat .label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* BRIEF MATCH */
+  .brief-match { background: var(--bg-alt); }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+  .section-intro {
+    color: var(--text-mid);
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .match-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .match-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .match-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .match-card .quote {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--blue);
+  }
+  .match-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+  .match-card p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .match-card a {
+    color: var(--blue-dark);
+    font-weight: 500;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: white;
+  }
+  .project-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+  .project-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+  .project-card p {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .project-card a {
+    font-size: 0.85rem;
+    color: var(--blue-dark);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .bullets {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  .bullets li {
+    font-size: 0.83rem;
+    color: var(--text-mid);
+    padding: 0.2rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .bullets li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--blue-dark);
+  }
+
+  /* APPROACH */
+  .approach { background: var(--bg-alt); }
+  .steps {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+  }
+  .step-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--blue-dark);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+  .step h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--dark);
+  }
+  .step p {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+  }
+
+  /* PRACTICAL */
+  .practical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .practical-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .practical-card .icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .practical-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--dark); }
+  .practical-card p { font-size: 0.8rem; color: var(--text-mid); }
+
+  /* CONTACT */
+  .contact {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .contact h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .contact p {
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .contact a.btn-primary { background: var(--blue); }
+  .contact a.btn-primary:hover { background: var(--blue-dark); color: white; }
+  .contact-meta {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .contact-meta a { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 600px) {
+    nav ul { gap: 1rem; }
+    .stats-bar { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#brief">The brief</a></li>
+    <li><a href="#projects">Relevant work</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#practical">Practical details</a></li>
+    <li><a href="#contact">Work together</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://rachaelpageproduct.github.io/public/rachael-headshot.png?v=3" alt="" class="hero-photo" aria-hidden="true">
+  <div class="hero-label">Senior UX Designer · Wordwall · July 2026</div>
+  <h1>The designer who turns <em>ambiguity into shipped UX</em> — backed by real research.</h1>
+  <p>Evidence-based UX. Component-driven design systems. Four years formally mentoring designers. Here's why I'm the right fit for Wordwall's Senior UX Designer contract.</p>
+  <div class="hero-cta">
+    <a href="#brief" class="btn-primary">See the brief match →</a>
+    <a href="https://rachaelpage.com" class="btn-secondary" target="_blank">Full portfolio</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><span class="num">20+ yrs</span><span class="label">Senior UX, digital products</span></div>
+    <div class="stat"><span class="num">Qual+Quant</span><span class="label">Accredited research practitioner</span></div>
+    <div class="stat"><span class="num">4 yrs</span><span class="label">Formal design mentoring</span></div>
+    <div class="stat"><span class="num">EdTech</span><span class="label">CareerFoundry advisory board</span></div>
+    <div class="stat"><span class="num">Now</span><span class="label">Available immediately, remote</span></div>
+  </div>
+</div>
+
+<!-- BRIEF MATCH -->
+<section class="brief-match" id="brief">
+  <div class="inner">
+    <div class="section-label">Brief match</div>
+    <h2 class="section-title">What Wordwall needs. What I bring.</h2>
+    <p class="section-intro">I read the brief carefully. Here's my specific evidence against each core requirement — real work, not claims.</p>
+
+    <div class="match-grid">
+
+      <div class="match-card">
+        <div class="icon">🧩</div>
+        <div class="quote">From the brief: "Reframing ambiguous requests into solvable design challenges"</div>
+        <h3>Comfortable starting before the problem is fully defined</h3>
+        <p>At Terra Listens I took an undefined 0→1 brief — new website, iOS app, Android app, and web dashboard — and turned it into a shipped, maintained product over two years, effectively acting as both designer and de facto PM. Founding Artfuly.com meant defining the problem myself, from zero, for eight years. I don't wait for a clean brief before I start moving.</p>
+        <a href="https://rachaelpage.com/rachael-page/project/terra-app/" target="_blank">View Terra Listens →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🔍</div>
+        <div class="quote">From the brief: "Independently plan, execute, and synthesise user research, using both qualitative insights and quantitative data"</div>
+        <h3>Research is my strongest discipline — accredited, not incidental</h3>
+        <p>I'm a Usability247 accredited usability practitioner. I independently planned and ran the full research programme for the University of Sydney course-search redesign, and for KPMG's enterprise research work. At Artfuly I ran ongoing qual + quant research with buyers and artists across 19 countries to drive product decisions directly — not just to justify decisions already made.</p>
+        <a href="https://rachaelpage.com/rachael-page/work/user-research-testing/" target="_blank">User research portfolio →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🧱</div>
+        <div class="quote">From the brief: "Proactively standardise and evolve our component-based design system in Figma"</div>
+        <h3>Design systems as living infrastructure, maintained for years — not a one-off deliverable</h3>
+        <p>I maintained a component-driven Figma design system across native iOS, Android, marketing site, and web app for 26+ months at Terra Listens — components, variants, tokens propagating across every surface. I built the Ticklists system from scratch, atoms to organisms, and maintained a dual-brand token base across Artfuly.com and rachaelpage.com. Systems are how I work by default.</p>
+        <a href="https://rachaelpage.com/rachael-page/work/product-design/" target="_blank">Product design portfolio →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🎓</div>
+        <div class="quote">From the brief: "Experience formally or informally mentoring other designers" / "Experience in EdTech, education platforms"</div>
+        <h3>Both, and not separately — mentoring, inside an EdTech product</h3>
+        <p>I've formally mentored junior and mid-level UX designers for four years at CareerFoundry, including sitting on their Instructor Advisory Board shaping teaching standards. That's structured critique experience raising other designers' craft, from inside an education-technology platform — exactly the combination in your preferred qualifications, not two separate boxes ticked.</p>
+        <a href="https://rachaelpage.com" target="_blank">Full portfolio →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🤖</div>
+        <div class="quote">From the brief: "Comfortable testing and using AI tools to accelerate design"</div>
+        <h3>AI-native workflow — daily use, not novelty</h3>
+        <p>Claude and Figma Make are my daily drivers. I designed and shipped <strong>Ticklists</strong> — a live product — using an entirely AI-native workflow: Claude for logic and specification, Figma Make for rapid prototyping, V0.dev for component prototyping. I understand where these tools genuinely accelerate design work and where they don't.</p>
+        <a href="https://www.ticklists.com" target="_blank">See the live product →</a>
+      </div>
+
+      <div class="match-card">
+        <div class="icon">🤝</div>
+        <div class="quote">From the brief: "Autonomously managing multiple workloads... in a remote, async team"</div>
+        <h3>Remote and async by default, across a decade of contracts</h3>
+        <p>Every senior engagement on my CV for the last decade — Terra Listens, KPMG, PwC, Artfuly — has been remote and self-directed. At Terra Listens I was also managing developers and the roadmap, which means I'm used to owning outcomes without someone checking in on process. I bring a point of view, push back when something will hurt the product, and take feedback without making it personal.</p>
+        <a href="https://rachaelpage.com/rachael-page/work/product-design/" target="_blank">Product design work →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="section-label">Portfolio highlights</div>
+    <h2 class="section-title">Work that maps directly to Wordwall.</h2>
+    <p class="section-intro">Selected for relevance: research-led UX, 0→1 products, design systems, mentoring, and an EdTech-adjacent product.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <span class="project-tag">EdTech · Mentoring · 4 years</span>
+        <h3>CareerFoundry</h3>
+        <p>Formally mentored junior and mid-level UX designers via structured critique for four years, and sat on the Instructor Advisory Board shaping curriculum and teaching standards for this EdTech platform.</p>
+        <ul class="bullets">
+          <li>Structured, ongoing design critique and feedback</li>
+          <li>Advisory board input on curriculum standards</li>
+          <li>Hands-on view of an education-technology product</li>
+          <li>4 years, part-time alongside senior contract work</li>
+        </ul>
+        <a href="https://rachaelpage.com" target="_blank">Full portfolio →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Native Apps · 0→1 · 2+ years</span>
+        <h3>Terra Listens</h3>
+        <p>Principal Product Designer on a complex multi-surface product: native iOS + Android apps, live data streaming, a marketing site, and a web dashboard. End-to-end ownership for 26+ months.</p>
+        <ul class="bullets">
+          <li>Component-driven Figma system across all surfaces</li>
+          <li>Reframed an undefined 0→1 brief into a shipped product</li>
+          <li>Managed developers and roadmap as de facto PM</li>
+          <li>Multiple major iterations shipped, remote/async</li>
+        </ul>
+        <a href="https://rachaelpage.com/rachael-page/project/terra-app/" target="_blank">View case study →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Research-led · University of Sydney</span>
+        <h3>Course Search Redesign</h3>
+        <p>Independently led the user research programme that directly drove a full redesign of course search, listings, and related pages — plus stakeholder management and information architecture for the underlying database.</p>
+        <ul class="bullets">
+          <li>Qualitative + quantitative research, self-planned</li>
+          <li>Research findings drove the design brief itself</li>
+          <li>Stakeholder management across a complex org</li>
+          <li>6-month engagement, evidence-based throughout</li>
+        </ul>
+        <a href="https://rachaelpage.com" target="_blank">Full portfolio →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">AI-native · MVP · Shipped 2026</span>
+        <h3>Ticklists App</h3>
+        <p>Designed and shipped solo from zero: concept → research → design system → build → launch. A progressive web app built entirely with AI tools — Claude, Figma Make, V0.dev. Live today at ticklists.com.</p>
+        <ul class="bullets">
+          <li>Entirely AI-native workflow throughout</li>
+          <li>Full design system before first screen</li>
+          <li>PWA — installs from browser, no App Store</li>
+          <li>Concept to live product, solo</li>
+        </ul>
+        <a href="https://rachaelpage.com/rachael-page/project/ticklists-app/" target="_blank">View case study →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="inner">
+    <div class="section-label">How I'd work at Wordwall</div>
+    <h2 class="section-title">The way I'd approach this role.</h2>
+    <p class="section-intro">Not starting from blank. Starting from understanding how teachers actually use Wordwall, where the current design system holds up, and where evidence — not opinion — should settle a debate.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h4>Get inside the product and the classroom use case fast</h4>
+          <p>Before proposing anything, I'd spend the first stretch using Wordwall as a teacher would, reviewing existing research and analytics, and talking to anyone on the team who knows where real friction lives. Millions of active users means existing signal is probably underused — I'd start there before generating new opinions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h4>Reframe ambiguous asks into testable design problems</h4>
+          <p>When a request arrives half-formed — "make this more engaging," "teachers are dropping off here" — I turn it into a specific, falsifiable question and a lightweight way to answer it, whether that's a usability test, a split test, or a quick round of qualitative interviews. Evidence settles the debate, not seniority.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h4>Treat the design system as shared infrastructure</h4>
+          <p>I'd work with whatever exists in Figma today, standardise it where it's inconsistent, and document it so PMs and engineers can self-serve rather than waiting on design. A system only earns its keep if it's actively maintained — I've done that for 26+ months straight on a previous product, not as a side project.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h4>Raise the bar through critique, not just my own output</h4>
+          <p>Four years of formal mentoring means I default to sharing reasoning, not just polished outcomes — in critique, in Figma comments, in how I frame decisions to PMs and engineers. In a lean, remote team, raising the team's craft matters as much as my own delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICAL -->
+<section id="practical">
+  <div class="inner">
+    <div class="section-label">Practical details</div>
+    <h2 class="section-title">What working together looks like.</h2>
+
+    <div class="practical-grid">
+      <div class="practical-card">
+        <div class="icon">🟢</div>
+        <h4>Available immediately</h4>
+        <p>No notice period, no other contracts blocking a start. Ready to begin the week we agree terms.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">🌍</div>
+        <h4>Remote &amp; async by default</h4>
+        <p>Based in Brandenburg, Germany (CET), with good UK-hours overlap. Every senior engagement for the last decade has been remote and self-directed.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">📄</div>
+        <h4>Invoicing — weekly or milestone</h4>
+        <p>German-registered sole trader with German tax registration (USt-IdNr. DE322813798). Flexible invoicing to suit your finance process.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">🇬🇧</div>
+        <h4>UK + Australian passports</h4>
+        <p>Permanent residence in Germany, full EU work authorisation, and a UK passport — no visa complications for this role.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">🔬</div>
+        <h4>Accredited usability practitioner</h4>
+        <p>Usability247 certified, with an ongoing track record of independently planned and executed research programmes.</p>
+      </div>
+      <div class="practical-card">
+        <div class="icon">⚡</div>
+        <h4>Ramp fast, no hand-holding</h4>
+        <p>2+ years at Terra Listens, Big Four contracts, 8 years running my own product. Self-directed is my default mode.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="inner">
+    <h2>Let's talk next steps.</h2>
+    <p>Evidence-based UX. Design systems as infrastructure. Four years mentoring, inside an EdTech product. Available remotely, immediately. This role is a strong fit — I'd love to discuss it.</p>
+    <div class="contact-links">
+      <a href="mailto:artfulydesign@gmail.com?subject=Wordwall%20Senior%20UX%20Designer%20—%20Rachael%20Page" class="btn-primary">artfulydesign@gmail.com</a>
+      <a href="https://rachaelpage.com" class="btn-secondary" target="_blank">Full portfolio →</a>
+      <a href="https://rachaelpage.com/rachael-page/work/product-design/" class="btn-secondary" target="_blank">Product design work →</a>
+    </div>
+    <div class="contact-meta">
+      <a href="https://rachaelpage.com" target="_blank">rachaelpage.com</a> ·
+      <a href="https://linkedin.com/in/rachaelpage" target="_blank">LinkedIn</a> ·
+      +49 15733 912 321 · Brandenburg, Germany
+    </div>
+  </div>
+</div>
+
+<footer style="background: #071a2e; padding: 1.5rem 2rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.35);">
+  This page was built for Wordwall · Senior UX Designer Contract · July 2026
+</footer>
+
+</body>
+</html>
