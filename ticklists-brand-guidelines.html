@@ -696,14 +696,14 @@
 
     /* Replicated real app buttons */
     .app-btn-primary {
-      background: var(--teal);
-      color: var(--white);
+      background: var(--lime);
+      color: var(--teal-deep);
       border: none;
-      border-radius: 12px;
+      border-radius: var(--radius-pill);
       padding: 14px 24px;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       cursor: default;
     }
 
@@ -1208,7 +1208,7 @@
     <div class="section-intro">
       <div class="section-num">01</div>
       <h1 class="section-title">Logo</h1>
-      <p class="section-desc">TickLists has two official logo forms: the <strong>full wordmark logo</strong> (for marketing, splash screens, loading state) and the <strong>mark only</strong> (for app headers, favicons, compact contexts). The mark now carries its own background shape, so the same asset works on light or dark surfaces without a separate colourway. When the mark appears next to text inside the app, that text is always the current <em>list title</em> — never the word "TickLists".</p>
+      <p class="section-desc">TickLists has one logo — the organic blob mark with "TickLists.app" lettering — output in two colour renditions for contrast: pale-yellow-on-teal for in-app use, teal-deep-on-pale-yellow for the favicon and app icon. It is <strong>not</strong> used inline in page headers — List View, Bulk Upload, and Account headers show only a back button and the screen/list title text, no mark.</p>
       <div class="rule-box" style="margin-top:16px;">
         <strong>Redesigned Aug 2026:</strong> The old circle-track-and-checkmark mark has been fully retired in favour of the organic blob mark below. Assets referenced here are pulled live from ticklists.app — if either file moves, update the <code>src</code> paths.
       </div>
@@ -1218,43 +1218,41 @@
     <!-- Logo versions -->
     <div class="subsection" id="logo-versions">
 
-      <div class="sub-label">Full logo — primary brand mark</div>
+      <div class="sub-label">Primary logo — in-app rendition</div>
       <div class="logo-on-light-grey" style="justify-content:center;padding:40px;">
         <img src="https://ticklists.app/img/ticklists logo lime round.svg" alt="TickLists logo" style="width:180px;height:auto;display:block;">
       </div>
-      <div class="logo-caption">Full wordmark logo — pale yellow mark, teal wordmark. Use for the loading screen, splash, and marketing moments. Source: <code>ticklists.app/img/ticklists logo lime round.svg</code></div>
+      <div class="logo-caption">Pale-yellow mark, teal wordmark. Source: <code>ticklists.app/img/ticklists logo lime round.svg</code></div>
 
       <div class="spacer"></div>
 
-      <div class="sub-label">Mark only — for compact use</div>
+      <div class="sub-label">Favicon / app icon rendition</div>
       <div class="logo-grid">
         <div>
           <div class="logo-dark-bg mark-only">
             <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:56px;height:auto;display:block;">
           </div>
-          <div class="logo-caption">Self-contained teal-deep + pale-yellow mark. Used for favicon, app icon, header contexts.</div>
+          <div class="logo-caption">Teal-deep + pale-yellow — inverted for contrast at small sizes (browser tab, home-screen icon).</div>
         </div>
         <div>
           <div class="logo-light-bg mark-only">
             <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:56px;height:auto;display:block;">
           </div>
-          <div class="logo-caption">Same asset on light — the mark's own teal-deep background carries the contrast, so no separate light-mode version is needed.</div>
+          <div class="logo-caption">Same favicon asset on light — its own teal-deep background carries the contrast either way.</div>
         </div>
       </div>
 
       <div class="spacer"></div>
 
-      <div class="sub-label">Mark in context — app header</div>
-      <div style="background:var(--teal-deep);border-radius:16px;padding:0;overflow:hidden;margin-bottom:8px;">
-        <div style="background:var(--teal-deep);padding:0 20px;display:flex;align-items:center;gap:12px;height:52px;">
-          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:34px;height:auto;flex-shrink:0;display:block;">
-          <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:17px;font-weight:600;color:#ffffff;line-height:1;display:flex;align-items:center;">Food Shopping</span>
-        </div>
+      <div class="sub-label">Where the logo actually appears in-app</div>
+      <div style="background:var(--teal-deep);border-radius:16px;padding:32px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:8px;">
+        <img src="https://ticklists.app/img/ticklists logo lime round.svg" alt="TickLists logo" style="width:86px;height:auto;filter:drop-shadow(0 2px 10px rgba(1,45,61,0.45));">
+        <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:20px;font-weight:700;color:#ffffff;">My Lists</span>
       </div>
-      <div class="logo-caption">The mark is used alone — text next to it is always the <strong>list title</strong> (New York 600, white). Never "TickLists". Header background is Teal Deep (#103548) on redesigned screens.</div>
+      <div class="logo-caption">Standalone, centred above the heading — <strong>only</strong> on the loading screen and the top of the My Lists page. Also appears small (26px) inside the "Add to Home Screen" prompt badge. <strong>Not</strong> used on List View, Bulk Upload, or Account — those headers are title-text only.</div>
 
       <div class="rule-box" style="margin-top:16px;">
-        <strong>Vertical alignment:</strong> The mark and list title must share the same flex container with <code>align-items: center</code>. The mark's optical centre aligns with the text cap-height. Do not add manual top offsets.
+        <strong>No inline lockup:</strong> unlike the old design, the mark is never placed inline beside a list title inside a header. Where it appears, it's the standalone full logo, centred, above the text.
       </div>
     </div>
 
@@ -1673,7 +1671,7 @@
         <div class="type-rules">
           <div class="type-rule">
             <div class="type-rule-label do">Use for</div>
-            <div class="type-rule-text">List names, section headings, modal titles, the wordmark, department names, marketing headlines.</div>
+            <div class="type-rule-text">List names, section headings, modal titles, the wordmark, department names, marketing headlines, and large primary CTA buttons (e.g. "Create free account").</div>
           </div>
           <div class="type-rule">
             <div class="type-rule-label dont">Not for</div>
@@ -1698,11 +1696,6 @@
         </div>
         <div class="type-scale">
           <div class="type-scale-label">Weight &amp; size usage</div>
-          <div class="type-scale-row">
-            <span class="type-scale-size">700 / 15–16px</span>
-            <span class="type-scale-use">Primary buttons</span>
-            <span style="font-family:'Open Sans',sans-serif;font-size:14px;font-weight:700;color:var(--charcoal);">Create free account</span>
-          </div>
           <div class="type-scale-row">
             <span class="type-scale-size">700 / 12px</span>
             <span class="type-scale-use">Field labels, column headers</span>
@@ -1810,15 +1803,24 @@
     <!-- App header -->
     <div class="subsection" id="comp-header">
       <div class="sub-label">App header</div>
+      <div class="rule-box" style="margin-bottom:16px;">
+        <strong>No logo mark in headers.</strong> List View, Bulk Upload, and Account headers are back button + title text only — see Logo section for where the mark actually appears.
+      </div>
       <div>
-        <div class="header-demo">
-          <!-- Mark only — list title sits directly alongside, no wordmark -->
-          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:28px;height:auto;flex-shrink:0;display:block;">
-          <span class="header-demo-listname">Food Shopping</span>
-          <div class="header-demo-spacer"></div>
-          <div class="counter-pill">
-            <span class="counter-num">14/60</span>
-            <span class="counter-label">ticked</span>
+        <div style="background:linear-gradient(135deg, var(--teal) 0%, rgba(1,86,119,0) 100%);border-radius:16px 16px 0 0;padding:18px 16px 14px;">
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);border:0.6px solid var(--lime);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-weight:600;font-size:22px;color:#fff;line-height:1.15;">Food Shopping</div>
+              <div style="font-family:'Open Sans Condensed',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);margin-top:2px;">Last update: Rachael, 5 May 12:44</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="counter-pill" style="background:rgba(255,255,255,0.15);border:0.6px solid var(--lime);backdrop-filter:blur(3px);">
+              <span class="counter-num">14/60</span>
+              <span class="counter-label">ticked</span>
+            </div>
           </div>
         </div>
         <div class="dept-row-demo" style="border-top:none;background:#f0ede8;">
@@ -1843,11 +1845,11 @@
       </div>
       <table class="spec-table" style="margin-top:20px;">
         <tr><th>Element</th><th>Spec</th></tr>
-        <tr><td>Header height</td><td>52px, sticky, z-index 100</td></tr>
-        <tr><td>Background</td><td>#103548 (Teal Deep) — full-bleed duotone photo header on redesigned screens (List View, Bulk Upload, Account)</td></tr>
-        <tr><td>Box shadow</td><td>0 2px 14px rgba(16,53,72,0.35)</td></tr>
-        <tr><td>Logo mark</td><td>28×28px — mark only (see Logo section). No wordmark.</td></tr>
-        <tr><td>List title</td><td>New York 600 17px, white — sits directly alongside the mark. Never "TickLists".</td></tr>
+        <tr><td>Background</td><td>Diagonal fade: <code>linear-gradient(135deg, teal 0%, transparent 100%)</code> over the page's full-bleed backdrop photo</td></tr>
+        <tr><td>Back button</td><td>34×34px circle, rgba(255,255,255,0.15) bg, 0.6px solid Lime border, blur(3px), white chevron</td></tr>
+        <tr><td>List/screen title</td><td>New York 600 26px, white, text-shadow for legibility over photo. Never "TickLists" — always the screen or list name.</td></tr>
+        <tr><td>Meta line</td><td>Open Sans Condensed 700 14px, white 90%</td></tr>
+        <tr><td>Ticked counter pill</td><td>rgba(255,255,255,0.15) bg, 0.6px solid Lime border, Lime text, Open Sans Condensed 700 15px, radius Pill</td></tr>
         <tr><td>Department rows</td><td>New York 600 13px, charcoal; height 34px; bg cream</td></tr>
         <tr><td>Item rows</td><td>Open Sans 400 13px; alternating white / #faf8f5; height 34–36px</td></tr>
       </table>
@@ -1877,7 +1879,7 @@
 
       <table class="spec-table" style="margin-top:20px;">
         <tr><th>Variant</th><th>Background</th><th>Text</th><th>Border</th><th>Border-radius</th><th>Font</th></tr>
-        <tr><td>Primary</td><td>#015677</td><td>#ffffff, 700</td><td>none</td><td>12px</td><td>Open Sans 700 15px</td></tr>
+        <tr><td>Primary</td><td>#E8F26B (Lime)</td><td>#103548 (Teal Deep), 700</td><td>none</td><td>999px (pill)</td><td>New York 700 16px</td></tr>
         <tr><td>Ghost</td><td>transparent</td><td>#015677, 700</td><td>1.5px solid #015677</td><td>20px (pill)</td><td>Open Sans 700 13px</td></tr>
         <tr><td>Pill (on dark)</td><td>rgba(255,255,255,0.12)</td><td>#ffffff, 700</td><td>1px solid rgba(255,255,255,0.22)</td><td>20px</td><td>Open Sans 700 13px</td></tr>
         <tr><td>Dashed (on dark)</td><td>transparent</td><td>rgba(255,255,255,0.85)</td><td>1.5px dashed rgba(255,255,255,0.5)</td><td>20px</td><td>Open Sans Condensed 700 13px</td></tr>
@@ -1983,59 +1985,63 @@
     <!-- Bottom nav -->
     <div class="subsection" id="comp-nav">
       <div class="sub-label">Bottom navigation</div>
-      <div class="component-frame">
-        <div class="component-label">4-tab navigation bar</div>
-        <div class="bottom-nav-demo">
+      <div class="rule-box" style="margin-bottom:16px;">
+        <strong>Redesigned again, Sep 2026:</strong> there is no bar any more. Tabs float directly on the page's backdrop photo; a plain teal scrim at the very bottom keeps labels legible. The active tab gets a glossy floating glass circle; inactive tabs are plain icon+label at reduced opacity. Every icon is white-family (differentiated by opacity, not colour) — never teal.
+      </div>
+      <div style="position:relative;border-radius:16px;overflow:hidden;height:170px;background:linear-gradient(160deg,#0b3a4a 0%,#175066 45%,#0d4256 100%);">
+        <div style="position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(to top, #015677f0 0px, #015677b0 55px, #01567700 89px);"></div>
+        <div style="position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:space-around;align-items:flex-end;padding:0 10px;">
 
-          <div class="nav-tab active">
-            <div class="nav-tab-icon active">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:-14px;background:radial-gradient(circle at 34% 20%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.22) 32%, rgba(255,255,255,0.10) 65%, rgba(255,255,255,0.16) 100%);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.55);box-shadow:0 10px 20px rgba(1,45,61,0.5), inset 0 2px 5px rgba(255,255,255,0.7), inset 0 -6px 10px rgba(1,45,61,0.15);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" style="filter:drop-shadow(0 1px 2px rgba(1,45,61,0.35));">
                 <rect x="3" y="3" width="8" height="8" rx="2.2"/><rect x="13" y="3" width="8" height="8" rx="2.2"/>
                 <rect x="3" y="13" width="8" height="8" rx="2.2"/><rect x="13" y="13" width="8" height="8" rx="2.2"/>
               </svg>
             </div>
-            <span class="nav-tab-label">My Lists</span>
+            <span style="font-family:'Open Sans',sans-serif;font-size:10.5px;font-weight:700;color:#fff;">My Lists</span>
           </div>
 
-          <div class="nav-tab">
-            <div class="nav-tab-icon">
-              <svg width="22" height="22" fill="none" stroke="#015677" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" fill="none" stroke="rgba(255,255,255,0.78)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span class="nav-tab-label">List View</span>
+            <span style="font-family:'Open Sans',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.78);">List View</span>
           </div>
 
-          <div class="nav-tab">
-            <div class="nav-tab-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#015677">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(255,255,255,0.78)">
                 <path d="M12 2.5l5.5 5.8h-3.3v6.2h-4.4V8.3H6.5L12 2.5z"/>
                 <path d="M4.5 15.5h15v3.3a2.2 2.2 0 01-2.2 2.2H6.7a2.2 2.2 0 01-2.2-2.2v-3.3z"/>
               </svg>
             </div>
-            <span class="nav-tab-label">Bulk Upload</span>
+            <span style="font-family:'Open Sans',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.78);">Bulk Upload</span>
           </div>
 
-          <div class="nav-tab">
-            <div class="nav-tab-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#015677">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(255,255,255,0.78)">
                 <circle cx="12" cy="7.6" r="4.1"/><path d="M4 20.3c0-4.42 3.58-7.1 8-7.1s8 2.68 8 7.1v.4H4v-.4z"/>
               </svg>
             </div>
-            <span class="nav-tab-label">Account</span>
+            <span style="font-family:'Open Sans',sans-serif;font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.78);">Account</span>
           </div>
 
         </div>
       </div>
-      <div class="rule-box" style="margin-bottom:16px;">
-        <strong>Icon style change:</strong> My Lists, Bulk Upload, and Account now use new solid/filled icons (not thicker strokes on the old outline shapes) — <code>fill="currentColor"</code>, 22×22 viewBox. List View's centre icon is unchanged.
-      </div>
-      <table class="spec-table">
+      <div class="logo-caption">Illustrative backdrop — in the app this sits over whichever photo is behind the current tab, not a flat gradient.</div>
+
+      <table class="spec-table" style="margin-top:16px;">
         <tr><th>Element</th><th>Spec</th></tr>
-        <tr><td>Bar background</td><td>#ffffff (White), border 1px #e8e2da</td></tr>
-        <tr><td>Active tab bg</td><td>#015677 (Teal), border-radius 14px, 32×32px</td></tr>
-        <tr><td>Active icon</td><td>White fill (solid icons) or stroke (List View)</td></tr>
-        <tr><td>Active label</td><td>Open Sans 700 10px, white</td></tr>
-        <tr><td>Inactive icon</td><td>#015677 (Teal) fill (solid icons) or stroke (List View)</td></tr>
-        <tr><td>Inactive label</td><td>Open Sans 700 10px, #015677 (Teal)</td></tr>
+        <tr><td>Bar</td><td>None — no background, no border. Nav items are fixed-position, floating directly on the page's backdrop photo.</td></tr>
+        <tr><td>Bottom scrim</td><td>Fixed, full-viewport-width, 150px tall: <code>linear-gradient(to top, teal-F0 0px, teal-B0 55px, teal-00 89px)</code>, z-index below the nav row</td></tr>
+        <tr><td>Active tab</td><td>52×52px circle, glossy radial-gradient white highlight, <code>backdropFilter: blur(8px)</code>, 1px solid rgba(255,255,255,0.55), floated up 20px above the row with layered box-shadow (drop shadow + inset highlight/shade)</td></tr>
+        <tr><td>Active icon</td><td>Solid white fill (or white stroke for List View), drop-shadow for legibility</td></tr>
+        <tr><td>Active label</td><td>Open Sans 700 10.5px, white</td></tr>
+        <tr><td>Inactive tab</td><td>Plain 32×32px box, no background, pushed down 10px relative to the active tab</td></tr>
+        <tr><td>Inactive icon</td><td>rgba(255,255,255,0.78) fill or stroke — never teal. Icon shape unchanged from active state, opacity is the only differentiator</td></tr>
+        <tr><td>Inactive label</td><td>Open Sans 600 10.5px, rgba(255,255,255,0.78)</td></tr>
       </table>
     </div>
 
