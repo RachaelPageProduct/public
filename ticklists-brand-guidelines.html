@@ -5,18 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TickLists — Brand Guidelines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Open+Sans+Condensed:wght@700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Open+Sans+Condensed:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --teal:    #015677;
-      --lime:    #F2FF00;
+      --teal-deep: #103548;
+      --lime:    #E8F26B;
+      --lime-strong: #D8E93C;
+      --yellow-pale: #FAFF92;
+      --mint: #BFE7DD;
+      --teal-tint: #C3E1E6;
+      --ink: #17262A;
+      --ink-soft: #4C6066;
       --charcoal:#1D1D1D;
       --light-grey: #F5F0EC;
       --white:   #ffffff;
       --border:  #e8e2da;
       --sidebar: 240px;
+      --radius-sm: 14px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
     }
 
     html { scroll-behavior: smooth; }
@@ -52,7 +63,7 @@
     }
 
     .sidebar-wordmark {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 17px;
       font-weight: 600;
       color: var(--white);
@@ -153,7 +164,7 @@
     }
 
     .section-title {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 36px;
       font-weight: 600;
       color: var(--charcoal);
@@ -218,7 +229,7 @@
     }
 
     .logo-wordmark {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 28px;
       font-weight: 600;
       color: var(--white);
@@ -508,12 +519,12 @@
 
     /* Highlight palette */
     .highlight-grid {
-      display: flex;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 28px 8px;
     }
 
     .highlight-chip {
-      flex: 1;
       border-radius: 8px;
       height: 44px;
       border: 1px solid var(--border);
@@ -551,7 +562,7 @@
     }
 
     .type-family {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 14px;
       font-weight: 600;
       color: var(--lime);
@@ -880,7 +891,7 @@
     .list-card-body { flex: 1; }
 
     .list-card-name {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 17px;
       font-weight: 600;
       color: var(--charcoal);
@@ -948,9 +959,9 @@
     }
 
     .nav-tab-icon {
-      width: 44px;
+      width: 32px;
       height: 32px;
-      border-radius: 10px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -973,18 +984,18 @@
 
     /* App header demo */
     .header-demo {
-      background: var(--teal);
+      background: var(--teal-deep);
       border-radius: 16px 16px 0 0;
       padding: 0 20px;
       height: 52px;
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 2px 14px rgba(1,86,119,0.35);
+      box-shadow: 0 2px 14px rgba(16,53,72,0.35);
     }
 
     .header-demo-listname {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 17px;
       font-weight: 600;
       color: var(--white);
@@ -1059,7 +1070,7 @@
     }
 
     .dept-name {
-      font-family: 'Lora', serif;
+      font-family: 'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;
       font-size: 13px;
       font-weight: 600;
       color: var(--charcoal);
@@ -1138,10 +1149,7 @@
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <!-- Logo mark -->
-    <svg width="28" height="28" viewBox="0 0 104 107" fill="none">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(255,255,255,0.5)" stroke-width="6.05" stroke-linecap="round"/>
-      <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#F2FF00" stroke-width="6.05" stroke-linecap="square"/>
-    </svg>
+    <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:28px;height:auto;display:block;">
     <span class="sidebar-wordmark">TickLists</span>
   </div>
 
@@ -1159,12 +1167,12 @@
     <a href="#colour-primary" class="nav-link">Primary palette</a>
     <a href="#colour-contrast" class="nav-link">Contrast pairs</a>
     <a href="#colour-states" class="nav-link">State colours</a>
-    <a href="#colour-highlights" class="nav-link">Row highlights</a>
+    <a href="#colour-highlights" class="nav-link">Tag highlights</a>
   </div>
 
   <div class="nav-section">
     <div class="nav-section-label">Typography</div>
-    <a href="#type-lora" class="nav-link">Lora</a>
+    <a href="#type-newyork" class="nav-link">New York</a>
     <a href="#type-opensans" class="nav-link">Open Sans</a>
     <a href="#type-condensed" class="nav-link">Open Sans Condensed</a>
   </div>
@@ -1177,11 +1185,12 @@
     <a href="#comp-lists" class="nav-link">List &amp; items</a>
     <a href="#comp-inputs" class="nav-link">Inputs</a>
     <a href="#comp-nav" class="nav-link">Bottom nav</a>
+    <a href="#comp-backdrops" class="nav-link">Photo backdrops</a>
   </div>
 
   <div class="sidebar-footer">
     TickLists — Internal brand reference<br>
-    Last updated April 2026
+    Last updated September 2026
   </div>
 </nav>
 
@@ -1199,7 +1208,10 @@
     <div class="section-intro">
       <div class="section-num">01</div>
       <h1 class="section-title">Logo</h1>
-      <p class="section-desc">TickLists has two official logo forms: the <strong>full wordmark logo</strong> (for marketing, splash screens, brand moments) and the <strong>mark only</strong> (for app headers, favicons, compact contexts). When the mark appears next to text inside the app, that text is always the current <em>list title</em> — never the word "TickLists".</p>
+      <p class="section-desc">TickLists has two official logo forms: the <strong>full wordmark logo</strong> (for marketing, splash screens, loading state) and the <strong>mark only</strong> (for app headers, favicons, compact contexts). The mark now carries its own background shape, so the same asset works on light or dark surfaces without a separate colourway. When the mark appears next to text inside the app, that text is always the current <em>list title</em> — never the word "TickLists".</p>
+      <div class="rule-box" style="margin-top:16px;">
+        <strong>Redesigned Aug 2026:</strong> The old circle-track-and-checkmark mark has been fully retired in favour of the organic blob mark below. Assets referenced here are pulled live from ticklists.app — if either file moves, update the <code>src</code> paths.
+      </div>
     </div>
 
 
@@ -1207,18 +1219,10 @@
     <div class="subsection" id="logo-versions">
 
       <div class="sub-label">Full logo — primary brand mark</div>
-      <div class="logo-dark-bg" style="justify-content:center;padding:40px;">
-        <svg width="270" height="228" viewBox="0 0 324 273" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M28.5355 185.634H64.0161V199.524H11.3236V94.5921H28.5355V185.634ZM147.826 200.883C141.284 200.883 135.395 199.725 130.161 197.41C125.028 194.995 120.951 191.774 117.932 187.748C114.912 183.621 113.302 179.041 113.1 174.008H130.916C131.218 177.531 132.879 180.501 135.899 182.916C139.019 185.231 142.894 186.389 147.524 186.389C152.356 186.389 156.08 185.483 158.697 183.671C161.414 181.759 162.773 179.343 162.773 176.424C162.773 173.304 161.263 170.989 158.244 169.479C155.325 167.969 150.644 166.308 144.203 164.496C137.962 162.785 132.879 161.125 128.953 159.514C125.028 157.904 121.606 155.438 118.687 152.116C115.868 148.794 114.459 144.416 114.459 138.981C114.459 134.552 115.768 130.526 118.385 126.902C121.002 123.178 124.726 120.259 129.557 118.145C134.489 116.031 140.126 114.975 146.467 114.975C155.929 114.975 163.528 117.39 169.265 122.222C175.103 126.952 178.224 133.445 178.626 141.698H161.414C161.112 137.974 159.603 135.005 156.885 132.79C154.167 130.576 150.493 129.469 145.863 129.469C141.334 129.469 137.861 130.324 135.446 132.036C133.03 133.747 131.822 136.011 131.822 138.83C131.822 141.044 132.627 142.906 134.238 144.416C135.848 145.926 137.811 147.134 140.126 148.04C142.441 148.845 145.863 149.902 150.393 151.21C156.432 152.821 161.364 154.481 165.189 156.193C169.114 157.803 172.486 160.219 175.305 163.44C178.123 166.661 179.582 170.938 179.683 176.273C179.683 181.004 178.375 185.231 175.758 188.955C173.141 192.68 169.416 195.599 164.585 197.712C159.854 199.826 154.268 200.883 147.826 200.883ZM218.361 130.375V176.424C218.361 179.544 219.066 181.809 220.475 183.218C221.985 184.527 224.501 185.181 228.024 185.181H238.593V199.524H225.005C217.254 199.524 211.316 197.712 207.189 194.089C203.062 190.465 200.999 184.577 200.999 176.424V130.375H191.185V116.333H200.999V95.649H218.361V116.333H238.593V130.375H218.361Z" fill="white"/>
-          <path d="M283.622 200.961C277.079 200.961 271.191 199.803 265.957 197.488C260.824 195.073 256.747 191.852 253.728 187.825C250.708 183.699 249.098 179.119 248.896 174.086H266.712C267.014 177.609 268.675 180.578 271.694 182.994C274.815 185.309 278.69 186.467 283.32 186.467C288.151 186.467 291.876 185.561 294.493 183.749C297.21 181.837 298.569 179.421 298.569 176.502C298.569 173.382 297.059 171.067 294.04 169.557C291.121 168.047 286.44 166.386 279.998 164.574C273.758 162.863 268.675 161.202 264.749 159.592C260.824 157.981 257.401 155.515 254.483 152.194C251.664 148.872 250.255 144.494 250.255 139.058C250.255 134.63 251.564 130.604 254.181 126.98C256.798 123.256 260.522 120.337 265.353 118.223C270.285 116.109 275.922 115.052 282.263 115.052C291.725 115.052 299.324 117.468 305.061 122.3C310.899 127.03 314.019 133.522 314.422 141.776H297.21C296.908 138.052 295.398 135.083 292.681 132.868C289.963 130.654 286.289 129.547 281.659 129.547C277.13 129.547 273.657 130.402 271.241 132.113C268.826 133.824 267.618 136.089 267.618 138.907C267.618 141.122 268.423 142.984 270.034 144.494C271.644 146.004 273.607 147.211 275.922 148.117C278.237 148.923 281.659 149.979 286.189 151.288C292.228 152.898 297.16 154.559 300.985 156.27C304.91 157.881 308.282 160.297 311.101 163.517C313.919 166.738 315.378 171.016 315.479 176.351C315.479 181.082 314.17 185.309 311.553 189.033C308.936 192.758 305.212 195.676 300.381 197.79C295.65 199.904 290.064 200.961 283.622 200.961Z" fill="#F2FF00"/>
-          <path d="M243.047 237.185C242.366 237.185 241.795 236.954 241.333 236.493C240.872 236.031 240.641 235.46 240.641 234.779C240.641 234.097 240.872 233.526 241.333 233.064C241.795 232.603 242.366 232.372 243.047 232.372C243.707 232.372 244.267 232.603 244.729 233.064C245.19 233.526 245.421 234.097 245.421 234.779C245.421 235.46 245.19 236.031 244.729 236.493C244.267 236.954 243.707 237.185 243.047 237.185ZM248.23 227.79C248.23 225.966 248.604 224.35 249.351 222.944C250.12 221.537 251.153 220.45 252.45 219.68C253.768 218.889 255.219 218.494 256.801 218.494C258.23 218.494 259.471 218.779 260.526 219.351C261.603 219.9 262.46 220.592 263.097 221.428V218.79H266.888V236.954H263.097V234.251C262.46 235.108 261.592 235.822 260.493 236.394C259.394 236.965 258.142 237.251 256.735 237.251C255.175 237.251 253.746 236.855 252.45 236.064C251.153 235.251 250.12 234.13 249.351 232.702C248.604 231.251 248.23 229.614 248.23 227.79ZM263.097 227.856C263.097 226.603 262.834 225.515 262.306 224.592C261.801 223.669 261.13 222.966 260.295 222.482C259.46 221.999 258.559 221.757 257.592 221.757C256.625 221.757 255.724 221.999 254.889 222.482C254.054 222.944 253.373 223.636 252.845 224.559C252.34 225.46 252.087 226.537 252.087 227.79C252.087 229.043 252.34 230.141 252.845 231.086C253.373 232.031 254.054 232.757 254.889 233.262C255.746 233.746 256.647 233.987 257.592 233.987C258.559 233.987 259.46 233.746 260.295 233.262C261.13 232.779 261.801 232.075 262.306 231.152C262.834 230.207 263.097 229.108 263.097 227.856ZM275.583 221.46C276.22 220.625 277.088 219.922 278.187 219.351C279.286 218.779 280.527 218.494 281.912 218.494C283.494 218.494 284.934 218.889 286.231 219.68C287.549 220.45 288.582 221.537 289.329 222.944C290.076 224.35 290.45 225.966 290.45 227.79C290.45 229.614 290.076 231.251 289.329 232.702C288.582 234.13 287.549 235.251 286.231 236.064C284.934 236.855 283.494 237.251 281.912 237.251C280.527 237.251 279.297 236.976 278.22 236.427C277.143 235.855 276.264 235.152 275.583 234.317V245.591H271.825V218.79H275.583V221.46ZM286.626 227.79C286.626 226.537 286.362 225.46 285.835 224.559C285.329 223.636 284.648 222.944 283.791 222.482C282.956 221.999 282.055 221.757 281.088 221.757C280.143 221.757 279.242 221.999 278.385 222.482C277.55 222.966 276.868 223.669 276.341 224.592C275.835 225.515 275.583 226.603 275.583 227.856C275.583 229.108 275.835 230.207 276.341 231.152C276.868 232.075 277.55 232.779 278.385 233.262C279.242 233.746 280.143 233.987 281.088 233.987C282.055 233.987 282.956 233.746 283.791 233.262C284.648 232.757 285.329 232.031 285.835 231.086C286.362 230.141 286.626 229.043 286.626 227.79ZM297.925 221.46C298.562 220.625 299.43 219.922 300.529 219.351C301.628 218.779 302.869 218.494 304.254 218.494C305.836 218.494 307.276 218.889 308.572 219.68C309.891 220.45 310.924 221.537 311.671 222.944C312.418 224.35 312.792 225.966 312.792 227.79C312.792 229.614 312.418 231.251 311.671 232.702C310.924 234.13 309.891 235.251 308.572 236.064C307.276 236.855 305.836 237.251 304.254 237.251C302.869 237.251 301.639 236.976 300.562 236.427C299.485 235.855 298.606 235.152 297.925 234.317V245.591H294.166V218.79H297.925V221.46ZM308.968 227.79C308.968 226.537 308.704 225.46 308.177 224.559C307.671 223.636 306.99 222.944 306.133 222.482C305.298 221.999 304.397 221.757 303.43 221.757C302.485 221.757 301.584 221.999 300.727 222.482C299.891 222.966 299.21 223.669 298.683 224.592C298.177 225.515 297.925 226.603 297.925 227.856C297.925 229.108 298.177 230.207 298.683 231.152C299.21 232.075 299.891 232.779 300.727 233.262C301.584 233.746 302.485 233.987 303.43 233.987C304.397 233.987 305.298 233.746 306.133 233.262C306.99 232.757 307.671 232.031 308.177 231.086C308.704 230.141 308.968 229.043 308.968 227.79Z" fill="#F2FF00"/>
-          <rect x="77.2993" y="128.939" width="14.1963" height="68.6153" fill="#F2FF01"/>
-          <path d="M72.7306 80.8472L67.7828 77.8323L61.7529 87.728L66.7007 90.7429L69.7157 85.7951L72.7306 80.8472ZM84.38 99.9272L84.38 105.721L87.6993 105.721L89.3782 102.858L84.38 99.9272ZM124.979 68.5871C127.766 67.0139 128.749 63.4796 127.176 60.6931C125.603 57.9066 122.068 56.9231 119.282 58.4964L122.13 63.5417L124.979 68.5871ZM84.2552 99.9272L79.4778 103.205L81.2041 105.721L84.2552 105.721L84.2552 99.9272ZM84.38 99.9272C89.3782 102.858 89.3775 102.859 89.3768 102.86C89.3767 102.86 89.376 102.862 89.3757 102.862C89.3751 102.863 89.3746 102.864 89.3744 102.864C89.3739 102.865 89.3742 102.865 89.3753 102.863C89.3775 102.859 89.3829 102.85 89.3914 102.836C89.4085 102.807 89.4382 102.758 89.4804 102.689C89.5649 102.55 89.6997 102.332 89.8841 102.042C90.2531 101.462 90.8204 100.595 91.5819 99.5019C93.1066 97.3129 95.4015 94.2274 98.4346 90.7209C104.523 83.6816 113.463 75.0893 124.979 68.5871L122.13 63.5417L119.282 58.4964C106.257 65.8501 96.3214 75.4506 89.6703 83.14C86.3333 86.9978 83.792 90.4107 82.0729 92.879C81.2127 94.1142 80.5562 95.1158 80.1069 95.822C79.8822 96.1752 79.7092 96.4547 79.5882 96.653C79.5277 96.7521 79.4802 96.831 79.4458 96.8885C79.4286 96.9173 79.4146 96.9408 79.404 96.9588C79.3986 96.9679 79.3941 96.9755 79.3904 96.9818C79.3885 96.985 79.3869 96.9878 79.3854 96.9902C79.3847 96.9914 79.3838 96.993 79.3834 96.9936C79.3826 96.9951 79.3817 96.9965 84.38 99.9272ZM69.7157 85.7951L66.7007 90.7429C70.1762 92.8606 73.3755 95.9303 75.7886 98.6266C76.9718 99.9487 77.9162 101.125 78.5577 101.96C78.8776 102.377 79.1197 102.706 79.2762 102.922C79.3543 103.03 79.4109 103.11 79.4449 103.159C79.4619 103.183 79.4732 103.199 79.4787 103.207C79.4815 103.211 79.4828 103.213 79.4826 103.213C79.4826 103.212 79.4821 103.212 79.4813 103.211C79.4809 103.21 79.4804 103.209 79.4798 103.208C79.4795 103.208 79.479 103.207 79.4789 103.207C79.4783 103.206 79.4778 103.205 84.2552 99.9272C89.0327 96.6489 89.0321 96.648 89.0314 96.6471C89.0312 96.6468 89.0305 96.6458 89.03 96.6451C89.0291 96.6437 89.028 96.6421 89.0268 96.6405C89.0245 96.6371 89.0218 96.6331 89.0187 96.6287C89.0125 96.6197 89.0048 96.6085 88.9955 96.5952C88.977 96.5685 88.9524 96.5333 88.9218 96.4898C88.8606 96.4029 88.7755 96.283 88.6674 96.1335C88.4513 95.8346 88.1427 95.416 87.7496 94.904C86.9653 93.8822 85.835 92.4758 84.4236 90.8987C81.6474 87.7967 77.5769 83.8003 72.7306 80.8472L69.7157 85.7951ZM84.2552 99.9272L84.2552 105.721L84.38 105.721L84.38 99.9272L84.38 94.1331L84.2552 94.1331L84.2552 99.9272Z" fill="#F2FF00"/>
-          <ellipse opacity="0.05" cx="98.851" cy="81.0993" rx="74.4247" ry="74.2975" fill="#F2FF00"/>
-          <path d="M22.8161 80.1614C21.8346 38.1907 55.0628 3.37089 97.0336 2.3893C139.004 1.40771 173.824 34.636 174.806 76.6068C175.056 87.2891 173.089 97.5082 169.327 106.824" stroke="#F2FF00" stroke-width="4.7362" stroke-linecap="round"/>
-        </svg>
+      <div class="logo-on-light-grey" style="justify-content:center;padding:40px;">
+        <img src="https://ticklists.app/img/ticklists logo lime round.svg" alt="TickLists logo" style="width:180px;height:auto;display:block;">
       </div>
-      <div class="logo-caption">Full wordmark logo — always on teal background. Use for marketing, splash screens, and brand moments.</div>
+      <div class="logo-caption">Full wordmark logo — pale yellow mark, teal wordmark. Use for the loading screen, splash, and marketing moments. Source: <code>ticklists.app/img/ticklists logo lime round.svg</code></div>
 
       <div class="spacer"></div>
 
@@ -1226,37 +1230,28 @@
       <div class="logo-grid">
         <div>
           <div class="logo-dark-bg mark-only">
-            <svg width="56" height="56" viewBox="0 0 104 107" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="white" stroke-opacity="0.5" stroke-width="6.05" stroke-linecap="round"/>
-              <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#F2FF00" stroke-width="6.05" stroke-linecap="square"/>
-            </svg>
+            <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:56px;height:auto;display:block;">
           </div>
-          <div class="logo-caption">On dark — white/50% circle, lime tick. Used in app headers, favicons.</div>
+          <div class="logo-caption">Self-contained teal-deep + pale-yellow mark. Used for favicon, app icon, header contexts.</div>
         </div>
         <div>
           <div class="logo-light-bg mark-only">
-            <svg width="56" height="56" viewBox="0 0 104 107" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(1,86,119,0.4)" stroke-width="6.05" stroke-linecap="round"/>
-              <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#015677" stroke-width="6.05" stroke-linecap="square"/>
-            </svg>
+            <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:56px;height:auto;display:block;">
           </div>
-          <div class="logo-caption">On light — teal/40% circle, teal tick.</div>
+          <div class="logo-caption">Same asset on light — the mark's own teal-deep background carries the contrast, so no separate light-mode version is needed.</div>
         </div>
       </div>
 
       <div class="spacer"></div>
 
       <div class="sub-label">Mark in context — app header</div>
-      <div style="background:var(--teal);border-radius:16px;padding:0;overflow:hidden;margin-bottom:8px;">
-        <div style="background:var(--teal);padding:0 20px;display:flex;align-items:center;gap:12px;height:52px;">
-          <svg width="34" height="33" viewBox="0 0 84 82" fill="none" style="flex-shrink:0;">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="white" stroke-opacity="0.5" stroke-width="6.05" stroke-linecap="round"/>
-            <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#F2FF00" stroke-width="6.05" stroke-linecap="square"/>
-          </svg>
-          <span style="font-family:'Lora',serif;font-size:17px;font-weight:600;color:#ffffff;line-height:1;display:flex;align-items:center;">Food Shopping</span>
+      <div style="background:var(--teal-deep);border-radius:16px;padding:0;overflow:hidden;margin-bottom:8px;">
+        <div style="background:var(--teal-deep);padding:0 20px;display:flex;align-items:center;gap:12px;height:52px;">
+          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:34px;height:auto;flex-shrink:0;display:block;">
+          <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:17px;font-weight:600;color:#ffffff;line-height:1;display:flex;align-items:center;">Food Shopping</span>
         </div>
       </div>
-      <div class="logo-caption">The mark is used alone — text next to it is always the <strong>list title</strong> (Lora 600, white). Never "TickLists".</div>
+      <div class="logo-caption">The mark is used alone — text next to it is always the <strong>list title</strong> (New York 600, white). Never "TickLists". Header background is Teal Deep (#103548) on redesigned screens.</div>
 
       <div class="rule-box" style="margin-top:16px;">
         <strong>Vertical alignment:</strong> The mark and list title must share the same flex container with <code>align-items: center</code>. The mark's optical centre aligns with the text cap-height. Do not add manual top offsets.
@@ -1269,11 +1264,8 @@
       <div class="sub-label">Clear space</div>
       <div class="clearspace-wrap">
         <div class="clearspace-inner">
-          <svg width="40" height="39" viewBox="0 0 84 82" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(1,86,119,0.4)" stroke-width="6.05" stroke-linecap="round"/>
-            <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#015677" stroke-width="6.05" stroke-linecap="square"/>
-          </svg>
-          <span style="font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--teal);line-height:1;">Hardware</span>
+          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:40px;height:auto;display:block;">
+          <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:22px;font-weight:600;color:var(--teal);line-height:1;">Hardware</span>
           <div class="clearspace-box"></div>
           <span class="clearspace-label top">½ × mark height</span>
           <span class="clearspace-label bottom">½ × mark height</span>
@@ -1284,7 +1276,7 @@
       <div class="logo-caption">Minimum clear space on all sides = half the height of the mark. Never place text, buttons, or imagery inside this zone.</div>
 
       <div class="rule-box" style="margin-top:20px;">
-        <strong>Minimum size:</strong> Full lockup — 120px wide minimum. Mark only — 24px minimum (below this, use a solid teal square/circle with the lime tick simplified).
+        <strong>Minimum size:</strong> Full lockup — 120px wide minimum. Mark only — 24px minimum.
       </div>
     </div>
 
@@ -1295,57 +1287,38 @@
       <div class="donts-grid">
 
         <div class="dont-card">
-          <svg width="44" height="44" viewBox="0 0 104 107" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 40.3328 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="#ef4444" stroke-opacity="0.5" stroke-width="6.05" stroke-linecap="round"/>
-            <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#ef4444" stroke-width="6.05" stroke-linecap="square"/>
-          </svg>
-          <span style="font-family:'Lora',serif;font-size:20px;font-weight:600;color:#ef4444;">TickLists</span>
+          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:44px;height:auto;filter:hue-rotate(140deg) saturate(2);">
+          <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:20px;font-weight:600;color:#ef4444;">TickLists</span>
           <div class="dont-desc">Don't recolour the logo. Only approved colour combinations.</div>
         </div>
 
         <div class="dont-card">
-          <div style="transform:scaleX(1.4);transform-origin:center;display:inline-block;">
-            <svg width="44" height="44" viewBox="0 0 104 107" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(1,86,119,0.4)" stroke-width="6.05" stroke-linecap="round"/>
-              <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#015677" stroke-width="6.05" stroke-linecap="square"/>
-            </svg>
+          <div style="transform:scaleX(1.6);transform-origin:center;display:inline-block;">
+            <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:44px;height:auto;display:block;">
           </div>
           <div class="dont-desc">Don't stretch or distort the mark. Scale proportionally only.</div>
         </div>
 
         <div class="dont-card">
           <div style="background:#888;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:10px;">
-            <svg width="36" height="36" viewBox="0 0 104 107" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(255,255,255,0.5)" stroke-width="6.05" stroke-linecap="round"/>
-              <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#F2FF00" stroke-width="6.05" stroke-linecap="square"/>
-            </svg>
-            <span style="font-family:'Lora',serif;font-size:18px;font-weight:600;color:white;">TickLists</span>
+            <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:36px;height:auto;display:block;">
+            <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:18px;font-weight:600;color:white;">TickLists</span>
           </div>
-          <div class="dont-desc">Don't place the logo on unauthorised background colours. Use only teal, white, or light grey.</div>
+          <div class="dont-desc">Don't place the logo on unauthorised background colours. Use only teal, teal deep, white, or light grey.</div>
         </div>
 
         <div class="dont-card">
-          <div style="filter:drop-shadow(4px 4px 8px rgba(0,0,0,0.4));display:inline-block;">
-            <svg width="44" height="44" viewBox="0 0 104 107" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(1,86,119,0.4)" stroke-width="6.05" stroke-linecap="round"/>
-              <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#015677" stroke-width="6.05" stroke-linecap="square"/>
-            </svg>
-          </div>
+          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:44px;height:auto;filter:drop-shadow(4px 4px 8px rgba(0,0,0,0.4));">
           <div class="dont-desc">Don't add drop shadows or effects to the mark.</div>
         </div>
 
         <div class="dont-card">
-          <span style="font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--teal);">TickLists</span>
+          <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:22px;font-weight:600;color:var(--teal);">TickLists</span>
           <div class="dont-desc">Don't use text spelling "TickLists" next to the mark — the mark is standalone or paired with a list title only.</div>
         </div>
 
         <div class="dont-card">
-          <div style="opacity:0.25;">
-            <svg width="44" height="44" viewBox="0 0 104 107" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="rgba(1,86,119,0.4)" stroke-width="6.05" stroke-linecap="round"/>
-              <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#015677" stroke-width="6.05" stroke-linecap="square"/>
-            </svg>
-          </div>
+          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:44px;height:auto;opacity:0.25;">
           <div class="dont-desc">Don't use the logo at low opacity.</div>
         </div>
 
@@ -1361,7 +1334,7 @@
     <div class="section-intro">
       <div class="section-num">02</div>
       <h1 class="section-title">Colour</h1>
-      <p class="section-desc">Five core colours make up the TickLists palette. Teal is the dominant brand colour. Lime is the accent — used sparingly, always on a dark background. Light Grey is the app surface.</p>
+      <p class="section-desc">Teal (in two shades) is the dominant brand colour. Lime and pale yellow are accents — used sparingly, always on a dark background. Light Grey is the app surface.</p>
     </div>
 
 
@@ -1375,16 +1348,43 @@
           <div class="swatch-info">
             <div class="swatch-name">Teal</div>
             <div class="swatch-hex">#015677</div>
-            <div class="swatch-use">Primary brand. All headers, primary buttons, active states, links, borders.</div>
+            <div class="swatch-use">Primary brand. Buttons, links, borders, chip/tag tints.</div>
           </div>
         </div>
 
         <div class="colour-swatch">
-          <div class="swatch-block" style="background:#F2FF00;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-block" style="background:#103548;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal Deep</div>
+            <div class="swatch-hex">#103548</div>
+            <div class="swatch-use">Second brand teal. Headers, active states, full-bleed photo backdrops, most on-app text.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#E8F26B;border-bottom:1px solid #e5e5e5;"></div>
           <div class="swatch-info">
             <div class="swatch-name">Lime</div>
-            <div class="swatch-hex">#F2FF00</div>
+            <div class="swatch-hex">#E8F26B</div>
             <div class="swatch-use">Accent only. Counters and active labels on teal. Never on light backgrounds.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#D8E93C;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Lime Strong</div>
+            <div class="swatch-hex">#D8E93C</div>
+            <div class="swatch-use">Lime's darker pair — gradients and active-pill fills alongside Lime.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#FAFF92;border-bottom:1px solid #e5e5e5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Pale Yellow</div>
+            <div class="swatch-hex">#FAFF92</div>
+            <div class="swatch-use">Logo &amp; favicon accent only. Not a general UI colour.</div>
           </div>
         </div>
 
@@ -1394,6 +1394,42 @@
             <div class="swatch-name">Charcoal</div>
             <div class="swatch-hex">#1D1D1D</div>
             <div class="swatch-use">All body text on light backgrounds. Bottom navigation bar.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#17262A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Ink</div>
+            <div class="swatch-hex">#17262A</div>
+            <div class="swatch-use">Near-black text on the newer glass/photo-backdrop screens.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#4C6066;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Ink Soft</div>
+            <div class="swatch-hex">#4C6066</div>
+            <div class="swatch-use">Secondary/muted text paired with Ink.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#BFE7DD;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mint</div>
+            <div class="swatch-hex">#BFE7DD</div>
+            <div class="swatch-use">Supporting tint on glass/photo-backdrop surfaces.</div>
+          </div>
+        </div>
+
+        <div class="colour-swatch">
+          <div class="swatch-block" style="background:#C3E1E6;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal Tint</div>
+            <div class="swatch-hex">#C3E1E6</div>
+            <div class="swatch-use">Lightest teal tint — supporting surfaces.</div>
           </div>
         </div>
 
@@ -1418,7 +1454,7 @@
       </div>
 
       <div class="rule-box">
-        <strong>Lime rule:</strong> Lime (#F2FF00) is only legible on very dark backgrounds. Never use it on white, light grey, or any light surface. It exists solely as a high-energy accent on teal.
+        <strong>Lime rule:</strong> Lime (#E8F26B) and Lime Strong (#D8E93C) are only legible on very dark backgrounds. Never use them on white, light grey, or any light surface. Pale Yellow (#FAFF92) is reserved for the logo and favicon — don't use it as a general UI accent.
       </div>
     </div>
 
@@ -1440,11 +1476,21 @@
 
         <div class="contrast-card">
           <div class="contrast-preview" style="background:#015677;">
-            <span style="color:#F2FF00;">Lime on Teal</span>
+            <span style="color:#E8F26B;">Lime on Teal</span>
           </div>
           <div class="contrast-meta">
-            <span>#F2FF00 on #015677</span>
+            <span>#E8F26B on #015677</span>
             <span class="contrast-pass">AA ✓</span>
+          </div>
+        </div>
+
+        <div class="contrast-card">
+          <div class="contrast-preview" style="background:#103548;">
+            <span style="color:#ffffff;">White on Teal Deep</span>
+          </div>
+          <div class="contrast-meta">
+            <span>#fff on #103548</span>
+            <span class="contrast-pass">AAA ✓</span>
           </div>
         </div>
 
@@ -1479,11 +1525,11 @@
         </div>
 
         <div class="contrast-card">
-          <div class="contrast-preview" style="background:#F2FF00;">
+          <div class="contrast-preview" style="background:#E8F26B;">
             <span style="color:#1D1D1D;">Charcoal on Lime</span>
           </div>
           <div class="contrast-meta">
-            <span>#1D1D1D on #F2FF00</span>
+            <span>#1D1D1D on #E8F26B</span>
             <span class="contrast-pass">AA ✓</span>
           </div>
         </div>
@@ -1543,18 +1589,31 @@
 
     <!-- Row highlights -->
     <div class="subsection" id="colour-highlights">
-      <div class="sub-label">User-assignable row highlights</div>
+      <div class="sub-label">Tag highlight palette (20 colours)</div>
       <div class="highlight-grid" style="margin-bottom:36px;">
-        <div class="highlight-chip" style="background:#d4edda;"><span class="highlight-chip-label">Green</span></div>
-        <div class="highlight-chip" style="background:#fff3cd;"><span class="highlight-chip-label">Yellow</span></div>
-        <div class="highlight-chip" style="background:#d1ecf1;"><span class="highlight-chip-label">Blue</span></div>
-        <div class="highlight-chip" style="background:#fde2d8;"><span class="highlight-chip-label">Orange</span></div>
-        <div class="highlight-chip" style="background:#e8d5f5;"><span class="highlight-chip-label">Purple</span></div>
-        <div class="highlight-chip" style="background:#ffd6e0;"><span class="highlight-chip-label">Pink</span></div>
-        <div class="highlight-chip" style="background:#dff5e8;"><span class="highlight-chip-label">Mint</span></div>
+        <div class="highlight-chip" style="background:#D4EDE8;"><span class="highlight-chip-label">Seafoam</span></div>
+        <div class="highlight-chip" style="background:#DBF0E8;"><span class="highlight-chip-label">Mint</span></div>
+        <div class="highlight-chip" style="background:#C4E9E4;"><span class="highlight-chip-label">Jade</span></div>
+        <div class="highlight-chip" style="background:#CDE4EA;"><span class="highlight-chip-label">Teal</span></div>
+        <div class="highlight-chip" style="background:#C2E0D0;"><span class="highlight-chip-label">Pine</span></div>
+        <div class="highlight-chip" style="background:#EBE2CB;"><span class="highlight-chip-label">Sand</span></div>
+        <div class="highlight-chip" style="background:#DDE6B3;"><span class="highlight-chip-label">Citron</span></div>
+        <div class="highlight-chip" style="background:#E9D9A5;"><span class="highlight-chip-label">Mustard</span></div>
+        <div class="highlight-chip" style="background:#B5D8E3;"><span class="highlight-chip-label">Lagoon</span></div>
+        <div class="highlight-chip" style="background:#E4DA81;"><span class="highlight-chip-label">Ochre</span></div>
+        <div class="highlight-chip" style="background:#D3E5EE;"><span class="highlight-chip-label">Sky</span></div>
+        <div class="highlight-chip" style="background:#DCE7EF;"><span class="highlight-chip-label">Powder</span></div>
+        <div class="highlight-chip" style="background:#C1D0E1;"><span class="highlight-chip-label">Denim</span></div>
+        <div class="highlight-chip" style="background:#A4D6CD;"><span class="highlight-chip-label">Spruce</span></div>
+        <div class="highlight-chip" style="background:#D2D7E9;"><span class="highlight-chip-label">Periwinkle</span></div>
+        <div class="highlight-chip" style="background:#EFDAD7;"><span class="highlight-chip-label">Blush</span></div>
+        <div class="highlight-chip" style="background:#E9CED2;"><span class="highlight-chip-label">Rose</span></div>
+        <div class="highlight-chip" style="background:#EDE7DE;"><span class="highlight-chip-label">Linen</span></div>
+        <div class="highlight-chip" style="background:#DED9D3;"><span class="highlight-chip-label">Stone</span></div>
+        <div class="highlight-chip" style="background:#D7C8C1;"><span class="highlight-chip-label">Clay</span></div>
       </div>
       <div class="rule-box">
-        These are <strong>user-controlled</strong> row accent colours — not brand colours. They appear only on list item rows. Text on all of them remains charcoal (#1D1D1D). Never use these for UI chrome, buttons, or headings.
+        These 20 named colours are the shared source for <strong>tag/list-card tints</strong> — not brand colours. Text on all of them remains charcoal (#1D1D1D) or teal deep. Never use these for UI chrome, buttons, or headings.
       </div>
     </div>
   </section>
@@ -1567,48 +1626,48 @@
     <div class="section-intro">
       <div class="section-num">03</div>
       <h1 class="section-title">Typography</h1>
-      <p class="section-desc">Three typefaces, each with a distinct role. Never mix them freely — use each only in its designated context. All fonts are loaded via Google Fonts.</p>
+      <p class="section-desc">Three typefaces, each with a distinct role. Never mix them freely — use each only in its designated context. New York is a system font; Open Sans and Open Sans Condensed load via Google Fonts.</p>
     </div>
 
     <div class="rule-box" style="margin-bottom:40px;">
-      <strong>Google Fonts import:</strong><br>
-      <code style="font-size:12px;color:#555;">Open Sans:wght@400;600;700 | Open Sans Condensed:wght@700 | Lora:wght@400;500;600;700</code>
+      <strong>Font sources:</strong><br>
+      <code style="font-size:12px;color:#555;">New York: system font stack, no import needed | Open Sans:wght@400;600;700 (Google Fonts) | Open Sans Condensed:wght@400;700 (Google Fonts)</code>
     </div>
 
 
-    <!-- Lora -->
-    <div class="subsection" id="type-lora">
+    <!-- New York -->
+    <div class="subsection" id="type-newyork">
       <div class="type-block">
         <div class="type-meta">
-          <span class="type-family">Lora</span>
+          <span class="type-family">New York</span>
           <span class="type-role">Serif — headings &amp; names</span>
-          <span class="type-import">Google Fonts</span>
+          <span class="type-import">System font</span>
         </div>
         <div class="type-preview">
-          <div style="font-family:'Lora',serif;font-size:40px;font-weight:600;color:var(--charcoal);line-height:1.1;margin-bottom:8px;">Food Shopping</div>
-          <div style="font-family:'Lora',serif;font-size:22px;font-weight:400;color:#555;font-style:italic;">Your household, in sync</div>
+          <div style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:40px;font-weight:600;color:var(--charcoal);line-height:1.1;margin-bottom:8px;">Food Shopping</div>
+          <div style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:22px;font-weight:400;color:#555;font-style:italic;">Your household, in sync</div>
         </div>
         <div class="type-scale">
           <div class="type-scale-label">Size scale used in app</div>
           <div class="type-scale-row">
             <span class="type-scale-size">26–28px</span>
             <span class="type-scale-use">My Lists heading</span>
-            <span style="font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--charcoal);">My Lists</span>
+            <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:22px;font-weight:600;color:var(--charcoal);">My Lists</span>
           </div>
           <div class="type-scale-row">
             <span class="type-scale-size">22px</span>
             <span class="type-scale-use">Auth titles (Create account, Sign in)</span>
-            <span style="font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--charcoal);">Create account</span>
+            <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:18px;font-weight:600;color:var(--charcoal);">Create account</span>
           </div>
           <div class="type-scale-row">
             <span class="type-scale-size">18px</span>
             <span class="type-scale-use">List card names</span>
-            <span style="font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--charcoal);">Weekly Food Shop</span>
+            <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:16px;font-weight:600;color:var(--charcoal);">Weekly Food Shop</span>
           </div>
           <div class="type-scale-row">
             <span class="type-scale-size">13px</span>
             <span class="type-scale-use">Department labels in list view</span>
-            <span style="font-family:'Lora',serif;font-size:13px;font-weight:600;color:var(--charcoal);">Fruit &amp; Veg</span>
+            <span style="font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:13px;font-weight:600;color:var(--charcoal);">Fruit &amp; Veg</span>
           </div>
         </div>
         <div class="type-rules">
@@ -1672,7 +1731,7 @@
           </div>
           <div class="type-rule">
             <div class="type-rule-label dont">Not for</div>
-            <div class="type-rule-text">Counters and compact numeric labels (use Condensed). Headings and list names (use Lora).</div>
+            <div class="type-rule-text">Counters and compact numeric labels (use Condensed). Headings and list names (use New York).</div>
           </div>
         </div>
       </div>
@@ -1695,7 +1754,7 @@
           </div>
         </div>
         <div class="type-scale">
-          <div class="type-scale-label">Use cases — always weight 700</div>
+          <div class="type-scale-label">Use cases — weight 700 unless noted</div>
           <div class="type-scale-row">
             <span class="type-scale-size">700 / 15px</span>
             <span class="type-scale-use">Ticked counter on teal bg</span>
@@ -1716,15 +1775,20 @@
             <span class="type-scale-use">Store pill buttons, compact actions</span>
             <span style="font-family:'Open Sans Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--teal);background:rgba(1,86,119,0.09);border:1px solid rgba(1,86,119,0.18);border-radius:20px;padding:3px 12px;">Aldi Dalston</span>
           </div>
+          <div class="type-scale-row">
+            <span class="type-scale-size">400 / 13px</span>
+            <span class="type-scale-use">Non-active toolbar / segment labels (List View) — weight is the only live/non-live signal, colour stays full-opacity teal</span>
+            <span style="font-family:'Open Sans Condensed',sans-serif;font-size:13px;font-weight:400;color:var(--teal-deep);">Collapse</span>
+          </div>
         </div>
         <div class="type-rules">
           <div class="type-rule">
             <div class="type-rule-label do">Use for</div>
-            <div class="type-rule-text">Numeric counts, ticked/total ratios, quantity badges, store pill labels, compact action buttons where space is tight.</div>
+            <div class="type-rule-text">Numeric counts, ticked/total ratios, quantity badges, store pill labels, compact action buttons where space is tight. Weight 700 for live/active state, 400 for non-active toolbar and segment labels.</div>
           </div>
           <div class="type-rule">
             <div class="type-rule-label dont">Not for</div>
-            <div class="type-rule-text">Body copy or anything that requires reading ease at length. One weight only: 700.</div>
+            <div class="type-rule-text">Body copy or anything that requires reading ease at length. Never use colour-opacity to signal active/inactive — weight is the only distinguishing signal.</div>
           </div>
         </div>
       </div>
@@ -1749,10 +1813,7 @@
       <div>
         <div class="header-demo">
           <!-- Mark only — list title sits directly alongside, no wordmark -->
-          <svg width="34" height="33" viewBox="0 0 84 82" fill="none" style="flex-shrink:0;">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M40.3328 77.6407C60.9374 77.6407 77.6407 60.9374 77.6407 40.3328C77.6407 19.7283 60.9374 3.02496 40.3328 3.02496C19.7282 3.02496 3.0249 19.7283 3.0249 40.3328C3.0249 60.9374 19.7282 77.6407 40.3328 77.6407Z" stroke="white" stroke-opacity="0.5" stroke-width="6.05" stroke-linecap="round"/>
-            <path d="M26.8199 37.3414C35.2456 42.6681 41.541 52.1868 41.541 52.1868H41.6673C41.6673 52.1868 55.042 28.5202 79.8892 13.9649" stroke="#F2FF00" stroke-width="6.05" stroke-linecap="square"/>
-          </svg>
+          <img src="https://ticklists.app/favicon/favicon.svg" alt="TickLists mark" style="width:28px;height:auto;flex-shrink:0;display:block;">
           <span class="header-demo-listname">Food Shopping</span>
           <div class="header-demo-spacer"></div>
           <div class="counter-pill">
@@ -1783,11 +1844,11 @@
       <table class="spec-table" style="margin-top:20px;">
         <tr><th>Element</th><th>Spec</th></tr>
         <tr><td>Header height</td><td>52px, sticky, z-index 100</td></tr>
-        <tr><td>Background</td><td>#015677 (Teal)</td></tr>
-        <tr><td>Box shadow</td><td>0 2px 14px rgba(1,86,119,0.35)</td></tr>
+        <tr><td>Background</td><td>#103548 (Teal Deep) — full-bleed duotone photo header on redesigned screens (List View, Bulk Upload, Account)</td></tr>
+        <tr><td>Box shadow</td><td>0 2px 14px rgba(16,53,72,0.35)</td></tr>
         <tr><td>Logo mark</td><td>28×28px — mark only (see Logo section). No wordmark.</td></tr>
-        <tr><td>List title</td><td>Lora 600 17px, white — sits directly alongside the mark. Never "TickLists".</td></tr>
-        <tr><td>Department rows</td><td>Lora 600 13px, charcoal; height 34px; bg cream</td></tr>
+        <tr><td>List title</td><td>New York 600 17px, white — sits directly alongside the mark. Never "TickLists".</td></tr>
+        <tr><td>Department rows</td><td>New York 600 13px, charcoal; height 34px; bg cream</td></tr>
         <tr><td>Item rows</td><td>Open Sans 400 13px; alternating white / #faf8f5; height 34–36px</td></tr>
       </table>
     </div>
@@ -1820,8 +1881,12 @@
         <tr><td>Ghost</td><td>transparent</td><td>#015677, 700</td><td>1.5px solid #015677</td><td>20px (pill)</td><td>Open Sans 700 13px</td></tr>
         <tr><td>Pill (on dark)</td><td>rgba(255,255,255,0.12)</td><td>#ffffff, 700</td><td>1px solid rgba(255,255,255,0.22)</td><td>20px</td><td>Open Sans 700 13px</td></tr>
         <tr><td>Dashed (on dark)</td><td>transparent</td><td>rgba(255,255,255,0.85)</td><td>1.5px dashed rgba(255,255,255,0.5)</td><td>20px</td><td>Open Sans Condensed 700 13px</td></tr>
-        <tr><td>Lime accent</td><td>#F2FF00</td><td>#1D1D1D, 700</td><td>none</td><td>20px</td><td>Open Sans Condensed 700 13px</td></tr>
+        <tr><td>Lime accent</td><td>#E8F26B</td><td>#1D1D1D, 700</td><td>none</td><td>20px</td><td>Open Sans Condensed 700 13px</td></tr>
       </table>
+
+      <div class="rule-box" style="margin-top:16px;">
+        <strong>Border-radius scale:</strong> Small 14px (chips, inputs) · Medium 18px · Large 24px (cards, department headers, glass panels on redesigned screens) · Pill 999px (buttons, segments). The 12px/14px values above are legacy — cards on List View, Account, and Bulk Upload now render at 24px.
+      </div>
     </div>
 
 
@@ -1862,6 +1927,9 @@
           </div>
         </div>
       </div>
+      <div class="rule-box" style="margin-top:16px;">
+        User-created tags and list-card tints now draw from the full <strong>20-colour tag highlight palette</strong> — see Colour → Tag highlights. The 3 dietary examples above are illustrative, not the full set.
+      </div>
     </div>
 
 
@@ -1884,11 +1952,11 @@
       </div>
       <table class="spec-table">
         <tr><th>Element</th><th>Spec</th></tr>
-        <tr><td>Card bg</td><td>White, border 1px #e8e2da, border-radius 14px</td></tr>
-        <tr><td>List name</td><td>Lora 600 18px, charcoal</td></tr>
+        <tr><td>Card bg</td><td>Frosted glass (backdropFilter: blur(14px)) over the page's rotating backdrop photo, border-radius 24px</td></tr>
+        <tr><td>List name</td><td>New York 600 18px, teal deep</td></tr>
         <tr><td>Drag handle</td><td>≡ symbol, #ccc, font-size 18px</td></tr>
         <tr><td>Arrow</td><td>❯ symbol, teal #015677, font-size 16px</td></tr>
-        <tr><td>Item count</td><td>Open Sans 400 13px, charcoal</td></tr>
+        <tr><td>Item count</td><td>Open Sans 400 13px, teal deep</td></tr>
       </table>
     </div>
 
@@ -1921,7 +1989,10 @@
 
           <div class="nav-tab active">
             <div class="nav-tab-icon active">
-              <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <rect x="3" y="3" width="8" height="8" rx="2.2"/><rect x="13" y="3" width="8" height="8" rx="2.2"/>
+                <rect x="3" y="13" width="8" height="8" rx="2.2"/><rect x="13" y="13" width="8" height="8" rx="2.2"/>
+              </svg>
             </div>
             <span class="nav-tab-label">My Lists</span>
           </div>
@@ -1935,29 +2006,62 @@
 
           <div class="nav-tab">
             <div class="nav-tab-icon">
-              <svg width="22" height="22" fill="none" stroke="#015677" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#015677">
+                <path d="M12 2.5l5.5 5.8h-3.3v6.2h-4.4V8.3H6.5L12 2.5z"/>
+                <path d="M4.5 15.5h15v3.3a2.2 2.2 0 01-2.2 2.2H6.7a2.2 2.2 0 01-2.2-2.2v-3.3z"/>
+              </svg>
             </div>
             <span class="nav-tab-label">Bulk Upload</span>
           </div>
 
           <div class="nav-tab">
             <div class="nav-tab-icon">
-              <svg width="22" height="22" fill="none" stroke="#015677" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#015677">
+                <circle cx="12" cy="7.6" r="4.1"/><path d="M4 20.3c0-4.42 3.58-7.1 8-7.1s8 2.68 8 7.1v.4H4v-.4z"/>
+              </svg>
             </div>
             <span class="nav-tab-label">Account</span>
           </div>
 
         </div>
       </div>
+      <div class="rule-box" style="margin-bottom:16px;">
+        <strong>Icon style change:</strong> My Lists, Bulk Upload, and Account now use new solid/filled icons (not thicker strokes on the old outline shapes) — <code>fill="currentColor"</code>, 22×22 viewBox. List View's centre icon is unchanged.
+      </div>
       <table class="spec-table">
         <tr><th>Element</th><th>Spec</th></tr>
         <tr><td>Bar background</td><td>#ffffff (White), border 1px #e8e2da</td></tr>
-        <tr><td>Active tab bg</td><td>#015677 (Teal), border-radius 10px, 44×32px</td></tr>
-        <tr><td>Active icon</td><td>White stroke</td></tr>
+        <tr><td>Active tab bg</td><td>#015677 (Teal), border-radius 14px, 32×32px</td></tr>
+        <tr><td>Active icon</td><td>White fill (solid icons) or stroke (List View)</td></tr>
         <tr><td>Active label</td><td>Open Sans 700 10px, white</td></tr>
-        <tr><td>Inactive icon</td><td>#015677 (Teal) stroke</td></tr>
+        <tr><td>Inactive icon</td><td>#015677 (Teal) fill (solid icons) or stroke (List View)</td></tr>
         <tr><td>Inactive label</td><td>Open Sans 700 10px, #015677 (Teal)</td></tr>
       </table>
+    </div>
+
+
+    <!-- Photo backdrops & glass panels -->
+    <div class="subsection" id="comp-backdrops">
+      <div class="sub-label">Photo backdrops &amp; glass panels</div>
+      <p class="section-desc" style="margin-bottom:20px;">New visual language introduced in the Aug 2026 redesign, used on List View, Bulk Upload, Account, and My Lists. Not present in earlier versions of this doc.</p>
+
+      <div style="position:relative;border-radius:24px;overflow:hidden;height:160px;background:linear-gradient(175deg, rgba(16,53,72,0.55) 0%, rgba(16,53,72,0.28) 42%, rgba(16,53,72,0.55) 100%), linear-gradient(135deg,#4C6066,#BFE7DD);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+        <div style="backdrop-filter:blur(14px);background:rgba(255,255,255,0.5);border-radius:18px;padding:16px 22px;color:var(--teal-deep);font-family:'New York','New York Extra Large',ui-serif,Georgia,'Lora',serif;font-size:16px;font-weight:600;">Weekly Food Shop</div>
+      </div>
+      <div class="logo-caption">Illustrative approximation — vignette dark at top/bottom, clear in the middle band, frosted-glass card floating on top.</div>
+
+      <table class="spec-table" style="margin-top:16px;">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Full-bleed header (List View, Bulk Upload, Account)</td><td>Background photo + duotone overlay: <code>linear-gradient(175deg, teal-deep 8c 0%, teal-deep b8 45%, teal-deep e0 100%)</code> — one direction, darkest at the bottom</td></tr>
+        <tr><td>Page-wide backdrop (all 4 main-nav pages)</td><td>Background photo + vignette overlay: dark top and bottom (teal-deep, fading e0→70→transparent by ~42% from each edge), fully clear through the middle band</td></tr>
+        <tr><td>Backdrop photo rotation</td><td>My Lists picks one of the full backdrop set at random once per app load; a "change photo" button lets the user re-roll</td></tr>
+        <tr><td>Glass cards (My Lists, Account, Bulk Upload panels)</td><td><code>backdropFilter: blur(14px)</code> over a translucent white/teal fill, border-radius 24px</td></tr>
+        <tr><td>List-card tint</td><td>Keyed by list type — Spruce for shopping, Citron for routine (from the tag highlight palette), blended into transparent white glass</td></tr>
+      </table>
+
+      <div class="rule-box" style="margin-top:16px;">
+        Both overlays are generated from the single <strong>Teal Deep</strong> token, not hardcoded rgba shades — a future brand-teal change re-tones every header/backdrop photo automatically. Backdrop photos themselves must stay full-colour, never pre-toned.
+      </div>
     </div>
 
   </section>
